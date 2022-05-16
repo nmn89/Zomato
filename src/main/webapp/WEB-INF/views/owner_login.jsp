@@ -12,7 +12,7 @@
 
 	<div class="card container mt-5">
 
-		<form action="home" method="post">
+		<form action="dish" method="post">
 		<div class="form-group">
 				<label for="restaurantname">Restaurant Name</label> <input
 					type="text" class="form-control" id="rname"

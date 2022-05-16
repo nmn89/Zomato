@@ -52,6 +52,7 @@
 			<list>
 				<value>zomatoapp.model.Zomato</value>
 				<value>zomatoapp.model.Restaurant</value>
+				<value>zomatoapp.model.Dish</value>
 			</list>
 		</property>
 	</bean>

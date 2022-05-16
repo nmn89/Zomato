@@ -9,19 +9,18 @@ import org.springframework.stereotype.Component;
 
 @Entity
 public class Restaurant {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private int rid;
 	private String restaurantName;
 	private String email;
 	private String mobileNo;
 	private String password;
-	public int getId() {
-		return id;
+	public int getRid() {
+		return rid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setRid(int rid) {
+		this.rid = rid;
 	}
 	public String getRestaurantName() {
 		return restaurantName;
@@ -51,9 +50,9 @@ public class Restaurant {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Restaurant(int id, String restaurantName, String email, String mobileNo, String password) {
+	public Restaurant(int rid, String restaurantName, String email, String mobileNo, String password) {
 		super();
-		this.id = id;
+		this.rid = rid;
 		this.restaurantName = restaurantName;
 		this.email = email;
 		this.mobileNo = mobileNo;
@@ -61,7 +60,7 @@ public class Restaurant {
 	}
 	@Override
 	public String toString() {
-		return "Restaurant [id=" + id + ", restaurantName=" + restaurantName + ", email=" + email + ", mobileNo="
+		return "Restaurant [id=" + rid + ", restaurantName=" + restaurantName + ", email=" + email + ", mobileNo="
 				+ mobileNo + ", password=" + password + "]";
 	}
 	

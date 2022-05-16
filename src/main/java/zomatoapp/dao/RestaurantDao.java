@@ -1,10 +1,13 @@
 package zomatoapp.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import zomatoapp.model.Dish;
 import zomatoapp.model.Restaurant;
 
 @Component
@@ -16,6 +19,11 @@ public class RestaurantDao {
 	@Transactional
 	public void createRestaurant(Restaurant restaurant) {
 		this.hibernateTemplate.saveOrUpdate(restaurant);
+	}
+	
+	public List<Restaurant> getAllRestaurant(){
+		List <Restaurant> restaurant= this.hibernateTemplate.loadAll(Restaurant.class);
+		return restaurant;
 	}
 	
 	@Transactional

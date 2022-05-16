@@ -10,9 +10,9 @@
 <body>
 	<div class="container mt-5 dflex" style="margin-left:450px">
 		
-				<a href="owner-signup" class="btn btn-outline-dark">Add Restaurant</a>
+				<a href="owner_signup" class="btn btn-outline-dark">Add Restaurant</a>
 	
-				<a href="owner-login" class="btn btn-outline-dark">Restaurant already exits! Login</a>
+				<a href="owner_login" class="btn btn-outline-dark">Restaurant already exits! Login</a>
 		
 	</div>
 </body>

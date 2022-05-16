@@ -12,9 +12,9 @@
 	
 		<h1 class="text-center">Restaurant Registration</h1>
 		
-		<form action="index" method="post">
+		<form action="${pageContext.request.contextPath}/owner_login" method="post">
 			<div class="form-group">
-				<label for="userName">Restaurant Name</label> <input
+				<label for="restaurantName">Restaurant Name</label> <input
 					type="text" class="form-control" id="userName"
 					aria-describedby="username" placeholder="Enter your restaurant name"
 					name="restaurantName" required> 
