@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Zomato {
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -15,6 +15,13 @@ public class Zomato {
 	private String email;
 	private String number;
 	private String password;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getUserName() {
 		return userName;
 	}
@@ -39,22 +46,24 @@ public class Zomato {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Zomato(String userName, String email, String number, String password) {
+	public User(int id, String userName, String email, String number, String password) {
 		super();
+		this.id = id;
 		this.userName = userName;
 		this.email = email;
 		this.number = number;
 		this.password = password;
 	}
-	public Zomato() {
+	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
-		return "Zomato [id=" + id + ", userName=" + userName + ", email=" + email + ", number=" + number + ", password="
+		return "User [id=" + id + ", userName=" + userName + ", email=" + email + ", number=" + number + ", password="
 				+ password + "]";
-	} 	
+	}
+	
 	
 	
 }

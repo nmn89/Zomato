@@ -20,6 +20,12 @@
 					name="restaurantName" required> 
 			</div>
 			<div class="form-group">
+				<label for="restaurantLocation">Restaurant Location</label> <input
+					type="text" class="form-control" id="restaurantLocation"
+					aria-describedby="restaurantLocation" placeholder="Enter your restaurant location"
+					name="restaurantLocation" required> 
+			</div>
+			<div class="form-group">
 				<label for="exampleInputEmail1">Email address</label> <input
 					type="email" class="form-control" id="exampleInputEmail1"
 					aria-describedby="emailHelp" placeholder="Enter email"

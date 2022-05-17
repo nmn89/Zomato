@@ -11,7 +11,6 @@ public class Dish {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int dId;
-	private String restaurantName;
 	private String dishName;
 	private String dishPrice;
 	private String quantity;
@@ -20,13 +19,6 @@ public class Dish {
 	}
 	public void setdId(int dId) {
 		this.dId = dId;
-	}
-	
-	public String getRestaurantName() {
-		return restaurantName;
-	}
-	public void setRestaurantName(String restaurantName) {
-		this.restaurantName = restaurantName;
 	}
 	public String getDishName() {
 		return dishName;
@@ -50,20 +42,16 @@ public class Dish {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Dish(int dId, String restaurantName, String dishName, String dishPrice, String quantity) {
+	public Dish(int dId, String dishName, String dishPrice, String quantity) {
 		super();
 		this.dId = dId;
-		this.restaurantName = restaurantName;
 		this.dishName = dishName;
 		this.dishPrice = dishPrice;
 		this.quantity = quantity;
 	}
 	@Override
 	public String toString() {
-		return "Dish [dId=" + dId + ", restaurantName=" + restaurantName + ", dishName=" + dishName + ", dishPrice="
-				+ dishPrice + ", quantity=" + quantity + "]";
+		return "Dish [dId=" + dId + ", dishName=" + dishName + ", dishPrice=" + dishPrice + ", quantity=" + quantity
+				+ "]";
 	}
-	
-	
-	
 }

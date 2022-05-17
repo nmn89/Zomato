@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,22 +8,16 @@
 <title>Restaurant Login</title>
 </head>
 <body>
-		<h1 class="text-center mt-5">Restaurant Login</h1>
+	<h1 class="text-center mt-5">Restaurant Login</h1>
 
 	<div class="card container mt-5">
 
-		<form action="dish" method="post">
-		<div class="form-group">
-				<label for="restaurantname">Restaurant Name</label> <input
-					type="text" class="form-control" id="rname"
-					aria-describedby="emailHelp" placeholder="Enter your restaurant name"
-					name="rname" required>
-			</div>
+		<form action="${pageContext.request.contextPath}/dish" method="post">
 			<div class="form-group">
-				<label for="exampleInputEmail1">Mobile No.</label> <input
-					type="text" class="form-control" id="mobile"
-					aria-describedby="emailHelp" placeholder="Enter mobile no."
-					name="mobile" required>
+				<label for="exampleInputEmail1">Email address</label> <input
+					type="email" class="form-control" id="exampleInputEmail1"
+					aria-describedby="emailHelp" placeholder="Enter email"
+					name="email" required> 
 			</div>
 			<div class="form-group">
 				<label for="userPassword">Password</label> <input type="password"
@@ -32,6 +26,9 @@
 			</div>
 			<div class="container text-center">
 				<button type="submit" class="btn btn-danger">Login</button>
+			</div>
+			<div class="container text-center ">
+				<p style="font-style: italic; color: red;">${msg }</p>
 			</div>
 		</form>
 	</div>

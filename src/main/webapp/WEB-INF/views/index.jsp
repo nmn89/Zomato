@@ -16,12 +16,12 @@
 
 	<div class="card container mt-5">
 
-		<form action="home" method="post">
+		<form action="${pageContext.request.contextPath}/user" method="post">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Mobile No.</label> <input
 					type="text" class="form-control" id="mobile"
 					aria-describedby="emailHelp" placeholder="Enter mobile no."
-					name="mobile" required>
+					name="mobileNo" required>
 			</div>
 			<div class="form-group">
 				<label for="userPassword">Password</label> <input type="password"
@@ -33,6 +33,11 @@
 			</div>
 			<div class="container text-center mt-3	">
 				<a href="add-user">New User! Create Account</a>
+			</div>
+			<div>
+			<div class="container text-center ">
+				<p style="font-style: italic; color:red;">${msg }</p>
+			</div>
 			</div>
 		</form>
 	</div>

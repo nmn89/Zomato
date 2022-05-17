@@ -8,31 +8,31 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import zomatoapp.model.Dish;
-import zomatoapp.model.Restaurant;
+import zomatoapp.model.Owner;
 
 @Component
-public class RestaurantDao {
+public class OwnerDao {
 
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 	
 	@Transactional
-	public void createRestaurant(Restaurant restaurant) {
-		this.hibernateTemplate.saveOrUpdate(restaurant);
+	public void createRestaurant(Owner owner) {
+		this.hibernateTemplate.saveOrUpdate(owner);
 	}
 	
-	public List<Restaurant> getAllRestaurant(){
-		List <Restaurant> restaurant= this.hibernateTemplate.loadAll(Restaurant.class);
-		return restaurant;
+	public List<Owner> getAllRestaurant(){
+		List <Owner> owner= this.hibernateTemplate.loadAll(Owner.class);
+		return owner;
 	}
 	
 	@Transactional
 	public void deleteRestaurant(int rid) {
-		Restaurant r = this.hibernateTemplate.load(Restaurant.class,rid);
+		Owner r = this.hibernateTemplate.load(Owner.class,rid);
 		this.hibernateTemplate.delete(r);
 	}
 	
-	public Restaurant getRestaurant(int rid) {
-		return this.hibernateTemplate.get(Restaurant.class, rid);
+	public Owner getRestaurant(int rid) {
+		return this.hibernateTemplate.get(Owner.class, rid);
 	}
 }

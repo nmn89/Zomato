@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.RedirectView;
 
 import zomatoapp.dao.DishDao;
-import zomatoapp.dao.RestaurantDao;
-import zomatoapp.dao.ZomatoDao;
+import zomatoapp.dao.OwnerDao;
+import zomatoapp.dao.UserDao;
 import zomatoapp.model.Dish;
-import zomatoapp.model.Restaurant;
-import zomatoapp.model.Zomato;
+import zomatoapp.model.Owner;
+import zomatoapp.model.User;
 
 @Controller
 public class MainController {
 	
 	@Autowired
-	private ZomatoDao zomatoDao;
+	private UserDao userDao;
 	
 	@Autowired
-	private RestaurantDao restaurantDao;
+	private OwnerDao ownerDao;
 	
 	@Autowired
 	private DishDao dishDao;
@@ -41,8 +41,8 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public String showHome(Model m) {
-		List <Restaurant> restaurant= restaurantDao.getAllRestaurant();
-		m.addAttribute("rest", restaurant);
+		List <Owner> owner= ownerDao.getAllRestaurant();
+		m.addAttribute("rest", owner);
 		List <Dish> dish= dishDao.getAllDishes();
 		m.addAttribute("menu", dish);
 		return "home";
@@ -73,7 +73,7 @@ public class MainController {
 		return "registration";
 	}
 	
-	@RequestMapping("/dish")
+	@RequestMapping("/dishes")
 	public String addDish() {
 		return "dish";
 	}
@@ -86,15 +86,15 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/home", method=RequestMethod.POST)
-	public RedirectView handleUser(@ModelAttribute Zomato zomato,HttpServletRequest request) {
-		this.zomatoDao.createUser(zomato);
+	public RedirectView handleUser(@ModelAttribute User user,HttpServletRequest request) {
+		this.userDao.createUser(user);
 		RedirectView redirectView = new RedirectView();
 		redirectView.setUrl(request.getContextPath()+"/index");
 		return redirectView;
 	}
 	@RequestMapping(value="/owner_login", method=RequestMethod.POST)
-	public RedirectView handleRestaurant(@ModelAttribute Restaurant restaurant,HttpServletRequest request) {
-		this.restaurantDao.createRestaurant(restaurant);
+	public RedirectView handleRestaurant(@ModelAttribute Owner owner,HttpServletRequest request) {
+		this.ownerDao.createRestaurant(owner);
 		RedirectView redirectView = new RedirectView();
 		redirectView.setUrl(request.getContextPath()+"/owner_login");
 		return redirectView;
@@ -106,6 +106,4 @@ public class MainController {
 		redirectView.setUrl(request.getContextPath()+"/home_restaurant");
 		return redirectView;
 	}
-	
-	
 }

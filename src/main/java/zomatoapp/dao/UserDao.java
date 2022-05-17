@@ -5,28 +5,28 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import zomatoapp.model.Zomato;
+import zomatoapp.model.User;
 
 
 @Component
-public class ZomatoDao {
+public class UserDao {
 	
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 	
 	@Transactional
-	public void createUser(Zomato zomato) {
-		this.hibernateTemplate.saveOrUpdate(zomato);
+	public void createUser(User user) {
+		this.hibernateTemplate.saveOrUpdate(user);
 	}
 	
 	@Transactional
 	public void deleteUser(int zid) {
-		Zomato z = this.hibernateTemplate.load(Zomato.class,zid);
+		User z = this.hibernateTemplate.load(User.class,zid);
 		this.hibernateTemplate.delete(z);
 	}
 	
-	public Zomato getUser(int zid) {
-		return this.hibernateTemplate.get(Zomato.class, zid);
+	public User getUser(int zid) {
+		return this.hibernateTemplate.get(User.class, zid);
 	}
 
 }
