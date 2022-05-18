@@ -16,7 +16,7 @@
 
 	<div class="card container mt-5">
 
-		<form action="${pageContext.request.contextPath}/user" method="post">
+		<form action="${pageContext.request.contextPath}/mainhome" method="post">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Mobile No.</label> <input
 					type="text" class="form-control" id="mobile"

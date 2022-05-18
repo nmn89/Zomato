@@ -26,7 +26,7 @@ public class LoginDao {
 	
 	public Owner validateRestaurant(LoginRestaurant login) {
 		String sql = "Select * from Restaurant where email='"+login.getEmail()+"' and password='"+login.getPassword()+"'";
-		List<Owner> owner = jdbcTemplate.query(sql, new RowMapperRestaurant());
+		List<Owner> owner = jdbcTemplate.query(sql, new RowMapperRestaurantImpl());
 		return owner.size()>0?owner.get(0):null;
 	}
 	

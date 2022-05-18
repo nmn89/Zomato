@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.RowMapper;
 import zomatoapp.model.Owner;
 import zomatoapp.model.User;
 
-public class RowMapperRestaurant implements RowMapper<Owner> {
+public class RowMapperRestaurantImpl implements RowMapper<Owner> {
 
 	public Owner mapRow(ResultSet rs, int rowNum) throws SQLException {
 	

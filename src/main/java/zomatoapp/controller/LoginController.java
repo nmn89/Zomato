@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import zomatoapp.dao.DishDao;
+import zomatoapp.dao.DishDaoImpl;
 import zomatoapp.dao.LoginDao;
-import zomatoapp.dao.OwnerDao;
-import zomatoapp.dao.UserDao;
+import zomatoapp.dao.OwnerDaoImpl;
+import zomatoapp.dao.UserDaoImpl;
 import zomatoapp.model.Dish;
 import zomatoapp.model.Login;
 import zomatoapp.model.LoginRestaurant;
@@ -22,30 +22,30 @@ import zomatoapp.model.User;
 @Controller
 public class LoginController {
 	@Autowired
-	private UserDao userDao;
+	private UserDaoImpl userDaoImpl;
 	
 	@Autowired
-	private OwnerDao ownerDao;
+	private OwnerDaoImpl ownerDaoImpl;
 	
 	@Autowired
-	private DishDao dishDao;
+	private DishDaoImpl dishDaoImpl;
 	
 	@Autowired
 	private LoginDao loginDao;
 
-	@RequestMapping("/user")
+	@RequestMapping("/mainhome")
 	public ModelAndView showHome(@ModelAttribute Login login,Model m) {
 		ModelAndView mav = null;
 		User user = loginDao.validateUser(login);
 		if(null!= user) {
-			List <Owner> owner= ownerDao.getAllRestaurant();
+			List <Owner> owner= ownerDaoImpl.getAllRestaurant();
 			m.addAttribute("rest", owner);
-			List <Dish> dish= dishDao.getAllDishes();
+			List <Dish> dish= dishDaoImpl.getAllDishes();
 			m.addAttribute("menu", dish);
 			mav = new ModelAndView("home");
 		}
 		else {
-			mav = new ModelAndView("index");
+			mav = new ModelAndView("login");
 			mav.addObject("msg","Mobile Number or password is wrong");
 		}
 		return mav;
@@ -56,7 +56,7 @@ public class LoginController {
 		ModelAndView mav = null;
 		Owner owner = loginDao.validateRestaurant(loginRestaurant);
 		if(null!= owner) {
-			List <Dish> dish= dishDao.getAllDishes();
+			List <Dish> dish= dishDaoImpl.getAllDishes();
 			m.addAttribute("dish", dish);
 			mav = new ModelAndView("dish");
 		}

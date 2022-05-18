@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.RedirectView;
 
-import zomatoapp.dao.DishDao;
-import zomatoapp.dao.OwnerDao;
-import zomatoapp.dao.UserDao;
+import zomatoapp.dao.DishDaoImpl;
+import zomatoapp.dao.OwnerDaoImpl;
+import zomatoapp.dao.UserDaoImpl;
 import zomatoapp.model.Dish;
 import zomatoapp.model.Owner;
 import zomatoapp.model.User;
@@ -24,26 +24,26 @@ import zomatoapp.model.User;
 public class MainController {
 	
 	@Autowired
-	private UserDao userDao;
+	private UserDaoImpl userDaoImpl;
 	
 	@Autowired
-	private OwnerDao ownerDao;
+	private OwnerDaoImpl ownerDaoImpl;
 	
 	@Autowired
-	private DishDao dishDao;
+	private DishDaoImpl dishDaoImpl;
 	
 	@RequestMapping("/home_restaurant")
 	public String showData(Model m) {
-		List <Dish> dish= dishDao.getAllDishes();
+		List <Dish> dish= dishDaoImpl.getAllDishes();
 		m.addAttribute("dish", dish);
 		return "/home_restaurant";
 	}
 	
 	@RequestMapping("/")
 	public String showHome(Model m) {
-		List <Owner> owner= ownerDao.getAllRestaurant();
+		List <Owner> owner= ownerDaoImpl.getAllRestaurant();
 		m.addAttribute("rest", owner);
-		List <Dish> dish= dishDao.getAllDishes();
+		List <Dish> dish= dishDaoImpl.getAllDishes();
 		m.addAttribute("menu", dish);
 		return "home";
 	}
@@ -53,9 +53,9 @@ public class MainController {
 		return "owner";
 	}
 	
-	@RequestMapping("/index")
-	public String login() {
-		return "index";
+	@RequestMapping("/login")
+	public String showlogin() {
+		return "login";
 	}
 	
 	@RequestMapping("/owner_signup")
@@ -80,28 +80,28 @@ public class MainController {
 	
 	@RequestMapping("/add/{dId}")
 	public String updateForm(@PathVariable("dId") int did,Model model) {
-		Dish dish = this.dishDao.getRestaurant(did);
+		Dish dish = this.dishDaoImpl.getRestaurant(did);
 		model.addAttribute("food", dish);
 		return "order";
 	}
 	
 	@RequestMapping(value="/home", method=RequestMethod.POST)
 	public RedirectView handleUser(@ModelAttribute User user,HttpServletRequest request) {
-		this.userDao.createUser(user);
+		this.userDaoImpl.createUser(user);
 		RedirectView redirectView = new RedirectView();
-		redirectView.setUrl(request.getContextPath()+"/index");
+		redirectView.setUrl(request.getContextPath()+"/login");
 		return redirectView;
 	}
 	@RequestMapping(value="/owner_login", method=RequestMethod.POST)
 	public RedirectView handleRestaurant(@ModelAttribute Owner owner,HttpServletRequest request) {
-		this.ownerDao.createRestaurant(owner);
+		this.ownerDaoImpl.createRestaurant(owner);
 		RedirectView redirectView = new RedirectView();
 		redirectView.setUrl(request.getContextPath()+"/owner_login");
 		return redirectView;
 	}
 	@RequestMapping(value="/home_restaurant", method=RequestMethod.POST)
 	public RedirectView handleDish(@ModelAttribute Dish dish,HttpServletRequest request) {
-		this.dishDao.createDish(dish);
+		this.dishDaoImpl.createDish(dish);
 		RedirectView redirectView = new RedirectView();
 		redirectView.setUrl(request.getContextPath()+"/home_restaurant");
 		return redirectView;
