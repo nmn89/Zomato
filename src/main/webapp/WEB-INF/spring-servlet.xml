@@ -51,6 +51,7 @@
 			<list>
 				<value>zomatoapp.model.User</value>
 				<value>zomatoapp.model.Restaurant</value>
+				<value>zomatoapp.model.Owner</value>
 				<value>zomatoapp.model.Dish</value>
 			</list>
 		</property>
