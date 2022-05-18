@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import zomatoapp.model.Dish;
+import zomatoapp.model.Restaurant;
 import zomatoapp.model.User;
 
 
@@ -35,6 +36,21 @@ public class UserDaoImpl implements UserDao{
 	public List<User> getAllUser(){
 		List <User> user= this.hibernateTemplate.loadAll(User.class);
 		return user;
+	}
+
+	public List<Restaurant> getRestaurants(String location) {
+		
+		return null;
+	}
+
+	public Restaurant searchRestaurant(String restaurantName) {
+		
+		return null;
+	}
+
+	public List<Dish> searchDish(String dishName) {
+		
+		return null;
 	}
 
 }
