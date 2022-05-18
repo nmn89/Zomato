@@ -1,5 +1,7 @@
 package zomatoapp.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,17 +12,21 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private int uid;
 	private String userName;
 	private String email;
 	private String number;
 	private String password;
 	
-	public int getId() {
-		return id;
+	private String restaurant;
+	private List<Restaurant> allRestaurant;
+	private List<Dish> dish;
+	
+	public int getUid() {
+		return uid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 	public String getUserName() {
 		return userName;
@@ -46,13 +52,35 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public User(int id, String userName, String email, String number, String password) {
+	public String getRestaurant() {
+		return restaurant;
+	}
+	public void setRestaurant(String restaurant) {
+		this.restaurant = restaurant;
+	}
+	public List<Restaurant> getAllRestaurant() {
+		return allRestaurant;
+	}
+	public void setAllRestaurant(List<Restaurant> allRestaurant) {
+		this.allRestaurant = allRestaurant;
+	}
+	public List<Dish> getDish() {
+		return dish;
+	}
+	public void setDish(List<Dish> dish) {
+		this.dish = dish;
+	}
+	public User(int uid, String userName, String email, String number, String password, String restaurant,
+			List<Restaurant> allRestaurant, List<Dish> dish) {
 		super();
-		this.id = id;
+		this.uid = uid;
 		this.userName = userName;
 		this.email = email;
 		this.number = number;
 		this.password = password;
+		this.restaurant = restaurant;
+		this.allRestaurant = allRestaurant;
+		this.dish = dish;
 	}
 	public User() {
 		super();
@@ -60,10 +88,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", email=" + email + ", number=" + number + ", password="
-				+ password + "]";
+		return "User [uid=" + uid + ", userName=" + userName + ", email=" + email + ", number=" + number + ", password="
+				+ password + ", restaurant=" + restaurant + ", allRestaurant=" + allRestaurant + ", dish=" + dish + "]";
 	}
-	
-	
-	
 }

@@ -31,7 +31,7 @@ public class DishDaoImpl implements DishDao{
 		this.hibernateTemplate.delete(d);
 	}
 	
-	public Dish getRestaurant(int did) {
+	public Dish getDish(int did) {
 		return this.hibernateTemplate.get(Dish.class, did);
 	}
 }

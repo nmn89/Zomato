@@ -27,12 +27,12 @@ public class OwnerDaoImpl implements OwnerDao {
 	}
 	
 	@Transactional
-	public void deleteRestaurant(int rid) {
-		Owner r = this.hibernateTemplate.load(Owner.class,rid);
-		this.hibernateTemplate.delete(r);
+	public void deleteRestaurant(int oid) {
+		Owner o = this.hibernateTemplate.load(Owner.class,oid);
+		this.hibernateTemplate.delete(o);
 	}
 	
-	public Owner getRestaurant(int rid) {
-		return this.hibernateTemplate.get(Owner.class, rid);
+	public Owner getRestaurant(int oid) {
+		return this.hibernateTemplate.get(Owner.class, oid);
 	}
 }

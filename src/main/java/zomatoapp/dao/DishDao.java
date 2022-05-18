@@ -9,5 +9,5 @@ public interface DishDao {
 	public void createDish(Dish dish);
 	public List<Dish> getAllDishes();
 	public void deleteDish(int did);
-	public Dish getRestaurant(int did);
+	public Dish getDish(int did);
 }
