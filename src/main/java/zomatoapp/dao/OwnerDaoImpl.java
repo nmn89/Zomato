@@ -22,11 +22,6 @@ public class OwnerDaoImpl implements OwnerDao {
 		this.hibernateTemplate.saveOrUpdate(owner);
 	}
 	
-	public List<Owner> getAllOwner(){
-		List <Owner> owner= this.hibernateTemplate.loadAll(Owner.class);
-		return owner;
-	}
-	
 	@Transactional
 	public void deleteOwner(int oid) {
 		Owner o = this.hibernateTemplate.load(Owner.class,oid);
@@ -42,39 +37,14 @@ public class OwnerDaoImpl implements OwnerDao {
 		return null;
 	}
 
+	@Transactional
 	public void addRestaurant(Restaurant restaurant) {
-		// TODO Auto-generated method stub
-		
+		this.hibernateTemplate.saveOrUpdate(restaurant);
 	}
 
+	@Transactional
 	public void removeRestaurant(int rid) {
-		// TODO Auto-generated method stub
-		
+		Restaurant r = this.hibernateTemplate.load(Restaurant.class,rid);
+		this.hibernateTemplate.delete(r);
 	}
-
-	public void addDish(Dish dish) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void removeDish(int did) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public List<Restaurant> fetchRestaurant(String location) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Restaurant searchThisRestaurant(String restaurantName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Dish> searchAllDish(String dishName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

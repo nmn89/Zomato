@@ -17,29 +17,22 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 
-	@Transactional
-	public void createRestaurant(Restaurant restaurant) {
-		this.hibernateTemplate.saveOrUpdate(restaurant);
-		
-	}
-
-	public List<Restaurant> getAllRestaurant() {
-		List <Restaurant> restaurants= this.hibernateTemplate.loadAll(Restaurant.class);
-		return restaurants;
-	}
-
-	@Transactional
-	public void deleteRestaurant(int rid) {
-		Restaurant r = this.hibernateTemplate.load(Restaurant.class,rid);
-		this.hibernateTemplate.delete(r);
-	}
-
 	public Restaurant getRestaurant(int rid) {
 		return this.hibernateTemplate.get(Restaurant.class, rid);
 	}
 
-	public List<Dish> getDishes(int rid) {
+	public void addDish(Dish dish) {
+		// TODO Auto-generated method stub
 		
+	}
+
+	public void removeDish(int did) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public List<Dish> getMyDishes(int rid) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

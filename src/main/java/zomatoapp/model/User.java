@@ -1,7 +1,5 @@
 package zomatoapp.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,13 +13,8 @@ public class User {
 	private int uid;
 	private String userName;
 	private String email;
-	private String number;
+	private long number;
 	private String password;
-	
-	private String restaurant;
-	private List<Restaurant> allRestaurant;
-	private List<Dish> dish;
-	
 	public int getUid() {
 		return uid;
 	}
@@ -40,10 +33,10 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getNumber() {
+	public long getNumber() {
 		return number;
 	}
-	public void setNumber(String number) {
+	public void setNumber(long number) {
 		this.number = number;
 	}
 	public String getPassword() {
@@ -52,35 +45,13 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getRestaurant() {
-		return restaurant;
-	}
-	public void setRestaurant(String restaurant) {
-		this.restaurant = restaurant;
-	}
-	public List<Restaurant> getAllRestaurant() {
-		return allRestaurant;
-	}
-	public void setAllRestaurant(List<Restaurant> allRestaurant) {
-		this.allRestaurant = allRestaurant;
-	}
-	public List<Dish> getDish() {
-		return dish;
-	}
-	public void setDish(List<Dish> dish) {
-		this.dish = dish;
-	}
-	public User(int uid, String userName, String email, String number, String password, String restaurant,
-			List<Restaurant> allRestaurant, List<Dish> dish) {
+	public User(int uid, String userName, String email, long number, String password) {
 		super();
 		this.uid = uid;
 		this.userName = userName;
 		this.email = email;
 		this.number = number;
 		this.password = password;
-		this.restaurant = restaurant;
-		this.allRestaurant = allRestaurant;
-		this.dish = dish;
 	}
 	public User() {
 		super();
@@ -89,6 +60,6 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", userName=" + userName + ", email=" + email + ", number=" + number + ", password="
-				+ password + ", restaurant=" + restaurant + ", allRestaurant=" + allRestaurant + ", dish=" + dish + "]";
+				+ password + "]";
 	}
 }

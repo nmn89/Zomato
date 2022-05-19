@@ -20,11 +20,6 @@ public class DishDaoImpl implements DishDao{
 		this.hibernateTemplate.saveOrUpdate(dish);
 	}
 	
-	public List<Dish> getAllDishes(){
-		List <Dish> dish= this.hibernateTemplate.loadAll(Dish.class);
-		return dish;
-	}
-	
 	@Transactional
 	public void deleteDish(int did) {
 		Dish d = this.hibernateTemplate.load(Dish.class,did);

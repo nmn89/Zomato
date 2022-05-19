@@ -3,11 +3,13 @@ package zomatoapp.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import zomatoapp.model.Dish;
+import zomatoapp.model.Order;
 import zomatoapp.model.Restaurant;
 import zomatoapp.model.User;
 
@@ -18,38 +20,40 @@ public class UserDaoImpl implements UserDao{
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 	
+	private JdbcTemplate jdbcTemplate;
+	
 	@Transactional
 	public void createUser(User user) {
 		this.hibernateTemplate.saveOrUpdate(user);
 	}
 	
 	@Transactional
-	public void deleteUser(int zid) {
-		User z = this.hibernateTemplate.load(User.class,zid);
-		this.hibernateTemplate.delete(z);
+	public void deleteUser(int uid) {
+		User u = this.hibernateTemplate.load(User.class,uid);
+		this.hibernateTemplate.delete(u);
 	}
 	
-	public User getUser(int zid) {
-		return this.hibernateTemplate.get(User.class, zid);
-	}
-	
-	public List<User> getAllUser(){
-		List <User> user= this.hibernateTemplate.loadAll(User.class);
-		return user;
+	public User getUser(int uid) {
+		return this.hibernateTemplate.get(User.class, uid);
 	}
 
 	public List<Restaurant> getRestaurants(String location) {
-		
+	
 		return null;
 	}
 
 	public Restaurant searchRestaurant(String restaurantName) {
-		
-		return null;
+		Restaurant restaurant = this.hibernateTemplate.get(Restaurant.class, restaurantName);
+		return restaurant;
 	}
 
-	public List<Dish> searchDish(String dishName) {
-		
+	@Transactional
+	public void addOrder(Order order) {
+		this.hibernateTemplate.saveOrUpdate(order);
+	}
+
+	public List<Order> getMyOrder(int uid) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
