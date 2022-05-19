@@ -56,8 +56,9 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	public List<Order> getMyOrder(int uid) {
-		String sql = "Select o.orId,o.date,r.restaurantName,r.location from Order o "
-					+"JOIN Restaurant r ON o.rid=r.rid AND o.uid=?";
-		return null;
+		String sql = "Select * from Order where uid=?";
+		RowMapper<Order> rowMapper = new OrderRowMapperImpl();
+		List<Order> order = this.jdbcTemplate.query(sql, rowMapper,uid);
+		return order;
 	}
 }
