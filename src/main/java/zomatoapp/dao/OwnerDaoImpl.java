@@ -3,6 +3,8 @@ package zomatoapp.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,8 @@ public class OwnerDaoImpl implements OwnerDao {
 
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
+	
+	private JdbcTemplate jdbcTemplate;
 	
 	@Transactional
 	public void createOwner(Owner owner) {
@@ -33,13 +37,15 @@ public class OwnerDaoImpl implements OwnerDao {
 	}
 
 	public List<Restaurant> getMyResaurant(int oid) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql="Select * from Restaurant where oid=?";
+		RowMapper<Restaurant> rowMapper = new RestaurantRowMapperImpl();
+		List<Restaurant> restaurant = this.jdbcTemplate.query(sql,rowMapper,oid);
+		return restaurant;
 	}
 
 	@Transactional
 	public void addRestaurant(Restaurant restaurant) {
-		this.hibernateTemplate.saveOrUpdate(restaurant);
+		this.hibernateTemplate.save(restaurant);
 	}
 
 	@Transactional

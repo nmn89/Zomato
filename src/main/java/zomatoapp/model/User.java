@@ -45,6 +45,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public User(int uid, String userName, String email, long number, String password) {
 		super();
 		this.uid = uid;
@@ -52,10 +56,6 @@ public class User {
 		this.email = email;
 		this.number = number;
 		this.password = password;
-	}
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {

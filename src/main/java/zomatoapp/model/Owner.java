@@ -61,6 +61,5 @@ public class Owner {
 		return "Owner [oid=" + oid + ", ownerName=" + ownerName + ", email=" + email + ", mobileNo=" + mobileNo
 				+ ", password=" + password + "]";
 	}
-	
 }
 	

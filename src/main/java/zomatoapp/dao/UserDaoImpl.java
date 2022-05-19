@@ -20,6 +20,7 @@ public class UserDaoImpl implements UserDao{
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 	
+	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
 	@Transactional
@@ -38,8 +39,10 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	public List<Restaurant> getRestaurants(String location) {
-	
-		return null;
+		String sql = "Select * from Restaurant where location = ?";
+		RowMapper<Restaurant> rowMapper = new RestaurantRowMapperImpl();
+		List<Restaurant> restaurant = this.jdbcTemplate.query(sql,rowMapper,location);
+		return restaurant;
 	}
 
 	public Restaurant searchRestaurant(String restaurantName) {
@@ -53,8 +56,8 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	public List<Order> getMyOrder(int uid) {
-		// TODO Auto-generated method stub
+		String sql = "Select o.orId,o.date,r.restaurantName,r.location from Order o "
+					+"JOIN Restaurant r ON o.rid=r.rid AND o.uid=?";
 		return null;
 	}
-
 }

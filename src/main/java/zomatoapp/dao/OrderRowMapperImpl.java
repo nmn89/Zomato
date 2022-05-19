@@ -12,11 +12,9 @@ public class OrderRowMapperImpl implements RowMapper<Order>{
 	public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Order order= new Order();
 		order.setOrId(rs.getInt("orId"));
-		order.setDishName(rs.getString("dishName"));
-		order.setRestaurantName(rs.getString("restaurantName"));
-		order.setDishPrice(rs.getLong("dishPrice"));
-		order.setLocation(rs.getString("location"));
+		order.setDate(rs.getString("date"));
+		order.setRid(rs.getInt("rid"));
+		order.setUid(rs.getInt("uid"));
 		return order;
 	}
-
 }

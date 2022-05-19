@@ -53,6 +53,7 @@
 				<value>zomatoapp.model.Restaurant</value>
 				<value>zomatoapp.model.Owner</value>
 				<value>zomatoapp.model.Dish</value>
+				<value>zomatoapp.model.Order</value>
 			</list>
 		</property>
 	</bean>

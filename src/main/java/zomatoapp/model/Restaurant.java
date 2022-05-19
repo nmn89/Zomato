@@ -1,7 +1,5 @@
 package zomatoapp.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +12,7 @@ public class Restaurant {
 	private int rid;
 	private String restaurantName;
 	private String restaurantLocation;
+	private int oid;
 	public int getRid() {
 		return rid;
 	}
@@ -32,19 +31,26 @@ public class Restaurant {
 	public void setRestaurantLocation(String restaurantLocation) {
 		this.restaurantLocation = restaurantLocation;
 	}
+	public int getOid() {
+		return oid;
+	}
+	public void setOid(int oid) {
+		this.oid = oid;
+	}
 	public Restaurant() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Restaurant(int rid, String restaurantName, String restaurantLocation) {
+	public Restaurant(int rid, String restaurantName, String restaurantLocation, int oid) {
 		super();
 		this.rid = rid;
 		this.restaurantName = restaurantName;
 		this.restaurantLocation = restaurantLocation;
+		this.oid = oid;
 	}
 	@Override
 	public String toString() {
 		return "Restaurant [rid=" + rid + ", restaurantName=" + restaurantName + ", restaurantLocation="
-				+ restaurantLocation + "]";
+				+ restaurantLocation + ", oid=" + oid + "]";
 	}
 }

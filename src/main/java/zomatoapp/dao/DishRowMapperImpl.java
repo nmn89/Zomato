@@ -15,6 +15,7 @@ public class DishRowMapperImpl implements RowMapper<Dish>{
 		dish.setDishName(rs.getString("dishName"));
 		dish.setDishPrice(rs.getDouble("dishPrice"));
 		dish.setQuantity(rs.getInt("quantity"));
+		dish.setRid(rs.getInt("rid"));
 		return dish;
 	}
 

@@ -7,13 +7,13 @@ import javax.persistence.Id;
 
 @Entity
 public class Dish {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int dId;
 	private String dishName;
 	private double dishPrice;
 	private int quantity;
+	private int rid;
 	public int getdId() {
 		return dId;
 	}
@@ -38,20 +38,27 @@ public class Dish {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	public int getRid() {
+		return rid;
+	}
+	public void setRid(int rid) {
+		this.rid = rid;
+	}
 	public Dish() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Dish(int dId, String dishName, double dishPrice, int quantity) {
+	public Dish(int dId, String dishName, double dishPrice, int quantity, int rid) {
 		super();
 		this.dId = dId;
 		this.dishName = dishName;
 		this.dishPrice = dishPrice;
 		this.quantity = quantity;
+		this.rid = rid;
 	}
 	@Override
 	public String toString() {
 		return "Dish [dId=" + dId + ", dishName=" + dishName + ", dishPrice=" + dishPrice + ", quantity=" + quantity
-				+ "]";
+				+ ", rid=" + rid + "]";
 	}
 }

@@ -11,55 +11,46 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int orId;
-	private String dishName;
-	private long dishPrice;
-	private String restaurantName;
-	private String location;
+	private String date;
+	private int  uid;
+	private int rid;
 	public int getOrId() {
 		return orId;
 	}
 	public void setOrId(int orId) {
 		this.orId = orId;
 	}
-	public String getDishName() {
-		return dishName;
+	public int getUid() {
+		return uid;
 	}
-	public void setDishName(String dishName) {
-		this.dishName = dishName;
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
-	public String getRestaurantName() {
-		return restaurantName;
+	public int getRid() {
+		return rid;
 	}
-	public void setRestaurantName(String restaurantName) {
-		this.restaurantName = restaurantName;
+	public void setRid(int rid) {
+		this.rid = rid;
 	}
-	public String getLocation() {
-		return location;
+	public String getDate() {
+		return date;
 	}
-	public void setLocation(String location) {
-		this.location = location;
-	}
-	public long getDishPrice() {
-		return dishPrice;
-	}
-	public void setDishPrice(long dishPrice) {
-		this.dishPrice = dishPrice;
+	public void setDate(String date) {
+		this.date = date;
 	}
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Order(int orId, String dishName, long dishPrice, String restaurantName, String location) {
+	public Order(int orId, String date, int uid, int rid) {
 		super();
 		this.orId = orId;
-		this.dishName = dishName;
-		this.dishPrice = dishPrice;
-		this.restaurantName = restaurantName;
-		this.location = location;
+		this.date = date;
+		this.uid = uid;
+		this.rid = rid;
 	}
 	@Override
 	public String toString() {
-		return "Order [orId=" + orId + ", dishName=" + dishName + ", dishPrice=" + dishPrice + ", restaurantName="
-				+ restaurantName + ", location=" + location + "]";
+		return "Order [orId=" + orId + ", date=" + date + ", uid=" + uid + ", rid=" + rid + "]";
 	}
 }
