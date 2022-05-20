@@ -8,6 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Dish {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int dId;
 	private String dishName;
 	private double dishPrice;

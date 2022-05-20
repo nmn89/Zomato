@@ -9,6 +9,7 @@ import javax.persistence.Id;
 public class UserOrder {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int orId;
 	private String date;
 	private int  uid;

@@ -46,7 +46,9 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	public Restaurant searchRestaurant(String restaurantName) {
-		Restaurant restaurant = this.hibernateTemplate.get(Restaurant.class, restaurantName);
+		String sql = "Select * from Restaurant where restaurantName=?";
+		RowMapper<Restaurant> rowMapper = new RestaurantRowMapperImpl();
+		Restaurant restaurant = this.jdbcTemplate.queryForObject(sql, rowMapper, restaurantName);
 		return restaurant;
 	}
 

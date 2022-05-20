@@ -9,6 +9,7 @@ import javax.persistence.Id;
 public class User {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int uid;
 	private String userName;
 	private String email;
