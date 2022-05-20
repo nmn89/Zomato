@@ -6,10 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Order {
+public class UserOrder {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int orId;
 	private String date;
 	private int  uid;
@@ -38,11 +37,11 @@ public class Order {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public Order() {
+	public UserOrder() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Order(int orId, String date, int uid, int rid) {
+	public UserOrder(int orId, String date, int uid, int rid) {
 		super();
 		this.orId = orId;
 		this.date = date;

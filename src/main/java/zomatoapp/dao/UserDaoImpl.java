@@ -9,7 +9,7 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import zomatoapp.model.Order;
+import zomatoapp.model.UserOrder;
 import zomatoapp.model.Restaurant;
 import zomatoapp.model.User;
 
@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	public List<Restaurant> getRestaurants(String location) {
-		String sql = "Select * from Restaurant where location = ?";
+		String sql = "Select * from Restaurant where restaurantLocation = ?";
 		RowMapper<Restaurant> rowMapper = new RestaurantRowMapperImpl();
 		List<Restaurant> restaurant = this.jdbcTemplate.query(sql,rowMapper,location);
 		return restaurant;
@@ -51,14 +51,14 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Transactional
-	public void addOrder(Order order) {
-		this.hibernateTemplate.saveOrUpdate(order);
+	public void addOrder(UserOrder userOrder) {
+		this.hibernateTemplate.saveOrUpdate(userOrder);
 	}
 
-	public List<Order> getMyOrder(int uid) {
-		String sql = "Select * from Order where uid=?";
-		RowMapper<Order> rowMapper = new OrderRowMapperImpl();
-		List<Order> order = this.jdbcTemplate.query(sql, rowMapper,uid);
-		return order;
+	public List<UserOrder> getMyOrder(int uid) {
+		String sql = "Select * from UserOrder where uid=?";
+		RowMapper<UserOrder> rowMapper = new UserOrderRowMapperImpl();
+		List<UserOrder> userOrder = this.jdbcTemplate.query(sql, rowMapper,uid);
+		return userOrder;
 	}
 }

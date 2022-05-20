@@ -8,7 +8,6 @@ import javax.persistence.Id;
 @Entity
 public class Restaurant {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int rid;
 	private String restaurantName;
 	private String restaurantLocation;

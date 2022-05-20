@@ -8,7 +8,6 @@ import javax.persistence.Id;
 @Entity
 public class Owner {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int oid;
 	private String ownerName;
 	private String email;

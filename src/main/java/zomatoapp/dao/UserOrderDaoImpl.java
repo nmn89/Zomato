@@ -5,26 +5,26 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import zomatoapp.model.Order;
+import zomatoapp.model.UserOrder;
 
 @Component
-public class OrderDaoImpl implements OrderDao{
+public class UserOrderDaoImpl implements UserOrderDao{
 	
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 
 	@Transactional
-	public void createOrder(Order order) {
-		this.hibernateTemplate.saveOrUpdate(order);
+	public void createOrder(UserOrder userOrder) {
+		this.hibernateTemplate.saveOrUpdate(userOrder);
 	}
 
 	@Transactional
 	public void deleteOrder(int orid) {
-		Order o = this.hibernateTemplate.load(Order.class,orid);
+		UserOrder o = this.hibernateTemplate.load(UserOrder.class,orid);
 		this.hibernateTemplate.delete(o);
 	}
 
-	public Order getOrder(int orid) {
-		return this.hibernateTemplate.get(Order.class, orid);
+	public UserOrder getOrder(int orid) {
+		return this.hibernateTemplate.get(UserOrder.class, orid);
 	}
 }

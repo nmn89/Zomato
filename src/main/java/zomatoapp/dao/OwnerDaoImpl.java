@@ -19,6 +19,7 @@ public class OwnerDaoImpl implements OwnerDao {
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 	
+	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
 	@Transactional
