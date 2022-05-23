@@ -38,11 +38,11 @@ public class OwnerDaoImpl implements OwnerDao {
 		return this.hibernateTemplate.get(Owner.class, oid);
 	}
 
-	public List<Restaurant> getMyResaurant(int oid) {
+	public List<Restaurant> getMyResaurants(int oid) {
 		String sql="Select * from Restaurant where oid=?";
 		RowMapper<Restaurant> rowMapper = new RestaurantRowMapperImpl();
-		List<Restaurant> restaurant = this.jdbcTemplate.query(sql,rowMapper,oid);
-		return restaurant;
+		List<Restaurant> restaurants = this.jdbcTemplate.query(sql,rowMapper,oid);
+		return restaurants;
 	}
 
 	@Transactional
@@ -54,9 +54,5 @@ public class OwnerDaoImpl implements OwnerDao {
 	public void removeRestaurant(int rid) {
 		Restaurant r = this.hibernateTemplate.load(Restaurant.class,rid);
 		this.hibernateTemplate.delete(r);
-	}
-
-	public void addLocation(Location location) {
-		this.hibernateTemplate.save(location);
 	}
 }

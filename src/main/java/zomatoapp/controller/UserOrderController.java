@@ -2,6 +2,7 @@ package zomatoapp.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,10 +14,10 @@ public class UserOrderController {
 
 	private UserOrderDao userOrderDao;
 	
-	@RequestMapping("delete/{orderId}")
-	public String deleteOrder(@PathVariable("orderId") int oId) {
-		this.userOrderDao.deleteOrder(oId);
-		return "myOrder";
+	@RequestMapping("/addorder")
+	public String addOrder(@ModelAttribute UserOrder userOrder) {
+		this.userOrderDao.addOrder(userOrder);
+		return "homePage";
 	}
 	
 	@RequestMapping("order/{orderId}")

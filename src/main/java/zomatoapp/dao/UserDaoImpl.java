@@ -38,13 +38,6 @@ public class UserDaoImpl implements UserDao{
 		return this.hibernateTemplate.get(User.class, uid);
 	}
 
-	public List<Restaurant> getRestaurants(int locationId) {
-		String sql = "Select * from Restaurant where locationId = ?";
-		RowMapper<Restaurant> rowMapper = new RestaurantRowMapperImpl();
-		List<Restaurant> restaurant = this.jdbcTemplate.query(sql,rowMapper,locationId);
-		return restaurant;
-	}
-
 	public Restaurant searchRestaurant(String restaurantName) {
 		String sql = "Select * from Restaurant where restaurantName=?";
 		RowMapper<Restaurant> rowMapper = new RestaurantRowMapperImpl();
@@ -52,15 +45,10 @@ public class UserDaoImpl implements UserDao{
 		return restaurant;
 	}
 
-	@Transactional
-	public void addOrder(UserOrder userOrder) {
-		this.hibernateTemplate.saveOrUpdate(userOrder);
-	}
-
-	public List<UserOrder> getMyOrder(int uid) {
+	public List<UserOrder> getMyOrders(int uid) {
 		String sql = "Select * from UserOrder where uid=?";
 		RowMapper<UserOrder> rowMapper = new UserOrderRowMapperImpl();
-		List<UserOrder> userOrder = this.jdbcTemplate.query(sql, rowMapper,uid);
-		return userOrder;
+		List<UserOrder> userOrders = this.jdbcTemplate.query(sql, rowMapper,uid);
+		return userOrders;
 	}
 }

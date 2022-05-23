@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import zomatoapp.model.Location;
 
@@ -18,16 +19,17 @@ public class LocationDaoImpl implements LocationDao{
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
+	
+	@Transactional
 	public void addLocation(Location location) {
 		this.hibernateTemplate.saveOrUpdate(location);
 	}
 
-	public List<Location> getAllLocation() {
+	public List<Location> getAllLocations() {
 		String sql = "Select * from Location";
 		RowMapper<Location> rowMapper = new LocationRowMapperImpl();
-		List<Location> location = this.jdbcTemplate.query(sql, rowMapper);
-		return location;
+		List<Location> locations = this.jdbcTemplate.query(sql, rowMapper);
+		return locations;
 	}
 
 }

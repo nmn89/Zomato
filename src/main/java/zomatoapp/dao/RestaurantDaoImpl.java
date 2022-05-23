@@ -40,8 +40,15 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	public List<Dish> getMyDishes(int rid) {
 		String sql="Select * from Dish where rid=?";
 		RowMapper<Dish> rowMapper = new DishRowMapperImpl();
-		List<Dish> dish = this.jdbcTemplate.query(sql, rowMapper,rid);
-		return dish;
+		List<Dish> dishes = this.jdbcTemplate.query(sql, rowMapper,rid);
+		return dishes;
+	}
+	
+	public List<Restaurant> getRestaurants(int locationId) {
+		String sql = "Select * from Restaurant where locationId = ?";
+		RowMapper<Restaurant> rowMapper = new RestaurantRowMapperImpl();
+		List<Restaurant> restaurants = this.jdbcTemplate.query(sql,rowMapper,locationId);
+		return restaurants;
 	}
 
 }

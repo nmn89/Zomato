@@ -23,25 +23,20 @@ public class RestaurantController {
 	public String getRestaurant(@PathVariable("restaurantId") int rId,Model m) {
 		Restaurant restaurant = this.restaurantDao.getRestaurant(rId);
 		m.addAttribute("restaurant",restaurant);
-		return "myRestaurant";
+		return "Restaurant";
 	}
 
-	@RequestMapping("/dishes")
-	public String addDish(@ModelAttribute Dish dish) {
-		this.restaurantDao.addDish(dish);
-		return "myDishes";
+	@RequestMapping("/restaurant/{locationId}")
+	public String viewRestaurants(@PathVariable("locationId") int locationId,Model m) {
+		List<Restaurant> restaurants = this.restaurantDao.getRestaurants(locationId);
+		m.addAttribute("restaurants",restaurants);
+		return "homePage";
 	}
 	
-	@RequestMapping("/remove/{dishId}")
-	public String removeDish(@PathVariable("dishId") int dId) {
-		this.restaurantDao.removeDish(dId);
-		return "myDishes";
-	}
-	
-	@RequestMapping("/dishes/{restaurantId}")
-	public String getDish(@PathVariable("restaurantId") int rId,Model m) {
+	@RequestMapping("/mydish/{restaurantId}")
+	public String getDishes(@PathVariable("restaurantId") int rId,Model m) {
 		List<Dish> dishes = this.restaurantDao.getMyDishes(rId);
 		m.addAttribute("myDishes", dishes);
-		return "myDishes";
+		return "myDish";
 	}
 }

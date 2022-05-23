@@ -23,6 +23,10 @@ public class UserController {
 	@Autowired
 	private UserDao userDao;
 	
+	@RequestMapping("/registerUser")
+	public String registerUser() {
+		return "userRegister";
+	}
 	
 	@RequestMapping("/register")
 	public String userRegister(@ModelAttribute User user,Model m) {
@@ -44,13 +48,6 @@ public class UserController {
 		return "userLogin";
 	}
 	
-	@RequestMapping("/restaurants/{locationId}")
-	public String viewRestaurant(@PathVariable("locationId") int locationId,Model m) {
-		List<Restaurant> restaurant = this.userDao.getRestaurants(locationId);
-		m.addAttribute("restaurant",restaurant);
-		return "homePage";
-	}
-	
 	@RequestMapping("/restaurant/{restaurantName}")
 	public String searchRestaurant(@PathVariable("restaurantName") String rName,Model m) {
 		Restaurant restaurant = this.userDao.searchRestaurant(rName);
@@ -59,15 +56,9 @@ public class UserController {
 	}
 	
 	@RequestMapping("/myorder/{userId}")
-	public String showOrder(@PathVariable("userId") int uId,Model m) {
-		List<UserOrder> myOrder = this.userDao.getMyOrder(uId);
-		m.addAttribute("order", myOrder);
-		return "order";
-	}
-	
-	@RequestMapping("/addorder")
-	public String addOrder(@ModelAttribute UserOrder userOrder) {
-		this.userDao.addOrder(userOrder);
-		return "homePage";
+	public String showMyOrders(@PathVariable("userId") int uId,Model m) {
+		List<UserOrder> myOrders = this.userDao.getMyOrders(uId);
+		m.addAttribute("orders", myOrders);
+		return "myOrder";
 	}
 }

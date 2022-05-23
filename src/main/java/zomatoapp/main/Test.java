@@ -30,8 +30,8 @@ public class Test {
 		User user2 = userDao.getUser(1);
 		System.out.println(user2);
 		
-		List<Restaurant> rest = userDao.getRestaurants("Delhi");
-		System.out.println(rest);
+//		List<Restaurant> rest = userDao.getRestaurants("Delhi");
+//		System.out.println(rest);
 		
 		UserOrder userOrder = new UserOrder(4,"15/2/2004",1,3);
 		System.out.println(userOrder);
@@ -51,8 +51,8 @@ public class Test {
 		Owner owner2= ownerDao.getOwner(1);
 		System.out.println(owner2);
 		
-		Restaurant restaurant = new Restaurant(2,"Classic Restaurant","Delhi",1);
-		ownerDao.addRestaurant(restaurant);
+//		Restaurant restaurant = new Restaurant(2,"Classic Restaurant","Delhi",1);
+//		ownerDao.addRestaurant(restaurant);
 		
 		List<Restaurant> rest2= ownerDao.getMyResaurant(1);
 		System.out.println(rest2);

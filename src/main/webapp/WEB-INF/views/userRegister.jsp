@@ -3,27 +3,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@include file="./base.jsp"%>
 <meta charset="UTF-8">
-<title>Restaurant Registration</title>
+<title>Add User</title>
 </head>
 <body>
-	<div class="container mt-5">
+<div class="container mt-5">
 	
-		<h1 class="text-center">Restaurant Registration</h1>
+		<h1 class="text-center">User Registration</h1>
 		
-		<form action="${pageContext.request.contextPath}/owner_login" method="post">
+		<form action="register" method="post">
 			<div class="form-group">
-				<label for="restaurantName">Restaurant Name</label> <input
+				<label for="userName">User Name</label> <input
 					type="text" class="form-control" id="userName"
-					aria-describedby="username" placeholder="Enter your restaurant name"
-					name="restaurantName" required> 
-			</div>
-			<div class="form-group">
-				<label for="restaurantLocation">Restaurant Location</label> <input
-					type="text" class="form-control" id="restaurantLocation"
-					aria-describedby="restaurantLocation" placeholder="Enter your restaurant location"
-					name="restaurantLocation" required> 
+					aria-describedby="username" placeholder="Enter your name"
+					name="userName" required> 
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email address</label> <input
@@ -33,9 +26,9 @@
 			</div>
 			<div class="form-group">
 				<label for="number">Mobile No.</label> <input
-					type="text" class="form-control" id="mobileno"
+					type="text" class="form-control" id="number"
 					aria-describedby="emailHelp" placeholder="Enter mobile no."
-					name="mobileNo" required> 
+					name="number" required> 
 			</div>
 			<div class="form-group">
 				<label for="userPassword">Password</label> <input

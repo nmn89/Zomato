@@ -14,14 +14,8 @@ public class UserOrderDaoImpl implements UserOrderDao{
 	private HibernateTemplate hibernateTemplate;
 
 	@Transactional
-	public void createOrder(UserOrder userOrder) {
+	public void addOrder(UserOrder userOrder) {
 		this.hibernateTemplate.saveOrUpdate(userOrder);
-	}
-
-	@Transactional
-	public void deleteOrder(int orid) {
-		UserOrder o = this.hibernateTemplate.load(UserOrder.class,orid);
-		this.hibernateTemplate.delete(o);
 	}
 
 	public UserOrder getOrder(int orid) {

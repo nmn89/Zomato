@@ -53,15 +53,9 @@ public class OwnerController {
 	}
 	
 	@RequestMapping("/restaurant/{ownerId}")
-	public String myRestaurant(@PathVariable("ownerId") int oId,Model m) { 
-		List<Restaurant> restaurant = this.ownerDao.getMyResaurant(oId);
-		m.addAttribute("restaurant", restaurant);
-		return "myRestaurant";
-	}
-	
-	@RequestMapping("/location")
-	public String addLocation(@ModelAttribute Location location) {
-		this.ownerDao.addLocation(location);
+	public String myRestaurants(@PathVariable("ownerId") int oId,Model m) { 
+		List<Restaurant> restaurants = this.ownerDao.getMyResaurants(oId);
+		m.addAttribute("restaurants", restaurants);
 		return "myRestaurant";
 	}
 }
