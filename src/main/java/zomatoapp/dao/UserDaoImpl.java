@@ -38,10 +38,10 @@ public class UserDaoImpl implements UserDao{
 		return this.hibernateTemplate.get(User.class, uid);
 	}
 
-	public List<Restaurant> getRestaurants(String location) {
-		String sql = "Select * from Restaurant where restaurantLocation = ?";
+	public List<Restaurant> getRestaurants(int locationId) {
+		String sql = "Select * from Restaurant where locationId = ?";
 		RowMapper<Restaurant> rowMapper = new RestaurantRowMapperImpl();
-		List<Restaurant> restaurant = this.jdbcTemplate.query(sql,rowMapper,location);
+		List<Restaurant> restaurant = this.jdbcTemplate.query(sql,rowMapper,locationId);
 		return restaurant;
 	}
 

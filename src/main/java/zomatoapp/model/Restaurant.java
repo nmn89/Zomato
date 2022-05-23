@@ -11,7 +11,7 @@ public class Restaurant {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int rid;
 	private String restaurantName;
-	private String restaurantLocation;
+	private int locatonId;
 	private int oid;
 	public int getRid() {
 		return rid;
@@ -25,11 +25,11 @@ public class Restaurant {
 	public void setRestaurantName(String restaurantName) {
 		this.restaurantName = restaurantName;
 	}
-	public String getRestaurantLocation() {
-		return restaurantLocation;
+	public int getLocatonId() {
+		return locatonId;
 	}
-	public void setRestaurantLocation(String restaurantLocation) {
-		this.restaurantLocation = restaurantLocation;
+	public void setLocatonId(int locatonId) {
+		this.locatonId = locatonId;
 	}
 	public int getOid() {
 		return oid;
@@ -41,16 +41,16 @@ public class Restaurant {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Restaurant(int rid, String restaurantName, String restaurantLocation, int oid) {
+	public Restaurant(int rid, String restaurantName, int locatonId, int oid) {
 		super();
 		this.rid = rid;
 		this.restaurantName = restaurantName;
-		this.restaurantLocation = restaurantLocation;
+		this.locatonId = locatonId;
 		this.oid = oid;
 	}
 	@Override
 	public String toString() {
-		return "Restaurant [rid=" + rid + ", restaurantName=" + restaurantName + ", restaurantLocation="
-				+ restaurantLocation + ", oid=" + oid + "]";
+		return "Restaurant [rid=" + rid + ", restaurantName=" + restaurantName + ", locatonId=" + locatonId + ", oid="
+				+ oid + "]";
 	}
 }

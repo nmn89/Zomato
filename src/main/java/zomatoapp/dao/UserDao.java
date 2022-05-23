@@ -12,7 +12,7 @@ public interface UserDao {
 	public void createUser(User user);
 	public void deleteUser(int uid);
 	public User getUser(int uid);
-	public List<Restaurant> getRestaurants(String location);
+	public List<Restaurant> getRestaurants(int locationId);
 	public Restaurant searchRestaurant(String restaurantName);
 	public void addOrder(UserOrder userOrder);
 	public List<UserOrder> getMyOrder(int uid);

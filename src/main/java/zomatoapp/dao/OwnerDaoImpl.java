@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import zomatoapp.model.Dish;
+import zomatoapp.model.Location;
 import zomatoapp.model.Owner;
 import zomatoapp.model.Restaurant;
 
@@ -53,5 +54,9 @@ public class OwnerDaoImpl implements OwnerDao {
 	public void removeRestaurant(int rid) {
 		Restaurant r = this.hibernateTemplate.load(Restaurant.class,rid);
 		this.hibernateTemplate.delete(r);
+	}
+
+	public void addLocation(Location location) {
+		this.hibernateTemplate.save(location);
 	}
 }
