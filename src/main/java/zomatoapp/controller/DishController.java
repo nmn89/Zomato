@@ -15,7 +15,7 @@ public class DishController {
 	@Autowired
 	private DishDao dishDao;
 	
-	@RequestMapping("myDish/{dishId}")
+	@RequestMapping("mydish/{dishId}")
 	public String getDish(@PathVariable("dishId") int dId,Model m) {
 		Dish dish = this.dishDao.getDish(dId);
 		m.addAttribute("dish", dish);

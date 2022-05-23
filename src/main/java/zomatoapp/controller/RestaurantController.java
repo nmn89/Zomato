@@ -26,7 +26,7 @@ public class RestaurantController {
 		return "myRestaurant";
 	}
 
-	@RequestMapping("/Dishes")
+	@RequestMapping("/dishes")
 	public String addDish(@ModelAttribute Dish dish) {
 		this.restaurantDao.addDish(dish);
 		return "myDishes";
@@ -38,7 +38,7 @@ public class RestaurantController {
 		return "myDishes";
 	}
 	
-	@RequestMapping("/Dishes/{restaurantId}")
+	@RequestMapping("/dishes/{restaurantId}")
 	public String getDish(@PathVariable("restaurantId") int rId,Model m) {
 		List<Dish> dishes = this.restaurantDao.getMyDishes(rId);
 		m.addAttribute("myDishes", dishes);

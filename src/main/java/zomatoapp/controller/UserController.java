@@ -44,28 +44,28 @@ public class UserController {
 		return "userLogin";
 	}
 	
-	@RequestMapping("/Restaurants/{locationId}")
+	@RequestMapping("/restaurants/{locationId}")
 	public String viewRestaurant(@PathVariable("locationId") int locationId,Model m) {
 		List<Restaurant> restaurant = this.userDao.getRestaurants(locationId);
 		m.addAttribute("restaurant",restaurant);
 		return "homePage";
 	}
 	
-	@RequestMapping("/Restaurant/{restaurantName}")
+	@RequestMapping("/restaurant/{restaurantName}")
 	public String searchRestaurant(@PathVariable("restaurantName") String rName,Model m) {
 		Restaurant restaurant = this.userDao.searchRestaurant(rName);
 		m.addAttribute("rname", restaurant);
 		return "searchRestaurant";
 	}
 	
-	@RequestMapping("/myOrder/{userId}")
+	@RequestMapping("/myorder/{userId}")
 	public String showOrder(@PathVariable("userId") int uId,Model m) {
 		List<UserOrder> myOrder = this.userDao.getMyOrder(uId);
 		m.addAttribute("order", myOrder);
 		return "order";
 	}
 	
-	@RequestMapping("/addOrder")
+	@RequestMapping("/addorder")
 	public String addOrder(@ModelAttribute UserOrder userOrder) {
 		this.userDao.addOrder(userOrder);
 		return "homePage";
