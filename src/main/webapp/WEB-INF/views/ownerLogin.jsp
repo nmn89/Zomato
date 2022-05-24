@@ -1,22 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User Login</title>
+<title>Owner Login</title>
 </head>
 <body>
-	<h1>Login</h1>
+<h1>Owner Login</h1>
 
 	<div>
 
-		<form action="userhome" method="post">
+		<form action="ownerhome" method="post">
 			<div>
-				<label for="exampleInputEmail1">Mobile No.</label> <input
-					type="number" class="form-control" id="mobile"
-					aria-describedby="emailHelp" placeholder="Enter mobile no."
-					name="mobileNo" required>
+				<label for="exampleInputEmail1">Email</label> <input
+					type="text" class="form-control" id="email"
+					aria-describedby="emailHelp" placeholder="Enter your email-id"
+					name="email" required>
 			</div>
 			<div>
 				<label for="userPassword">Password</label> <input type="password"
@@ -26,11 +26,8 @@
 			<div>
 				<button type="submit" class="btn btn-danger">Login</button>
 			</div>
-			<div>
-				<a href="registerUser">New User! Create Account</a>
-			</div>
-			<div>
-				<a href="ownerlogin">Login as Owner</a>
+			<div class="container text-center mt-3	">
+				<a href="ownerregister">Not Registered! Create Account</a>
 			</div>
 		</form>
 	</div>

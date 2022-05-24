@@ -23,11 +23,6 @@ public class UserController {
 	@Autowired
 	private UserDao userDao;
 	
-	@RequestMapping("/registerUser")
-	public String registerUser() {
-		return "userRegister";
-	}
-	
 	@RequestMapping("/register")
 	public String userRegister(@ModelAttribute User user,Model m) {
 		userDao.createUser(user);
@@ -35,7 +30,7 @@ public class UserController {
 		return "userLogin";
 	}
 	
-	@RequestMapping("/profile/{userId}")
+	@RequestMapping("/userprofile/{userId}")
 	public String userProfile(@PathVariable("userId") int userId,Model m) {
 		User user = this.userDao.getUser(userId);
 		m.addAttribute("profile", user);

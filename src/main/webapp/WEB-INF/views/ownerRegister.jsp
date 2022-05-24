@@ -4,18 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add User</title>
+<title>Owner Registration</title>
 </head>
 <body>
 	<div>
 
-		<h1>User Registration</h1>
+		<h1>Owner Registration</h1>
 
-		<form action="register" method="post">
+		<form action="owner" method="post">
 			<div>
-				<label for="userName">User Name</label> <input type="text"
-					class="form-control" id="userName" aria-describedby="username"
-					placeholder="Enter your name" name="userName" required>
+				<label for="ownerName">Owner Name</label> <input type="text"
+					class="form-control" id="ownerName" aria-describedby="ownername"
+					placeholder="Enter your name" name="ownerName" required>
 			</div>
 			<div>
 				<label for="exampleInputEmail1">Email address</label> <input
@@ -26,7 +26,7 @@
 			<div>
 				<label for="number">Mobile No.</label> <input type="text"
 					class="form-control" id="number" aria-describedby="emailHelp"
-					placeholder="Enter mobile no." name="number" required>
+					placeholder="Enter mobile no." name="mobileNo" required>
 			</div>
 			<div>
 				<label for="userPassword">Password</label> <input type="password"

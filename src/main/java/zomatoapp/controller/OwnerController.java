@@ -24,7 +24,7 @@ public class OwnerController {
 	public String addOwner(@ModelAttribute Owner owner,Model m) {
 		ownerDao.createOwner(owner);
 		m.addAttribute("msg", "Owner added successfully");
-		return "loginOwner";
+		return "ownerLogin";
 	}
 	
 	@RequestMapping("/remove/{ownerId}")
@@ -40,10 +40,10 @@ public class OwnerController {
 		return "ownerProfile";
 	}
 	
-	@RequestMapping("/restaurantregister")
+	@RequestMapping("/restaurantadded")
 	public String addRestaurant(@ModelAttribute Restaurant restaurant) {
 		this.ownerDao.addRestaurant(restaurant);
-		return "myRestaurant";
+		return "ownerHome";
 	}
 	
 	@RequestMapping("/remove/{restaurantId}")
@@ -52,10 +52,10 @@ public class OwnerController {
 		return "myRestaurant";
 	}
 	
-	@RequestMapping("/restaurant/{ownerId}")
+	@RequestMapping("/ownerrestaurant/{ownerId}")
 	public String myRestaurants(@PathVariable("ownerId") int oId,Model m) { 
 		List<Restaurant> restaurants = this.ownerDao.getMyResaurants(oId);
 		m.addAttribute("restaurants", restaurants);
-		return "myRestaurant";
+		return "ownerRestaurant";
 	}
 }

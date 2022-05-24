@@ -13,7 +13,7 @@ public class RestaurantRowMapperImpl implements RowMapper<Restaurant> {
 		Restaurant rest = new Restaurant();
 		rest.setRid(rs.getInt("rid"));
 		rest.setRestaurantName(rs.getString("restaurantName"));
-		rest.setLocatonId(rs.getInt("locationId"));
+		rest.setLocatonId(rs.getInt("locatonId"));
 		rest.setOid(rs.getInt("oid"));
 		return rest;
 	}

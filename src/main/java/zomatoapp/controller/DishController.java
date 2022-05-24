@@ -16,7 +16,7 @@ public class DishController {
 	@Autowired
 	private DishDao dishDao;
 	
-	@RequestMapping("/dish")
+	@RequestMapping("/dishadded")
 	public String addDish(@ModelAttribute Dish dish) {
 		this.dishDao.createDish(dish);
 		return "myDish";

@@ -18,17 +18,19 @@ public class LocationController {
 	@Autowired
 	private LocationDao locationDao;
 	
-	@RequestMapping("/addlocation")
-	public String addLocation(@ModelAttribute Location location) {
+	@RequestMapping("/locationadded")
+	public String addLocation(@ModelAttribute Location location,Model m) {
 		this.locationDao.addLocation(location);
-		return "myRestaurant";
+		m.addAttribute("location", location);
+		return "location";
 	}
 	
-	@RequestMapping("/location")
-	public String getAllLocations(Model m){
+	@RequestMapping("/location/{oid}")
+	public String getAllLocations(@PathVariable("oid") int oId,Model m){
 		List<Location> locations = locationDao.getAllLocations();
+		m.addAttribute("id", oId);
 		m.addAttribute("locations", locations);
-		return "home";
+		return "location";
 	}
 	
 	
