@@ -15,4 +15,5 @@ public interface OwnerDao {
 	public List<Restaurant> getMyResaurants(int oid);
 	public void addRestaurant(Restaurant restaurant);
 	public void removeRestaurant(int rid);
+	public int authenticateOwner(String email,String password);
 }

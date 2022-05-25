@@ -10,9 +10,9 @@
 <body>
 <div>
 
-		<h1>Add Restaurant</h1>
+		<h1>Add Dish</h1>
 
-		<form action="${pageContext.request.contextPath }/dishadded" method="post">
+		<form action="${pageContext.request.contextPath }/dishadded/${rid}" method="post">
 			<div>
 				<label for="dishName">Dish Name</label> <input type="text"
 					class="form-control" id="dishName" aria-describedby="dishname"

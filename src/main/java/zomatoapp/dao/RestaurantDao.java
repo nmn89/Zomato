@@ -13,4 +13,5 @@ public interface RestaurantDao {
 	public void removeDish(int did);
 	public List<Dish> getMyDishes(int rid);
 	public List<Restaurant> getRestaurants(int locationId);
+	public List<Location> getAllLocations();
 }

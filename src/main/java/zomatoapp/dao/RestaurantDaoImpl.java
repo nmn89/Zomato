@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import zomatoapp.model.Dish;
+import zomatoapp.model.Location;
 import zomatoapp.model.Owner;
 import zomatoapp.model.Restaurant;
 
@@ -45,10 +46,17 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	}
 	
 	public List<Restaurant> getRestaurants(int locationId) {
-		String sql = "Select * from Restaurant where locationId = ?";
+		String sql = "Select * from Restaurant where locatonId = ?";
 		RowMapper<Restaurant> rowMapper = new RestaurantRowMapperImpl();
 		List<Restaurant> restaurants = this.jdbcTemplate.query(sql,rowMapper,locationId);
 		return restaurants;
+	}
+
+	public List<Location> getAllLocations() {
+		String sql = "Select * from Location";
+		RowMapper<Location> rowMapper = new LocationRowMapperImpl();
+		List<Location> locations = this.jdbcTemplate.query(sql, rowMapper);
+		return locations;
 	}
 
 }

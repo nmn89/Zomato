@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import zomatoapp.dao.OwnerDao;
 import zomatoapp.model.Location;
@@ -40,10 +41,11 @@ public class OwnerController {
 		return "ownerProfile";
 	}
 	
-	@RequestMapping("/restaurantadded")
-	public String addRestaurant(@ModelAttribute Restaurant restaurant) {
+	@RequestMapping("/restaurantadded/{ownerId}")
+	public String addRestaurant(@PathVariable("ownerId") int oid,@ModelAttribute Restaurant restaurant,Model m) {
 		this.ownerDao.addRestaurant(restaurant);
-		return "ownerHome";
+		m.addAttribute("oid", oid);
+		return "restaurantAdded";
 	}
 	
 	@RequestMapping("/remove/{restaurantId}")
@@ -57,5 +59,18 @@ public class OwnerController {
 		List<Restaurant> restaurants = this.ownerDao.getMyResaurants(oId);
 		m.addAttribute("restaurants", restaurants);
 		return "ownerRestaurant";
+	}
+	
+	@RequestMapping("/ownerhome")
+	public String ownerHome(@RequestParam("email") String email,@RequestParam("password") String password,Model m) {
+		int id = ownerDao.authenticateOwner(email, password);
+		if(id!=0) {
+			m.addAttribute("oid", id);
+			return "ownerHome";
+		}
+		else {
+			m.addAttribute("msg", "Entered email or password is wrong...");
+			return "ownerLogin";
+		}
 	}
 }

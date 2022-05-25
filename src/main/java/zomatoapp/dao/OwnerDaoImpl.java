@@ -55,4 +55,20 @@ public class OwnerDaoImpl implements OwnerDao {
 		Restaurant r = this.hibernateTemplate.load(Restaurant.class,rid);
 		this.hibernateTemplate.delete(r);
 	}
+	
+	public int authenticateOwner(String email,String password) {
+		String sql="Select oid from Owner where  email=? and password=?";
+		try {
+			int id = this.jdbcTemplate.queryForObject(sql,Integer.class,email,password);
+			System.out.println(id);
+			if(id!=0) {
+				return id;
+			}
+			else {
+				return 0;
+			}
+		} catch (Exception e) {
+			return 0;
+		}
+	}
 }

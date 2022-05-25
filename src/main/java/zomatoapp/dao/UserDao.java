@@ -14,4 +14,5 @@ public interface UserDao {
 	public User getUser(int uid);
 	public Restaurant searchRestaurant(String restaurantName);
 	public List<UserOrder> getMyOrders(int uid);
+	public int authenticateUser(String email,String password);
 }

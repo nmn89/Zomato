@@ -16,10 +16,11 @@ public class DishController {
 	@Autowired
 	private DishDao dishDao;
 	
-	@RequestMapping("/dishadded")
-	public String addDish(@ModelAttribute Dish dish) {
+	@RequestMapping("/dishadded/{rId}")
+	public String addDish(@PathVariable("rId") int rId,@ModelAttribute Dish dish,Model m) {
 		this.dishDao.createDish(dish);
-		return "myDish";
+		m.addAttribute("rid", rId);
+		return "dishAdded";
 	}
 	
 	@RequestMapping("/remove/{dishId}")

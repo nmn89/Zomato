@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +14,10 @@
 
 		<form action="userhome" method="post">
 			<div>
-				<label for="exampleInputEmail1">Mobile No.</label> <input
-					type="number" class="form-control" id="mobile"
-					aria-describedby="emailHelp" placeholder="Enter mobile no."
-					name="mobileNo" required>
+				<label for="exampleInputEmail1">Email</label> <input
+					type="text" class="form-control" id="email"
+					aria-describedby="emailHelp" placeholder="Enter your Email-id"
+					name="email" required>
 			</div>
 			<div>
 				<label for="userPassword">Password</label> <input type="password"
@@ -31,6 +32,9 @@
 			</div>
 			<div>
 				<a href="ownerlogin">Login as Owner</a>
+			</div>
+			<div>
+				<p style="font-style: italic; color:red;">${msg }</p>
 			</div>
 		</form>
 	</div>

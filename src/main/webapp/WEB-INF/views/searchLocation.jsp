@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
@@ -40,17 +40,17 @@
 </style>
 <head>
 <meta charset="UTF-8">
-<title>Availiable Locations</title>
+<title>Select Location</title>
 </head>
 <body>
-<h1>Availiable Locations</h1>
+<h1>Select Location</h1>
 <div class="dropdown">  
 <button class="dropbtn">Select Location</button>  
 <div class="dropdown-content">  
 <c:forEach items="${locations }" var="l">
-							<a href="${pageContext.request.contextPath }/addrestaurant/${l.locationId }/${id }">${l.location }</a>
+							<a href="${pageContext.request.contextPath }/viewrestaurant/${uid }/${l.locationId }">${l.location }</a>
 </c:forEach>
 </div>  
-</div>  
+</div> 
 </body>
 </html>

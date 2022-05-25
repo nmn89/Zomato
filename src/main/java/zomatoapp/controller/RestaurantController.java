@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import zomatoapp.dao.RestaurantDao;
 import zomatoapp.model.Dish;
+import zomatoapp.model.Location;
 import zomatoapp.model.Restaurant;
 
 @Controller
@@ -25,18 +26,27 @@ public class RestaurantController {
 		m.addAttribute("restaurant",restaurant);
 		return "Restaurant";
 	}
+	
+	@RequestMapping("/showlocation/{userId}")
+	public String getAllLocations(@PathVariable("userId") int uid,Model m){
+		List<Location> locations = restaurantDao.getAllLocations();
+		m.addAttribute("locations", locations);
+		m.addAttribute("uid", uid);
+		return "searchLocation";
+	}
 
-	@RequestMapping("/restaurant/{locationId}")
-	public String viewRestaurants(@PathVariable("locationId") int locationId,Model m) {
+	@RequestMapping("/viewrestaurant/{userId}/{locationId}")
+	public String viewRestaurants(@PathVariable("userId") int uid,@PathVariable("locationId") int locationId,Model m) {
 		List<Restaurant> restaurants = this.restaurantDao.getRestaurants(locationId);
 		m.addAttribute("restaurants",restaurants);
-		return "homePage";
+		m.addAttribute("uid", uid);
+		return "viewRestaurant";
 	}
 	
-	@RequestMapping("/mydish/{restaurantId}")
+	@RequestMapping("/showdish/{restaurantId}")
 	public String getDishes(@PathVariable("restaurantId") int rId,Model m) {
 		List<Dish> dishes = this.restaurantDao.getMyDishes(rId);
-		m.addAttribute("myDishes", dishes);
-		return "myDish";
+		m.addAttribute("dishes", dishes);
+		return "restaurantDish";
 	}
 }

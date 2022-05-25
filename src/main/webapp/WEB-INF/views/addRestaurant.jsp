@@ -12,7 +12,7 @@
 
 		<h1>Add Restaurant</h1>
 
-		<form action="${pageContext.request.contextPath }/restaurantadded" method="post">
+		<form action="${pageContext.request.contextPath }/restaurantadded/${oid }" method="post">
 			<div>
 				<label for="restaurantName">Restaurant Name</label> <input type="text"
 					class="form-control" id="restaurantName" aria-describedby="restaurantname"

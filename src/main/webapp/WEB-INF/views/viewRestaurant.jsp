@@ -6,15 +6,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Restaurant</title>
 </head>
 <body>
-<h1>Restaurant</h1>
-<ol>
+<h1>Restaurants</h1>
+<ul>
 <c:forEach items="${restaurants }" var="r">
-							<li><a href="${pageContext.request.contextPath }/showdish/${r.rid }">${r.restaurantName }</a>
-							<button><a href="${pageContext.request.contextPath }/adddish/${r.rid }">Add Dish</a></button></li>
+							<li>${r.restaurantName }
+							<button><a href="${pageContext.request.contextPath }/setorder/${uid }/${r.rid }">Add to Orders</a></button></li>
 </c:forEach>
-</ol>
+</ul>
 </body>
 </html>
