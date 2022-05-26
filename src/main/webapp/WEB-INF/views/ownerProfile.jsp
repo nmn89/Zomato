@@ -9,6 +9,23 @@
 </head>
 <body>
 <h1>Owner Profile</h1>
-<h2>${owner }</h2>
+<table>
+		<thead>
+			<tr>
+				<th>Owner Id</th>
+				<th>Owner Name</th>
+				<th>Mobile Number</th>
+				<th>Email-Id</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>${owner.oid }</td>
+				<td>${owner.ownerName }</td>
+				<td>${owner.mobileNo }</td>
+				<td>${owner.email }</td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>

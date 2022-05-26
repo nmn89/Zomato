@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Restaurant</h1>
+<h1>My Restaurants</h1>
 <ol>
 <c:forEach items="${restaurants }" var="r">
 							<li><a href="${pageContext.request.contextPath }/showdish/${r.rid }">${r.restaurantName }</a>

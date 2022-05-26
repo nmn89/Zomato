@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@page isELIgnored="false" %>
+	pageEncoding="UTF-8"%>
+<%@page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,24 @@
 <title>User Profile</title>
 </head>
 <body>
-<h1>User Profile</h1>
-<h3>${profile }</h3>
+	<h1>My Profile</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>User Id</th>
+				<th>User Name</th>
+				<th>Mobile Number</th>
+				<th>Email-Id</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>${profile.uid }</td>
+				<td>${profile.userName }</td>
+				<td>${profile.number }</td>
+				<td>${profile.email }</td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>
