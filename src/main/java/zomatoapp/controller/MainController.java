@@ -15,12 +15,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import zomatoapp.dao.DishDao;
+import zomatoapp.dao.RestaurantDao;
+import zomatoapp.dao.UserDao;
 import zomatoapp.model.Dish;
 import zomatoapp.model.Owner;
+import zomatoapp.model.Restaurant;
 import zomatoapp.model.User;
+import zomatoapp.model.UserOrder;
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	private RestaurantDao restaurantDao;
+	
+	@Autowired
+	private DishDao dishDao;
+	
+	@Autowired
+	private UserDao userDao;
 	
 	@RequestMapping("/")
 	public String loginUser() {
@@ -62,10 +76,17 @@ public class MainController {
 		return "addDish";
 	}
 	
-	@RequestMapping("/setorder/{userId}/{restaurantId}")
-	public String addOrder(@PathVariable("userId") int uid,@PathVariable("restaurantId") int rid,Model m) {
+	@RequestMapping("/setorder/{userId}/{restaurantId}/{dishId}")
+	public String addOrder(@PathVariable("userId") int uid,@PathVariable("restaurantId") int rid,@PathVariable("dishId") int did,Model m) {
 		m.addAttribute("uid", uid);
+		User user = this.userDao.getUser(uid);
+		m.addAttribute("user", user.getUserName());
 		m.addAttribute("rid", rid);
+		Restaurant restaurant = this.restaurantDao.getRestaurant(rid);
+		m.addAttribute("restaurant",restaurant.getRestaurantName());
+		m.addAttribute("dId", did);
+		Dish dish = this.dishDao.getDish(did);
+		m.addAttribute("dish", dish.getDishName());
 		return "addOrder";
 	}
 }

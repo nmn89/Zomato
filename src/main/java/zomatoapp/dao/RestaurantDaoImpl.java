@@ -13,6 +13,7 @@ import zomatoapp.model.Dish;
 import zomatoapp.model.Location;
 import zomatoapp.model.Owner;
 import zomatoapp.model.Restaurant;
+import zomatoapp.model.UserOrder;
 
 @Component
 public class RestaurantDaoImpl implements RestaurantDao {
@@ -57,6 +58,13 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		RowMapper<Location> rowMapper = new LocationRowMapperImpl();
 		List<Location> locations = this.jdbcTemplate.query(sql, rowMapper);
 		return locations;
+	}
+
+	public List<UserOrder> getRestaurantOrders(int rid) {
+		String sql = "Select * from UserOrder where rid=?";
+		RowMapper<UserOrder> rowMapper = new UserOrderRowMapperImpl();
+		List<UserOrder> userOrders = this.jdbcTemplate.query(sql, rowMapper,rid);
+		return userOrders;
 	}
 
 }

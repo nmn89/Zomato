@@ -19,7 +19,7 @@ public class UserOrderController {
 	private UserOrderDao userOrderDao;
 	
 	@RequestMapping("/addorder")
-	public RedirectView addOrder(@RequestParam("uid") int uid,@RequestParam("rid") int rid,@ModelAttribute UserOrder userOrder,Model m) {
+	public RedirectView addOrder(@RequestParam("uid") int uid,@RequestParam("rid") int rid,@RequestParam("did") int did,@ModelAttribute UserOrder userOrder,Model m) {
 		userOrderDao.addOrder(userOrder);
 		m.addAttribute("order", userOrder);
 		String url="getorder/"+uid;

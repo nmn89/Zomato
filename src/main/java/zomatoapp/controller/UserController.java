@@ -52,11 +52,10 @@ public class UserController {
 		return "searchRestaurant";
 	}
 	
-	@RequestMapping("/getorder/{userId}")
-	public String showMyOrders(@PathVariable("userId") int uId,Model m) {
+	@RequestMapping("/getorder/{userid}")
+	public String showMyOrders(@PathVariable("userid") int uId,Model m) {
 		List<UserOrder> myOrders = this.userDao.getMyOrders(uId);
 		m.addAttribute("orders", myOrders);
-		m.addAttribute("uid", uId);
 		return "userOrder";
 	}
 	

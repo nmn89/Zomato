@@ -12,8 +12,7 @@
 <h1>Restaurants</h1>
 <ul>
 <c:forEach items="${restaurants }" var="r">
-							<li>${r.restaurantName }
-							<button><a href="${pageContext.request.contextPath }/setorder/${uid }/${r.rid }">Add to Orders</a></button></li>
+							<li><h3><a href="${pageContext.request.contextPath }/showrestaurantdish/${r.rid }/${uid }">${r.restaurantName }</a></h3></li>
 </c:forEach>
 </ul>
 </body>

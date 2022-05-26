@@ -6,18 +6,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User Order</title>
+<title>Restaurant Order</title>
 </head>
 <body>
-<h1>My Orders</h1>
+<h1>Restaurant's Orders</h1>
 	<table>
 		<thead>
 			<tr>
 				<th>Order No.</th>
 				<th>Order Date</th>
-				<th>Restaurant Name</th>
 				<th>Dish Name</th>
 				<th>Dish Quantity</th>
+				<th>User Id</th>
+				<th>User Name</th>
 			</tr>
 		</thead>
 		<c:forEach items="${orders }" var="o">
@@ -25,9 +26,10 @@
 				<tr>
 					<td>${o.orId }</td>
 					<td>${o.date }</td>
-					<td>${o.restaurantName }</td>
 					<td>${o.dishName }</td>
 					<td>${o.quantity }</td>
+					<td>${o.uid }</td>
+					<td>${o.userName }</td>
 				</tr>
 			</tbody>
 		</c:forEach>

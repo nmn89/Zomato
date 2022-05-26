@@ -13,6 +13,7 @@ import zomatoapp.dao.RestaurantDao;
 import zomatoapp.model.Dish;
 import zomatoapp.model.Location;
 import zomatoapp.model.Restaurant;
+import zomatoapp.model.UserOrder;
 
 @Controller
 public class RestaurantController {
@@ -43,10 +44,25 @@ public class RestaurantController {
 		return "viewRestaurant";
 	}
 	
-	@RequestMapping("/showdish/{restaurantId}")
-	public String getDishes(@PathVariable("restaurantId") int rId,Model m) {
+	@RequestMapping("/showdish/{restaurantid}")
+	public String getDishes(@PathVariable("restaurantid") int rId,Model m) {
 		List<Dish> dishes = this.restaurantDao.getMyDishes(rId);
 		m.addAttribute("dishes", dishes);
-		return "restaurantDish";
+		return "myRestaurantDish";
+	}
+	
+	@RequestMapping("/showrestaurantdish/{rid}/{uid}")
+	public String getRestaurantDishes(@PathVariable("rid") int rid,@PathVariable("uid") int uid,Model m) {
+		List<Dish> dishes = this.restaurantDao.getMyDishes(rid);
+		m.addAttribute("dishes", dishes);
+		m.addAttribute("uid", uid);
+		return "showRestaurantDish";
+	}
+	
+	@RequestMapping("/showorder/{restaurantid}")
+	public String showRestaurantOrders(@PathVariable("restaurantid") int rid,Model m) {
+		List<UserOrder> myOrders = this.restaurantDao.getRestaurantOrders(rid);
+		m.addAttribute("orders", myOrders);
+		return "restaurantOrder";
 	}
 }
