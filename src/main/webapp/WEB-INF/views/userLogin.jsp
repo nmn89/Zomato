@@ -28,7 +28,7 @@
 				<button type="submit" class="btn btn-danger">Login</button>
 			</div>
 			<div>
-				<a href="registerUser">New User! Create Account</a>
+				<a href="registeruser">New User! Create Account</a>
 			</div>
 			<div>
 				<a href="ownerlogin">Login as Owner</a>

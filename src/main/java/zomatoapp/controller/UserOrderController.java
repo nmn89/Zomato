@@ -1,5 +1,7 @@
 package zomatoapp.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,10 +30,19 @@ public class UserOrderController {
 		return redirectView;
 	}
 	
-	@RequestMapping("order/{orderId}")
-	public String getOrder(@PathVariable("orderId") int uoId,Model m) {
+	@RequestMapping("order/{orderid}")
+	public String getOrder(@PathVariable("orderid") int uoId,Model m) {
 		UserOrder userOrder = userOrderDao.getOrder(uoId);
 		m.addAttribute("order", userOrder);
 		return "order";
+	}
+	
+	@RequestMapping("deleteorder/{orderid}/{userid}")
+	public RedirectView deleteOrder(@PathVariable("orderid") int oId,@PathVariable("userid") int uid,HttpServletRequest request) {
+		this.userOrderDao.deleteOrder(oId);
+		String url="/getorder/"+uid;
+		RedirectView redirectView= new RedirectView();
+		redirectView.setUrl(request.getContextPath()+url);
+		return redirectView;
 	}
 }

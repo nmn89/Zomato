@@ -41,7 +41,7 @@ public class MainController {
 		return "userLogin";
 	}
 	
-	@RequestMapping("/registerUser")
+	@RequestMapping("/registeruser")
 	public String registerUser() {
 		return "userRegister";
 	}
@@ -61,8 +61,8 @@ public class MainController {
 		return "addLocation";
 	}
 	
-	@RequestMapping("/addrestaurant/{locationId}/{ownerId}")
-	public String createRestaurant(@PathVariable("locationId") int lId,@PathVariable("ownerId") int oId,Model m) {
+	@RequestMapping("/addrestaurant/{locationid}/{ownerid}")
+	public String createRestaurant(@PathVariable("locationid") int lId,@PathVariable("ownerid") int oId,Model m) {
 		System.out.println(lId);
 		System.out.println(oId);
 		m.addAttribute("lid", lId);
@@ -70,22 +70,22 @@ public class MainController {
 		return "addRestaurant";
 	}
 	
-	@RequestMapping("/adddish/{rId}")
-	public String addDish(@PathVariable("rId") int rId,Model m) {
+	@RequestMapping("/adddish/{rid}")
+	public String addDish(@PathVariable("rid") int rId,Model m) {
 		m.addAttribute("rid", rId);
 		return "addDish";
 	}
 	
-	@RequestMapping("/setorder/{userId}/{restaurantId}/{dishId}")
-	public String addOrder(@PathVariable("userId") int uid,@PathVariable("restaurantId") int rid,@PathVariable("dishId") int did,Model m) {
-		m.addAttribute("uid", uid);
-		User user = this.userDao.getUser(uid);
+	@RequestMapping("/setorder/{userid}/{restaurantid}/{dishid}")
+	public String addOrder(@PathVariable("userid") int uId,@PathVariable("restaurantid") int rId,@PathVariable("dishid") int dId,Model m) {
+		m.addAttribute("uid", uId);
+		User user = this.userDao.getUser(uId);
 		m.addAttribute("user", user.getUserName());
-		m.addAttribute("rid", rid);
-		Restaurant restaurant = this.restaurantDao.getRestaurant(rid);
+		m.addAttribute("rid", rId);
+		Restaurant restaurant = this.restaurantDao.getRestaurant(rId);
 		m.addAttribute("restaurant",restaurant.getRestaurantName());
-		m.addAttribute("dId", did);
-		Dish dish = this.dishDao.getDish(did);
+		m.addAttribute("dId", dId);
+		Dish dish = this.dishDao.getDish(dId);
 		m.addAttribute("dish", dish.getDishName());
 		return "addOrder";
 	}

@@ -27,5 +27,7 @@
 			</tr>
 		</tbody>
 	</table>
+<button><a href="${pageContext.request.contextPath }/deleteowner/${owner.oid }">Delete Account</a></button>
+<button><a href="${pageContext.request.contextPath }/getowner/${owner.oid }">Update Account</a></button>
 </body>
 </html>

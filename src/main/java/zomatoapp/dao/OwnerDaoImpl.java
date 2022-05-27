@@ -30,8 +30,8 @@ public class OwnerDaoImpl implements OwnerDao {
 	
 	@Transactional
 	public void deleteOwner(int oid) {
-		Owner o = this.hibernateTemplate.load(Owner.class,oid);
-		this.hibernateTemplate.delete(o);
+		String sql="Delete Owner.*,Restaurant.* from Owner INNER JOIN Restaurant ON Owner.oid=Restaurant.oid where Owner.oid=?";
+		this.jdbcTemplate.update(sql,oid);
 	}
 	
 	public Owner getOwner(int oid) {
@@ -52,8 +52,8 @@ public class OwnerDaoImpl implements OwnerDao {
 
 	@Transactional
 	public void removeRestaurant(int rid) {
-		Restaurant r = this.hibernateTemplate.load(Restaurant.class,rid);
-		this.hibernateTemplate.delete(r);
+		String sql="Delete Restaurant.*,Dish.*,UserOrder.* from Restaurant INNER JOIN Dish ON Restaurant.rid=Dish.rid INNER JOIN UserOrder ON Restaurant.rid=UserOrder.rid where Restaurant.rid=?";
+		this.jdbcTemplate.update(sql,rid);
 	}
 	
 	public int authenticateOwner(String email,String password) {

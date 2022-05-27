@@ -30,8 +30,8 @@ public class UserDaoImpl implements UserDao{
 	
 	@Transactional
 	public void deleteUser(int uid) {
-		User u = this.hibernateTemplate.load(User.class,uid);
-		this.hibernateTemplate.delete(u);
+		String sql="Delete User.*,UserOrder.* from User INNER JOIN UserOrder ON User.uid=UserOrder.uid where User.uid=?";
+		this.jdbcTemplate.update(sql,uid);
 	}
 	
 	public User getUser(int uid) {

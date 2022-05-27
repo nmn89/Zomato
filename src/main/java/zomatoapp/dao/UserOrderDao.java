@@ -6,4 +6,5 @@ public interface UserOrderDao {
 
 	public void addOrder(UserOrder userOrder);
 	public UserOrder getOrder(int orid);
+	public void deleteOrder(int orid);
 }

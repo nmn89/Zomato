@@ -21,47 +21,48 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantDao restaurantDao;
 	
-	@RequestMapping("/restaurant/{restaurantId}")
-	public String getRestaurant(@PathVariable("restaurantId") int rId,Model m) {
+	@RequestMapping("/restaurant/{restaurantid}")
+	public String getRestaurant(@PathVariable("restaurantid") int rId,Model m) {
 		Restaurant restaurant = this.restaurantDao.getRestaurant(rId);
 		m.addAttribute("restaurant",restaurant);
 		return "Restaurant";
 	}
 	
-	@RequestMapping("/showlocation/{userId}")
-	public String getAllLocations(@PathVariable("userId") int uid,Model m){
+	@RequestMapping("/showlocation/{userid}")
+	public String getAllLocations(@PathVariable("userid") int uId,Model m){
 		List<Location> locations = restaurantDao.getAllLocations();
 		m.addAttribute("locations", locations);
-		m.addAttribute("uid", uid);
+		m.addAttribute("uid", uId);
 		return "searchLocation";
 	}
 
-	@RequestMapping("/viewrestaurant/{userId}/{locationId}")
-	public String viewRestaurants(@PathVariable("userId") int uid,@PathVariable("locationId") int locationId,Model m) {
+	@RequestMapping("/viewrestaurant/{userid}/{locationid}")
+	public String viewRestaurants(@PathVariable("userid") int uId,@PathVariable("locationid") int locationId,Model m) {
 		List<Restaurant> restaurants = this.restaurantDao.getRestaurants(locationId);
 		m.addAttribute("restaurants",restaurants);
-		m.addAttribute("uid", uid);
+		m.addAttribute("uid", uId);
 		return "viewRestaurant";
 	}
 	
 	@RequestMapping("/showdish/{restaurantid}")
 	public String getDishes(@PathVariable("restaurantid") int rId,Model m) {
 		List<Dish> dishes = this.restaurantDao.getMyDishes(rId);
+		m.addAttribute("rid", rId);
 		m.addAttribute("dishes", dishes);
 		return "myRestaurantDish";
 	}
 	
 	@RequestMapping("/showrestaurantdish/{rid}/{uid}")
-	public String getRestaurantDishes(@PathVariable("rid") int rid,@PathVariable("uid") int uid,Model m) {
-		List<Dish> dishes = this.restaurantDao.getMyDishes(rid);
+	public String getRestaurantDishes(@PathVariable("rid") int rId,@PathVariable("uid") int uId,Model m) {
+		List<Dish> dishes = this.restaurantDao.getMyDishes(rId);
 		m.addAttribute("dishes", dishes);
-		m.addAttribute("uid", uid);
+		m.addAttribute("uid", uId);
 		return "showRestaurantDish";
 	}
 	
 	@RequestMapping("/showorder/{restaurantid}")
-	public String showRestaurantOrders(@PathVariable("restaurantid") int rid,Model m) {
-		List<UserOrder> myOrders = this.restaurantDao.getRestaurantOrders(rid);
+	public String showRestaurantOrders(@PathVariable("restaurantid") int rId,Model m) {
+		List<UserOrder> myOrders = this.restaurantDao.getRestaurantOrders(rId);
 		m.addAttribute("orders", myOrders);
 		return "restaurantOrder";
 	}

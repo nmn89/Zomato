@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 import zomatoapp.dao.UserDao;
 import zomatoapp.dao.UserOrderDao;
@@ -32,17 +33,19 @@ public class UserController {
 		return "userLogin";
 	}
 	
-	@RequestMapping("/userprofile/{userId}")
-	public String userProfile(@PathVariable("userId") int userId,Model m) {
+	@RequestMapping("/userprofile/{userid}")
+	public String userProfile(@PathVariable("userid") int userId,Model m) {
 		User user = this.userDao.getUser(userId);
 		m.addAttribute("profile", user);
 		return "userProfile";
 	}
 	
-	@RequestMapping("/delete/{userId}")
-	public String userDeletion(@PathVariable("userId") int userId) {
+	@RequestMapping("/deleteuser/{userid}")
+	public RedirectView userDeletion(@PathVariable("userid") int userId,HttpServletRequest request) {
 		this.userDao.deleteUser(userId);
-		return "userLogin";
+		RedirectView redirectView= new RedirectView();
+		redirectView.setUrl(request.getContextPath()+"/");
+		return redirectView;
 	}
 	
 	@RequestMapping("/searchrestaurant")
@@ -55,8 +58,26 @@ public class UserController {
 	@RequestMapping("/getorder/{userid}")
 	public String showMyOrders(@PathVariable("userid") int uId,Model m) {
 		List<UserOrder> myOrders = this.userDao.getMyOrders(uId);
+		m.addAttribute("uid", uId);
 		m.addAttribute("orders", myOrders);
 		return "userOrder";
+	}
+	
+	@RequestMapping("/getuser/{userid}")
+	public String getUser(@PathVariable("userid") int uid,Model m) {
+		User user=userDao.getUser(uid);
+		m.addAttribute("user",user);
+		return "updateUser";
+	}
+	
+	@RequestMapping("/updateuser")
+	private RedirectView updateUser(@ModelAttribute User user,@RequestParam("uid") int uid,HttpServletRequest request) {
+		userDao.createUser(user);
+		System.out.println(user);
+		String url="/userprofile/"+uid;
+		RedirectView redirectView= new RedirectView();
+		redirectView.setUrl(request.getContextPath()+url);
+		return redirectView;
 	}
 	
 	@RequestMapping("/userhome")

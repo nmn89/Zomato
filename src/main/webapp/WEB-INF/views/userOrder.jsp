@@ -18,6 +18,7 @@
 				<th>Restaurant Name</th>
 				<th>Dish Name</th>
 				<th>Dish Quantity</th>
+				<th>   </th>
 			</tr>
 		</thead>
 		<c:forEach items="${orders }" var="o">
@@ -28,6 +29,7 @@
 					<td>${o.restaurantName }</td>
 					<td>${o.dishName }</td>
 					<td>${o.quantity }</td>
+					<td><button><a href="${pageContext.request.contextPath }/deleteorder/${o.orId }/${uid }">Delete Order</a></button></td>
 				</tr>
 			</tbody>
 		</c:forEach>

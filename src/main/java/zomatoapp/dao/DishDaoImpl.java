@@ -3,6 +3,7 @@ package zomatoapp.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,9 @@ public class DishDaoImpl implements DishDao{
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+	
 	@Transactional
 	public void createDish(Dish dish) {
 		this.hibernateTemplate.saveOrUpdate(dish);
@@ -22,8 +26,8 @@ public class DishDaoImpl implements DishDao{
 	
 	@Transactional
 	public void deleteDish(int did) {
-		Dish d = this.hibernateTemplate.load(Dish.class,did);
-		this.hibernateTemplate.delete(d);
+		String sql="Delete Dish.*,UserOrder.* from Dish INNER JOIN UserOrder ON Dish.dId=UserOrder.did where Dish.dId=?";
+		this.jdbcTemplate.update(sql,did);
 	}
 	
 	public Dish getDish(int did) {

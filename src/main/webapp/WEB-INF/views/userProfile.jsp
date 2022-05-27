@@ -27,5 +27,7 @@
 			</tr>
 		</tbody>
 	</table>
+	<button><a href="${pageContext.request.contextPath }/deleteuser/${profile.uid }">Delete Account</a></button>
+	<button><a href="${pageContext.request.contextPath }/getuser/${profile.uid }">Update Account</a></button>
 </body>
 </html>
