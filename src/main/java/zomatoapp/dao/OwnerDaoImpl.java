@@ -52,8 +52,14 @@ public class OwnerDaoImpl implements OwnerDao {
 
 	@Transactional
 	public void removeRestaurant(int rid) {
-		String sql="Delete Restaurant.*,Dish.*,UserOrder.* from Restaurant INNER JOIN Dish ON Restaurant.rid=Dish.rid INNER JOIN UserOrder ON Restaurant.rid=UserOrder.rid where Restaurant.rid=?";
-		this.jdbcTemplate.update(sql,rid);
+		String sql1="Delete from OrderDish where rId=?";
+		String sql2="Delete from UserOrder where rid=?";
+		String sql3="Delete from Dish where rid=?";
+		String sql4="Delete from Restaurant where rid=?";
+		this.jdbcTemplate.update(sql1,rid);
+		this.jdbcTemplate.update(sql2,rid);
+		this.jdbcTemplate.update(sql3,rid);
+		this.jdbcTemplate.update(sql4,rid);
 	}
 	
 	public int authenticateOwner(String email,String password) {

@@ -26,8 +26,10 @@ public class DishDaoImpl implements DishDao{
 	
 	@Transactional
 	public void deleteDish(int did) {
-		String sql="Delete Dish.*,UserOrder.* from Dish INNER JOIN UserOrder ON Dish.dId=UserOrder.did where Dish.dId=?";
-		this.jdbcTemplate.update(sql,did);
+		String sql1="Delete from OrderDish where dId=?";
+		String sql2="Delete from Dish where did=?";
+		this.jdbcTemplate.update(sql1,did);
+		this.jdbcTemplate.update(sql2,did);
 	}
 	
 	public Dish getDish(int did) {

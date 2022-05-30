@@ -28,7 +28,9 @@ public class UserOrderDaoImpl implements UserOrderDao{
 
 	@Transactional
 	public void deleteOrder(int orid) {
-		String sql="Delete UserOrder.*,OrderDish.* from UserOrder INNER JOIN OrderDish ON UserOrder.orid=OrderDish.orId where UserOrder.orid=?";
-		this.jdbcTemplate.update(sql,orid);
+		String sql1="Delete from OrderDish where orId=?";
+		String sql2="Delete from UserOrder where orId=?";
+		this.jdbcTemplate.update(sql1,orid);
+		this.jdbcTemplate.update(sql2,orid);
 	}
 }
