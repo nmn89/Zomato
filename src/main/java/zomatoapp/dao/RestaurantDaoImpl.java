@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import zomatoapp.model.Dish;
 import zomatoapp.model.Location;
+import zomatoapp.model.OrderDish;
 import zomatoapp.model.Owner;
 import zomatoapp.model.Restaurant;
 import zomatoapp.model.UserOrder;
@@ -60,11 +61,11 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		return locations;
 	}
 
-	public List<UserOrder> getRestaurantOrders(int rid) {
-		String sql = "Select * from UserOrder where rid=?";
-		RowMapper<UserOrder> rowMapper = new UserOrderRowMapperImpl();
-		List<UserOrder> userOrders = this.jdbcTemplate.query(sql, rowMapper,rid);
-		return userOrders;
+	public List<OrderDish> getRestaurantOrders(int rid) {
+		String sql = "Select * from OrderDish where rId=?";
+		RowMapper<OrderDish> rowMapper = new OrderDishRowMapperImpl();
+		List<OrderDish> orderDish = this.jdbcTemplate.query(sql, rowMapper,rid);
+		return orderDish;
 	}
 
 }

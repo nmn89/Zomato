@@ -12,7 +12,6 @@ public class Dish {
 	private int dId;
 	private String dishName;
 	private double dishPrice;
-	private int quantity;
 	private int rid;
 	public int getdId() {
 		return dId;
@@ -32,12 +31,6 @@ public class Dish {
 	public void setDishPrice(double dishPrice) {
 		this.dishPrice = dishPrice;
 	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
 	public int getRid() {
 		return rid;
 	}
@@ -48,17 +41,15 @@ public class Dish {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Dish(int dId, String dishName, double dishPrice, int quantity, int rid) {
+	public Dish(int dId, String dishName, double dishPrice, int rid) {
 		super();
 		this.dId = dId;
 		this.dishName = dishName;
 		this.dishPrice = dishPrice;
-		this.quantity = quantity;
 		this.rid = rid;
 	}
 	@Override
 	public String toString() {
-		return "Dish [dId=" + dId + ", dishName=" + dishName + ", dishPrice=" + dishPrice + ", quantity=" + quantity
-				+ ", rid=" + rid + "]";
+		return "Dish [dId=" + dId + ", dishName=" + dishName + ", dishPrice=" + dishPrice + ", rid=" + rid + "]";
 	}
 }

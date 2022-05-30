@@ -15,7 +15,6 @@
 			<tr>
 				<th>Dish Name</th>
 				<th>Dish Price per plate</th>
-				<th>Dish Quantity per plate in gm</th>
 				<th>   </th>
 			</tr>
 		</thead>
@@ -24,7 +23,6 @@
 				<tr>
 					<td>${d.dishName }</td>
 					<td>${d.dishPrice }</td>
-					<td>${d.quantity }</td>
 					<td><button><a href="${pageContext.request.contextPath }/removedish/${d.dId }/${rid }">Delete Dish</a></button></td>
 				</tr>
 			</tbody>

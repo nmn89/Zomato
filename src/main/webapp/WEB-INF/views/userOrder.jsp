@@ -16,8 +16,7 @@
 				<th>Order No.</th>
 				<th>Order Date</th>
 				<th>Restaurant Name</th>
-				<th>Dish Name</th>
-				<th>Dish Quantity</th>
+				<th>   </th>
 				<th>   </th>
 			</tr>
 		</thead>
@@ -27,8 +26,7 @@
 					<td>${o.orId }</td>
 					<td>${o.date }</td>
 					<td>${o.restaurantName }</td>
-					<td>${o.dishName }</td>
-					<td>${o.quantity }</td>
+					<td><button><a href="${pageContext.request.contextPath }/getorderdish/${o.orId }">Show Ordered Dish</a></button></td>
 					<td><button><a href="${pageContext.request.contextPath }/deleteorder/${o.orId }/${uid }">Delete Order</a></button></td>
 				</tr>
 			</tbody>

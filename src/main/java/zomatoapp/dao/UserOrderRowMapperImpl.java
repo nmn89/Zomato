@@ -15,11 +15,8 @@ public class UserOrderRowMapperImpl implements RowMapper<UserOrder>{
 		userOrder.setDate(rs.getString("date"));
 		userOrder.setRid(rs.getInt("rid"));
 		userOrder.setRestaurantName(rs.getString("restaurantName"));
-		userOrder.setDid(rs.getInt("did"));
-		userOrder.setDishName(rs.getString("dishName"));
 		userOrder.setUid(rs.getInt("uid"));
 		userOrder.setUserName(rs.getString("userName"));
-		userOrder.setQuantity(rs.getString("quantity"));
 		return userOrder;
 	}
 }

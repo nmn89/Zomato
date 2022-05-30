@@ -13,6 +13,9 @@ public class UserOrderDaoImpl implements UserOrderDao{
 	
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
 	@Transactional
 	public void addOrder(UserOrder userOrder) {
@@ -25,7 +28,7 @@ public class UserOrderDaoImpl implements UserOrderDao{
 
 	@Transactional
 	public void deleteOrder(int orid) {
-		UserOrder order =this.hibernateTemplate.load(UserOrder.class, orid);
-		this.hibernateTemplate.delete(order);
+		String sql="Delete UserOrder.*,OrderDish.* from UserOrder INNER JOIN OrderDish ON UserOrder.orid=OrderDish.orId where UserOrder.orid=?";
+		this.jdbcTemplate.update(sql,orid);
 	}
 }

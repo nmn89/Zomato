@@ -15,7 +15,7 @@
 			<tr>
 				<th>Dish Name</th>
 				<th>Dish Price per plate</th>
-				<th>                      </th>
+				<th>   </th>
 			</tr>
 		</thead>
 		<c:forEach items="${dishes }" var="d">
@@ -23,7 +23,6 @@
 				<tr>
 					<td>${d.dishName }</td>
 					<td>${d.dishPrice }</td>
-					<td><button><a href="${pageContext.request.contextPath }/setorderdish/${uid }/${d.rid }/${d.dId }/${orid }">Add to Orders</a></button></td>
 				</tr>
 			</tbody>
 		</c:forEach>

@@ -6,28 +6,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Restaurant Order</title>
+<title>Current Orders</title>
 </head>
 <body>
-<h1>Restaurant's Orders</h1>
+<h1>Current Orders</h1>
 	<table>
 		<thead>
 			<tr>
 				<th>Order No.</th>
 				<th>Order Date</th>
+				<th>Restaurant Name</th>
 				<th>Dish Name</th>
 				<th>Dish Quantity</th>
-				<th>User Id</th>
+				<th>   </th>
 			</tr>
 		</thead>
 		<c:forEach items="${orders }" var="o">
 			<tbody>
 				<tr>
-					<td>${o.odId }</td>
+					<td>${o.orId }</td>
 					<td>${o.date }</td>
+					<td>${o.restaurantName }</td>
 					<td>${o.dishName }</td>
 					<td>${o.quantity }</td>
-					<td>${o.uId }</td>
+					<td><button><a href="${pageContext.request.contextPath }/deleteorder/${o.orId }/${uid }">Delete Order</a></button></td>
 				</tr>
 			</tbody>
 		</c:forEach>

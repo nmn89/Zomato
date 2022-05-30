@@ -55,6 +55,7 @@
 				<value>zomatoapp.model.Dish</value>
 				<value>zomatoapp.model.UserOrder</value>
 				<value>zomatoapp.model.Location</value>
+				<value>zomatoapp.model.OrderDish</value>
 			</list>
 		</property>
 	</bean>

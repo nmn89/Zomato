@@ -1,5 +1,8 @@
 package zomatoapp.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,23 +24,22 @@ public class UserOrderController {
 	private UserOrderDao userOrderDao;
 	
 	@RequestMapping("/addorder")
-	public RedirectView addOrder(@RequestParam("uid") int uid,@RequestParam("rid") int rid,@RequestParam("did") int did,@ModelAttribute UserOrder userOrder,Model m) {
+	public RedirectView addOrder(@RequestParam("uid") int uid,@RequestParam("rid") int rid,@ModelAttribute UserOrder userOrder,Model m,HttpServletRequest request) {
 		userOrderDao.addOrder(userOrder);
-		m.addAttribute("order", userOrder);
-		String url="getorder/"+uid;
-		RedirectView redirectView = new RedirectView();
-		redirectView.setUrl(url);
+		String url="/showrestaurantdish/"+rid+"/"+uid+"/"+userOrder.getOrId();
+		RedirectView redirectView= new RedirectView();
+		redirectView.setUrl(request.getContextPath()+url);
 		return redirectView;
 	}
 	
-	@RequestMapping("order/{orderid}")
+	@RequestMapping("/order/{orderid}")
 	public String getOrder(@PathVariable("orderid") int uoId,Model m) {
 		UserOrder userOrder = userOrderDao.getOrder(uoId);
 		m.addAttribute("order", userOrder);
 		return "order";
 	}
 	
-	@RequestMapping("deleteorder/{orderid}/{userid}")
+	@RequestMapping("/deleteorder/{orderid}/{userid}")
 	public RedirectView deleteOrder(@PathVariable("orderid") int oId,@PathVariable("userid") int uid,HttpServletRequest request) {
 		this.userOrderDao.deleteOrder(oId);
 		String url="/getorder/"+uid;

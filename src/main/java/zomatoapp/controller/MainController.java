@@ -16,9 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import zomatoapp.dao.DishDao;
+import zomatoapp.dao.OrderDishDao;
 import zomatoapp.dao.RestaurantDao;
 import zomatoapp.dao.UserDao;
 import zomatoapp.model.Dish;
+import zomatoapp.model.OrderDish;
 import zomatoapp.model.Owner;
 import zomatoapp.model.Restaurant;
 import zomatoapp.model.User;
@@ -35,6 +37,9 @@ public class MainController {
 	
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private OrderDishDao orderDishDao;
 	
 	@RequestMapping("/")
 	public String loginUser() {
@@ -76,17 +81,35 @@ public class MainController {
 		return "addDish";
 	}
 	
-	@RequestMapping("/setorder/{userid}/{restaurantid}/{dishid}")
-	public String addOrder(@PathVariable("userid") int uId,@PathVariable("restaurantid") int rId,@PathVariable("dishid") int dId,Model m) {
+	@RequestMapping("/setrestaurantorder/{restaurantid}/{userid}")
+	public String addOrder(@PathVariable("userid") int uId,@PathVariable("restaurantid") int rId,Model m) {
 		m.addAttribute("uid", uId);
 		User user = this.userDao.getUser(uId);
 		m.addAttribute("user", user.getUserName());
 		m.addAttribute("rid", rId);
 		Restaurant restaurant = this.restaurantDao.getRestaurant(rId);
 		m.addAttribute("restaurant",restaurant.getRestaurantName());
+		return "addOrder";
+	}
+	
+	@RequestMapping("/setorderdish/{uid}/{rid}/{dId}/{orid}")
+	public String addOrderDish(@PathVariable("uid") int uId,@PathVariable("rid") int rId,@PathVariable("dId") int dId,@PathVariable("orid") int orId,Model m) {
+		m.addAttribute("uid", uId);
+		m.addAttribute("rid", rId);
+		m.addAttribute("orid", orId);
 		m.addAttribute("dId", dId);
 		Dish dish = this.dishDao.getDish(dId);
 		m.addAttribute("dish", dish.getDishName());
-		return "addOrder";
+		return "addOrderDish";
+	}
+	
+	@RequestMapping("/successfull/{uid}/{rid}/{orid}")
+	public String showCurrentOrder(@PathVariable("uid") int uId,@PathVariable("rid") int rId,@PathVariable("orid") int orId,Model m) {
+		m.addAttribute("uid", uId);
+		m.addAttribute("rid", rId);
+		m.addAttribute("orid", orId);
+		List<OrderDish> orderDishs=this.orderDishDao.getOrderDish(orId);
+		m.addAttribute("orders", orderDishs);
+		return "orderDishAdded";
 	}
 }

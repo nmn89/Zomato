@@ -15,6 +15,7 @@ String newDate = df.format(new Date());
 <h1>Add order</h1>
 
 		<form action="${pageContext.request.contextPath }/addorder" method="post">
+			
 			<div>
 				<label for="uid">User Id</label> <input type="text"
 					class="form-control" id="uid" aria-describedby="uid"
@@ -39,22 +40,7 @@ String newDate = df.format(new Date());
 					name="restaurantName" value="${restaurant }" readOnly>
 			</div>
 			<div>
-				<label for="did">Dish Id</label> <input type="text"
-					class="form-control" id="rid" aria-describedby="rid"
-					name="did" value="${dId }" readOnly>
-			</div>
-			<div>
-				<label for="dname">Dish Name</label> <input type="text"
-					class="form-control" id="rname" aria-describedby="dname"
-					name="dishName" value="${dish }" readOnly>
-			</div>
-			<div>
-				<label for="quantity">Quantity of Dish</label> <input type="text"
-					class="form-control" id="quantity" aria-describedby="quantity"
-					name="quantity">
-			</div>
-			<div>
-				<button type="submit" class="btn btn-success">Submit</button>
+				<button type="submit" class="btn btn-success">Place Order</button>
 			</div>
 		</form>
 </body>
