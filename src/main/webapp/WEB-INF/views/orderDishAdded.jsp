@@ -31,5 +31,6 @@
 		</c:forEach>
 	</table>
 <button><a href="${pageContext.request.contextPath }/showrestaurantdish/${rid }/${uid }/${orid }">Order More Dish</a></button>
+<button><a href="${pageContext.request.contextPath }/getorder/${uid }">Submit Order</a></button>
 </body>
 </html>
