@@ -1,0 +1,22 @@
+package zomatoapp.rowmapperimpl;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import zomatoapp.viewobjects.RestaurantOrderViewObject;
+
+public class RestaurantOrderViewObjectRowMapperImpl implements RowMapper<RestaurantOrderViewObject>{
+
+	public RestaurantOrderViewObject mapRow(ResultSet rs, int rowNum) throws SQLException {
+		RestaurantOrderViewObject restaurantOrderViewObject=new RestaurantOrderViewObject();
+		restaurantOrderViewObject.setOrid(rs.getInt("orid"));
+		restaurantOrderViewObject.setRestaurantName(rs.getString("restaurantName"));
+		restaurantOrderViewObject.setDishName(rs.getString("dishName"));
+		restaurantOrderViewObject.setUserName(rs.getString("userName"));
+		restaurantOrderViewObject.setDate(rs.getString("date"));
+		return restaurantOrderViewObject;
+	}
+
+}

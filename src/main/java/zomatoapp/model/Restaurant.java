@@ -9,15 +9,21 @@ import javax.persistence.Id;
 public class Restaurant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int rid;
+	private int id;
 	private String restaurantName;
-	private int locatonId;
-	private int oid;
-	public int getRid() {
-		return rid;
+	private int locationId;
+	private int ownerId;
+	public int getId() {
+		return id;
 	}
-	public void setRid(int rid) {
-		this.rid = rid;
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getOwnerId() {
+		return ownerId;
+	}
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
 	}
 	public String getRestaurantName() {
 		return restaurantName;
@@ -25,32 +31,26 @@ public class Restaurant {
 	public void setRestaurantName(String restaurantName) {
 		this.restaurantName = restaurantName;
 	}
-	public int getLocatonId() {
-		return locatonId;
+	public int getLocationId() {
+		return locationId;
 	}
-	public void setLocatonId(int locatonId) {
-		this.locatonId = locatonId;
-	}
-	public int getOid() {
-		return oid;
-	}
-	public void setOid(int oid) {
-		this.oid = oid;
+	public void setLocationId(int locationId) {
+		this.locationId = locationId;
 	}
 	public Restaurant() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Restaurant(int rid, String restaurantName, int locatonId, int oid) {
+	public Restaurant(int id, String restaurantName, int locationId, int ownerId) {
 		super();
-		this.rid = rid;
+		this.id = id;
 		this.restaurantName = restaurantName;
-		this.locatonId = locatonId;
-		this.oid = oid;
+		this.locationId = locationId;
+		this.ownerId = ownerId;
 	}
 	@Override
 	public String toString() {
-		return "Restaurant [rid=" + rid + ", restaurantName=" + restaurantName + ", locatonId=" + locatonId + ", oid="
-				+ oid + "]";
+		return "Restaurant [id=" + id + ", restaurantName=" + restaurantName + ", locationId=" + locationId
+				+ ", ownerId=" + ownerId + "]";
 	}
 }

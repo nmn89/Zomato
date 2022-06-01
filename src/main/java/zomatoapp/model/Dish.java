@@ -9,15 +9,21 @@ import javax.persistence.Id;
 public class Dish {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int dId;
+	private int id;
 	private String dishName;
 	private double dishPrice;
-	private int rid;
-	public int getdId() {
-		return dId;
+	private int restaurantId;
+	public int getId() {
+		return id;
 	}
-	public void setdId(int dId) {
-		this.dId = dId;
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getRestaurantId() {
+		return restaurantId;
+	}
+	public void setRestaurantId(int restaurantId) {
+		this.restaurantId = restaurantId;
 	}
 	public String getDishName() {
 		return dishName;
@@ -31,25 +37,20 @@ public class Dish {
 	public void setDishPrice(double dishPrice) {
 		this.dishPrice = dishPrice;
 	}
-	public int getRid() {
-		return rid;
-	}
-	public void setRid(int rid) {
-		this.rid = rid;
-	}
 	public Dish() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Dish(int dId, String dishName, double dishPrice, int rid) {
+	public Dish(int id, String dishName, double dishPrice, int restaurantId) {
 		super();
-		this.dId = dId;
+		this.id = id;
 		this.dishName = dishName;
 		this.dishPrice = dishPrice;
-		this.rid = rid;
+		this.restaurantId = restaurantId;
 	}
 	@Override
 	public String toString() {
-		return "Dish [dId=" + dId + ", dishName=" + dishName + ", dishPrice=" + dishPrice + ", rid=" + rid + "]";
+		return "Dish [id=" + id + ", dishName=" + dishName + ", dishPrice=" + dishPrice + ", restaurantId="
+				+ restaurantId + "]";
 	}
 }

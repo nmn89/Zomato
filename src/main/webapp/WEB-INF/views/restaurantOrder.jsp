@@ -16,18 +16,18 @@
 				<th>Order No.</th>
 				<th>Order Date</th>
 				<th>Dish Name</th>
-				<th>Dish Quantity</th>
-				<th>User Id</th>
+				<th>Restaurant Name</th>
+				<th>User Name</th>
 			</tr>
 		</thead>
 		<c:forEach items="${orders }" var="o">
 			<tbody>
 				<tr>
-					<td>${o.odId }</td>
+					<td>${o.orid }</td>
 					<td>${o.date }</td>
 					<td>${o.dishName }</td>
-					<td>${o.quantity }</td>
-					<td>${o.uId }</td>
+					<td>${o.restaurantName }</td>
+					<td>${o.userName }</td>
 				</tr>
 			</tbody>
 		</c:forEach>

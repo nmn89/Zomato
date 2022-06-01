@@ -10,13 +10,13 @@ public class Location {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int locationId;
+	private int id;
 	private String location;
-	public int getLocationId() {
-		return locationId;
+	public int getId() {
+		return id;
 	}
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getLocation() {
 		return location;
@@ -28,13 +28,13 @@ public class Location {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Location(int locationId, String location) {
+	public Location(int id, String location) {
 		super();
-		this.locationId = locationId;
+		this.id = id;
 		this.location = location;
 	}
 	@Override
 	public String toString() {
-		return "Location [locationId=" + locationId + ", location=" + location + "]";
+		return "Location [id=" + id + ", location=" + location + "]";
 	}
 }

@@ -23,26 +23,26 @@ public class UserOrderController {
 	@Autowired
 	private UserOrderDao userOrderDao;
 	
-	@RequestMapping("/addorder")
-	public RedirectView addOrder(@RequestParam("uid") int uid,@RequestParam("rid") int rid,@ModelAttribute UserOrder userOrder,Model m,HttpServletRequest request) {
+	@RequestMapping("/addorder/{uid}/{rid}")
+	public RedirectView addOrder(@PathVariable("uid") int userId,@PathVariable("rid") int restaurantId,@ModelAttribute UserOrder userOrder,Model m,HttpServletRequest request) {
 		userOrderDao.addOrder(userOrder);
-		String url="/showrestaurantdish/"+rid+"/"+uid+"/"+userOrder.getOrId();
+		String url="/showrestaurantdish/"+restaurantId+"/"+userId+"/"+userOrder.getId();
 		RedirectView redirectView= new RedirectView();
 		redirectView.setUrl(request.getContextPath()+url);
 		return redirectView;
 	}
 	
-	@RequestMapping("/order/{orderid}")
-	public String getOrder(@PathVariable("orderid") int uoId,Model m) {
-		UserOrder userOrder = userOrderDao.getOrder(uoId);
+	@RequestMapping("/order/{orid}")
+	public String getOrder(@PathVariable("orid") int orderId,Model m) {
+		UserOrder userOrder = userOrderDao.getOrder(orderId);
 		m.addAttribute("order", userOrder);
 		return "order";
 	}
 	
-	@RequestMapping("/deleteorder/{orderid}/{userid}")
-	public RedirectView deleteOrder(@PathVariable("orderid") int oId,@PathVariable("userid") int uid,HttpServletRequest request) {
-		this.userOrderDao.deleteOrder(oId);
-		String url="/getorder/"+uid;
+	@RequestMapping("/deleteorder/{orid}/{uid}")
+	public RedirectView deleteOrder(@PathVariable("orid") int orderId,@PathVariable("uid") int userId,HttpServletRequest request) {
+		this.userOrderDao.deleteOrder(orderId);
+		String url="/getorder/"+userId;
 		RedirectView redirectView= new RedirectView();
 		redirectView.setUrl(request.getContextPath()+url);
 		return redirectView;

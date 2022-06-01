@@ -26,9 +26,9 @@ public class LocationController {
 	}
 	
 	@RequestMapping("/location/{oid}")
-	public String getAllLocations(@PathVariable("oid") int oId,Model m){
+	public String getAllLocations(@PathVariable("oid") int ownerId,Model m){
 		List<Location> locations = locationDao.getAllLocations();
-		m.addAttribute("id", oId);
+		m.addAttribute("id", ownerId);
 		m.addAttribute("locations", locations);
 		return "location";
 	}

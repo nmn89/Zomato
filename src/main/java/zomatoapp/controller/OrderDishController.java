@@ -15,6 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import zomatoapp.dao.OrderDishDao;
 import zomatoapp.model.OrderDish;
+import zomatoapp.viewobjects.OrderDishesViewObject;
 
 @Controller
 public class OrderDishController {
@@ -22,18 +23,18 @@ public class OrderDishController {
 	@Autowired
 	private OrderDishDao orderDishDao;
 	
-	@RequestMapping("/orderdishadded")
-	public RedirectView createOrderDish(@ModelAttribute OrderDish orderDish,@RequestParam("uId") int uId,@RequestParam("rId") int rId,@RequestParam("orId") int orId,HttpServletRequest request) {
+	@RequestMapping("/orderdishadded/{rid}/{uid}")
+	public RedirectView createOrderDish(@PathVariable("rid") int restaurantId,@PathVariable("uid") int userId,@ModelAttribute OrderDish orderDish,@RequestParam("orid") int orid,HttpServletRequest request) {
 		orderDishDao.addOrderDish(orderDish);
-		String url="/successfull/"+uId+"/"+rId+"/"+orId;
+		String url="/successfull/"+orid+"/"+restaurantId+"/"+userId;
 		RedirectView redirectView= new RedirectView();
 		redirectView.setUrl(request.getContextPath()+url);
 		return redirectView;
 	}
 	
 	@RequestMapping("/getorderdish/{orid}")
-	public String getOrderDish(@PathVariable("orid") int orId,Model m) {
-		List<OrderDish> orderDish = orderDishDao.getOrderDish(orId);
+	public String getOrderDish(@PathVariable("orid") int orderId,Model m) {
+		List<OrderDishesViewObject> orderDish = orderDishDao.getOrderDish(orderId);
 		m.addAttribute("orders", orderDish);
 		return "userOrderDish";
 	}

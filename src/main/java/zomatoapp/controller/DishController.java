@@ -20,24 +20,24 @@ public class DishController {
 	private DishDao dishDao;
 	
 	@RequestMapping("/dishadded/{rid}")
-	public String addDish(@PathVariable("rid") int rId,@ModelAttribute Dish dish,Model m) {
+	public String addDish(@PathVariable("rid") int rid,@ModelAttribute Dish dish,Model m) {
 		this.dishDao.createDish(dish);
-		m.addAttribute("rid", rId);
+		m.addAttribute("rid", rid);
 		return "dishAdded";
 	}
 	
-	@RequestMapping("/removedish/{dishid}/{rid}")
-	public RedirectView removeDish(@PathVariable("dishid") int dId,@PathVariable("rid") int rid,HttpServletRequest request) {
-		this.dishDao.deleteDish(dId);
+	@RequestMapping("/removedish/{did}/{rid}")
+	public RedirectView removeDish(@PathVariable("did") int did,@PathVariable("rid") int rid,HttpServletRequest request) {
+		this.dishDao.deleteDish(did);
 		String url = "/showdish/"+rid;
 		RedirectView redirectView= new RedirectView();
 		redirectView.setUrl(request.getContextPath()+url);
 		return redirectView;
 	}
 	
-	@RequestMapping("/dish/{dishid}")
-	public String getDish(@PathVariable("dishid") int dId,Model m) {
-		Dish dish = this.dishDao.getDish(dId);
+	@RequestMapping("/dish/{did}")
+	public String getDish(@PathVariable("did") int did,Model m) {
+		Dish dish = this.dishDao.getDish(did);
 		m.addAttribute("dish", dish);
 		return "myDish";
 	}

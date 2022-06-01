@@ -9,16 +9,16 @@ import javax.persistence.Id;
 public class Owner {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int oid;
+	private int id;
 	private String ownerName;
 	private String email;
 	private long mobileNo;
 	private String password;
-	public int getOid() {
-		return oid;
+	public int getId() {
+		return id;
 	}
-	public void setOid(int oid) {
-		this.oid = oid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getOwnerName() {
 		return ownerName;
@@ -48,9 +48,9 @@ public class Owner {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Owner(int oid, String ownerName, String email, long mobileNo, String password) {
+	public Owner(int id, String ownerName, String email, long mobileNo, String password) {
 		super();
-		this.oid = oid;
+		this.id = id;
 		this.ownerName = ownerName;
 		this.email = email;
 		this.mobileNo = mobileNo;
@@ -58,7 +58,7 @@ public class Owner {
 	}
 	@Override
 	public String toString() {
-		return "Owner [oid=" + oid + ", ownerName=" + ownerName + ", email=" + email + ", mobileNo=" + mobileNo
+		return "Owner [id=" + id + ", ownerName=" + ownerName + ", email=" + email + ", mobileNo=" + mobileNo
 				+ ", password=" + password + "]";
 	}
 }

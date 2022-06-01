@@ -19,6 +19,7 @@ import zomatoapp.model.Location;
 import zomatoapp.model.Restaurant;
 import zomatoapp.model.User;
 import zomatoapp.model.UserOrder;
+import zomatoapp.viewobjects.UserOrderViewObject;
 
 @Controller
 public class UserController {
@@ -33,15 +34,15 @@ public class UserController {
 		return "userLogin";
 	}
 	
-	@RequestMapping("/userprofile/{userid}")
-	public String userProfile(@PathVariable("userid") int userId,Model m) {
+	@RequestMapping("/userprofile/{uid}")
+	public String userProfile(@PathVariable("uid") int userId,Model m) {
 		User user = this.userDao.getUser(userId);
 		m.addAttribute("profile", user);
 		return "userProfile";
 	}
 	
-	@RequestMapping("/deleteuser/{userid}")
-	public RedirectView userDeletion(@PathVariable("userid") int userId,HttpServletRequest request) {
+	@RequestMapping("/deleteuser/{uid}")
+	public RedirectView userDeletion(@PathVariable("uid") int userId,HttpServletRequest request) {
 		this.userDao.deleteUser(userId);
 		RedirectView redirectView= new RedirectView();
 		redirectView.setUrl(request.getContextPath()+"/");
@@ -55,26 +56,26 @@ public class UserController {
 		return "searchRestaurant";
 	}
 	
-	@RequestMapping("/getorder/{userid}")
-	public String showMyOrders(@PathVariable("userid") int uId,Model m) {
-		List<UserOrder> myOrders = this.userDao.getMyOrders(uId);
-		m.addAttribute("uid", uId);
+	@RequestMapping("/getorder/{uid}")
+	public String showMyOrders(@PathVariable("uid") int userId,Model m) {
+		List<UserOrderViewObject> myOrders = this.userDao.getMyOrders(userId);
+		m.addAttribute("uid", userId);
 		m.addAttribute("orders", myOrders);
 		return "userOrder";
 	}
 	
-	@RequestMapping("/getuser/{userid}")
-	public String getUser(@PathVariable("userid") int uid,Model m) {
-		User user=userDao.getUser(uid);
+	@RequestMapping("/getuser/{uid}")
+	public String getUser(@PathVariable("uid") int userId,Model m) {
+		User user=userDao.getUser(userId);
 		m.addAttribute("user",user);
 		return "updateUser";
 	}
 	
 	@RequestMapping("/updateuser")
-	private RedirectView updateUser(@ModelAttribute User user,@RequestParam("uid") int uid,HttpServletRequest request) {
+	private RedirectView updateUser(@ModelAttribute User user,@RequestParam("uid") int userId,HttpServletRequest request) {
 		userDao.createUser(user);
 		System.out.println(user);
-		String url="/userprofile/"+uid;
+		String url="/userprofile/"+userId;
 		RedirectView redirectView= new RedirectView();
 		redirectView.setUrl(request.getContextPath()+url);
 		return redirectView;

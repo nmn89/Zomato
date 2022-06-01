@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@page isELIgnored="false" %>
+    <%@include file="./base.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,16 +17,16 @@
 				<th>Order No.</th>
 				<th>Dish Name</th>
 				<th>Date</th>
-				<th>Quantity</th>
+				<th>Restaurant Name</th>
 			</tr>
 		</thead>
 		<c:forEach items="${orders }" var="o">
 			<tbody>
 				<tr>
-					<td>${o.odId }</td>
+					<td>${o.odid }</td>
 					<td>${o.dishName }</td>
 					<td>${o.date }</td>
-					<td>${o.quantity }</td>
+					<td>${o.restaurantName }</td>
 				</tr>
 			</tbody>
 		</c:forEach>

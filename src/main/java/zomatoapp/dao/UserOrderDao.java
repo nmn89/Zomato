@@ -5,6 +5,6 @@ import zomatoapp.model.UserOrder;
 public interface UserOrderDao {
 
 	public void addOrder(UserOrder userOrder);
-	public UserOrder getOrder(int orid);
-	public void deleteOrder(int orid);
+	public UserOrder getOrder(int orderId);
+	public void deleteOrder(int orderId);
 }

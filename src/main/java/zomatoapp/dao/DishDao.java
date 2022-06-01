@@ -7,6 +7,6 @@ import zomatoapp.model.Dish;
 public interface DishDao {
 
 	public void createDish(Dish dish);
-	public void deleteDish(int did);
-	public Dish getDish(int did);
+	public void deleteDish(int dishId);
+	public Dish getDish(int dishId);
 }

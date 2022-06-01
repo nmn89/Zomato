@@ -10,16 +10,16 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int uid;
+	private int id;
 	private String userName;
 	private String email;
 	private long number;
 	private String password;
-	public int getUid() {
-		return uid;
+	public int getId() {
+		return id;
 	}
-	public void setUid(int uid) {
-		this.uid = uid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getUserName() {
 		return userName;
@@ -49,9 +49,9 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(int uid, String userName, String email, long number, String password) {
+	public User(int id, String userName, String email, long number, String password) {
 		super();
-		this.uid = uid;
+		this.id = id;
 		this.userName = userName;
 		this.email = email;
 		this.number = number;
@@ -59,7 +59,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [uid=" + uid + ", userName=" + userName + ", email=" + email + ", number=" + number + ", password="
+		return "User [id=" + id + ", userName=" + userName + ", email=" + email + ", number=" + number + ", password="
 				+ password + "]";
 	}
 }

@@ -10,55 +10,27 @@ public class OrderDish {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int odId;
-	private String date;
-	private int uId;
-	private int rId;
-	private int dId;
-	private String dishName;
+	private int id;
+	private int dishId;
 	private String quantity;
-	private int orId;
-	public int getOdId() {
-		return odId;
+	private int orderId;
+	public int getId() {
+		return id;
 	}
-	public void setOdId(int odId) {
-		this.odId = odId;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public int getdId() {
-		return dId;
+	public int getDishId() {
+		return dishId;
 	}
-	public void setdId(int dId) {
-		this.dId = dId;
+	public void setDishId(int dishId) {
+		this.dishId = dishId;
 	}
-	public String getDishName() {
-		return dishName;
+	public int getOrderId() {
+		return orderId;
 	}
-	public void setDishName(String dishName) {
-		this.dishName = dishName;
-	}
-	public int getOrId() {
-		return orId;
-	}
-	public void setOrId(int orId) {
-		this.orId = orId;
-	}
-	public int getuId() {
-		return uId;
-	}
-	public void setuId(int uId) {
-		this.uId = uId;
-	}
-	public int getrId() {
-		return rId;
-	}
-	public void setrId(int rId) {
-		this.rId = rId;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 	public String getQuantity() {
 		return quantity;
@@ -70,20 +42,15 @@ public class OrderDish {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OrderDish(int odId, String date, int uId, int rId, int dId, String dishName, String quantity, int orId) {
+	public OrderDish(int id, int dishId, String quantity, int orderId) {
 		super();
-		this.odId = odId;
-		this.date = date;
-		this.uId = uId;
-		this.rId = rId;
-		this.dId = dId;
-		this.dishName = dishName;
+		this.id = id;
+		this.dishId = dishId;
 		this.quantity = quantity;
-		this.orId = orId;
+		this.orderId = orderId;
 	}
 	@Override
 	public String toString() {
-		return "OrderDish [odId=" + odId + ", date=" + date + ", uId=" + uId + ", rId=" + rId + ", dId=" + dId
-				+ ", dishName=" + dishName + ", quantity=" + quantity + ", orId=" + orId + "]";
+		return "OrderDish [id=" + id + ", dishId=" + dishId + ", quantity=" + quantity + ", orderId=" + orderId + "]";
 	}
 }

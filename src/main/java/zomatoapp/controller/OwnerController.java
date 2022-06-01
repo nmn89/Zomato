@@ -32,55 +32,55 @@ public class OwnerController {
 		return "ownerLogin";
 	}
 	
-	@RequestMapping("/remove/{ownerid}")
-	public String removeOwner(@PathVariable("ownerid") int oId) {
-		this.ownerDao.deleteOwner(oId);
+	@RequestMapping("/remove/{oid}")
+	public String removeOwner(@PathVariable("oid") int ownerId) {
+		this.ownerDao.deleteOwner(ownerId);
 		return "loginOwner";
 	}
 	
-	@RequestMapping("/ownerprofile/{ownerid}")
-	public String ownerProfile(@PathVariable("ownerid") int oId,Model m){
-		Owner owner = this.ownerDao.getOwner(oId);
+	@RequestMapping("/ownerprofile/{oid}")
+	public String ownerProfile(@PathVariable("oid") int ownerId,Model m){
+		Owner owner = this.ownerDao.getOwner(ownerId);
 		m.addAttribute("owner", owner);
 		return "ownerProfile";
 	}
 	
-	@RequestMapping("/restaurantadded/{ownerid}")
-	public String addRestaurant(@PathVariable("ownerid") int oid,@ModelAttribute Restaurant restaurant,Model m) {
+	@RequestMapping("/restaurantadded/{oid}")
+	public String addRestaurant(@PathVariable("oid") int ownerId,@ModelAttribute Restaurant restaurant,Model m) {
 		this.ownerDao.addRestaurant(restaurant);
-		m.addAttribute("oid", oid);
+		m.addAttribute("oid", ownerId);
 		return "restaurantAdded";
 	}
 	
-	@RequestMapping("/removerestaurant/{restaurantid}/{ownerid}")
-	public RedirectView removeRestaurant(@PathVariable("restaurantid") int rId,@PathVariable("ownerid") int oId,HttpServletRequest request) {
-		this.ownerDao.removeRestaurant(rId);
-		String url = "/ownerrestaurant/"+oId;
+	@RequestMapping("/removerestaurant/{rid}/{oid}")
+	public RedirectView removeRestaurant(@PathVariable("rid") int restaurantId,@PathVariable("oid") int ownerId,HttpServletRequest request) {
+		this.ownerDao.removeRestaurant(restaurantId);
+		String url = "/ownerrestaurant/"+ownerId;
 		RedirectView redirectView= new RedirectView();
 		redirectView.setUrl(request.getContextPath()+url);
 		return redirectView;
 	}
 	
-	@RequestMapping("/ownerrestaurant/{ownerid}")
-	public String myRestaurants(@PathVariable("ownerid") int oId,Model m) { 
-		List<Restaurant> restaurants = this.ownerDao.getMyResaurants(oId);
-		m.addAttribute("oid",oId);
+	@RequestMapping("/ownerrestaurant/{oid}")
+	public String myRestaurants(@PathVariable("oid") int ownerId,Model m) { 
+		List<Restaurant> restaurants = this.ownerDao.getMyResaurants(ownerId);
+		m.addAttribute("oid",ownerId);
 		m.addAttribute("restaurants", restaurants);
 		return "ownerRestaurant";
 	}
 	
-	@RequestMapping("/getowner/{ownerid}")
-	public String getOwner(@PathVariable("ownerid") int oid,Model m) {
-		Owner owner=ownerDao.getOwner(oid);
+	@RequestMapping("/getowner/{oid}")
+	public String getOwner(@PathVariable("oid") int ownerId,Model m) {
+		Owner owner=ownerDao.getOwner(ownerId);
 		m.addAttribute("owner",owner);
 		return "updateOwner";
 	}
 	
 	@RequestMapping("/updateowner")
-	private RedirectView updateOwner(@ModelAttribute Owner owner,@RequestParam("oid") int oid,HttpServletRequest request) {
+	private RedirectView updateOwner(@ModelAttribute Owner owner,@RequestParam("oid") int ownerId,HttpServletRequest request) {
 		ownerDao.createOwner(owner);
 		System.out.println(owner);
-		String url="/ownerprofile/"+oid;
+		String url="/ownerprofile/"+ownerId;
 		RedirectView redirectView= new RedirectView();
 		redirectView.setUrl(request.getContextPath()+url);
 		return redirectView;
