@@ -23,7 +23,7 @@
 				<tr>
 					<td>${d.dishName }</td>
 					<td>${d.dishPrice }</td>
-					<td><button><a href="${pageContext.request.contextPath }/setorderdish/${uid }/${d.rid }/${d.did }/${orid }">Add to Orders</a></button></td>
+					<td><button><a href="${pageContext.request.contextPath }/setorderdish/${uid }/${d.restaurantId }/${d.id }/${orid }">Add to Orders</a></button></td>
 				</tr>
 			</tbody>
 		</c:forEach>

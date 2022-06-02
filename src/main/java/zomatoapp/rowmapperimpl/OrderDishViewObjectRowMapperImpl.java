@@ -12,7 +12,7 @@ public class OrderDishViewObjectRowMapperImpl implements RowMapper<OrderDishesVi
 
 	public OrderDishesViewObject mapRow(ResultSet rs, int rowNum) throws SQLException {
 		OrderDishesViewObject orderDishesViewObject= new OrderDishesViewObject();
-		orderDishesViewObject.setOdid(rs.getInt("odid"));
+		orderDishesViewObject.setOrderDishId(rs.getInt("id"));
 		orderDishesViewObject.setRestaurantName(rs.getString("restaurantName"));
 		orderDishesViewObject.setDishName(rs.getString("dishName"));
 		orderDishesViewObject.setDate(rs.getString("date"));

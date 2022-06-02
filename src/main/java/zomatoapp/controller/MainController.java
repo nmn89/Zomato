@@ -12,9 +12,6 @@ import zomatoapp.dao.DishDao;
 import zomatoapp.dao.OrderDishDao;
 import zomatoapp.dao.RestaurantDao;
 import zomatoapp.dao.UserDao;
-import zomatoapp.model.Dish;
-import zomatoapp.model.Restaurant;
-import zomatoapp.model.User;
 import zomatoapp.viewobjects.OrderDishesViewObject;
 
 @Controller
@@ -52,8 +49,9 @@ public class MainController {
 		return "ownerRegister";
 	}
 	
-	@RequestMapping("/addlocation")
-	public String addLocation() {
+	@RequestMapping("/addlocation/{ownerid}")
+	public String addLocation(@PathVariable("ownerid") int ownerId,Model m) {
+		m.addAttribute("oid", ownerId);
 		return "addLocation";
 	}
 	

@@ -14,7 +14,7 @@
 
 		<form action="${pageContext.request.contextPath }/updateuser" method="post">
 		<div>
-			<input type="hidden" value="${user.uid }" name="uid" />
+			<input type="hidden" value="${user.id }" name="id" />
 		</div>
 			<div>
 				<label for="userName">User Name</label> <input type="text"

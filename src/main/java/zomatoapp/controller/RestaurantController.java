@@ -5,16 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import zomatoapp.dao.RestaurantDao;
+import zomatoapp.dao.RestaurantDaoHibernate;
 import zomatoapp.model.Dish;
 import zomatoapp.model.Location;
-import zomatoapp.model.OrderDish;
 import zomatoapp.model.Restaurant;
-import zomatoapp.model.UserOrder;
 import zomatoapp.viewobjects.RestaurantOrderViewObject;
 
 @Controller
@@ -23,9 +21,12 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantDao restaurantDao;
 	
+	@Autowired
+	private RestaurantDaoHibernate restaurantDaoHibernate;
+	
 	@RequestMapping("/restaurant/{rid}")
 	public String getRestaurant(@PathVariable("rid") int restaurantId,Model m) {
-		Restaurant restaurant = this.restaurantDao.getRestaurant(restaurantId);
+		Restaurant restaurant = this.restaurantDaoHibernate.getRestaurant(restaurantId);
 		m.addAttribute("restaurant",restaurant);
 		return "Restaurant";
 	}

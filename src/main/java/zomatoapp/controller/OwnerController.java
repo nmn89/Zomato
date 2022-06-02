@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 import zomatoapp.dao.OwnerDao;
-import zomatoapp.model.Location;
+import zomatoapp.dao.OwnerDaoHibernate;
 import zomatoapp.model.Owner;
 import zomatoapp.model.Restaurant;
-import zomatoapp.model.User;
 
 @Controller
 public class OwnerController {
@@ -25,9 +24,12 @@ public class OwnerController {
 	@Autowired
 	private OwnerDao ownerDao;
 	
+	@Autowired
+	private OwnerDaoHibernate ownerDaoHibernate;
+	
 	@RequestMapping("/owner")
 	public String addOwner(@ModelAttribute Owner owner,Model m) {
-		ownerDao.createOwner(owner);
+		ownerDaoHibernate.createOwner(owner);
 		m.addAttribute("msg", "Owner added successfully");
 		return "ownerLogin";
 	}
@@ -40,14 +42,14 @@ public class OwnerController {
 	
 	@RequestMapping("/ownerprofile/{oid}")
 	public String ownerProfile(@PathVariable("oid") int ownerId,Model m){
-		Owner owner = this.ownerDao.getOwner(ownerId);
+		Owner owner = this.ownerDaoHibernate.getOwner(ownerId);
 		m.addAttribute("owner", owner);
 		return "ownerProfile";
 	}
 	
 	@RequestMapping("/restaurantadded/{oid}")
 	public String addRestaurant(@PathVariable("oid") int ownerId,@ModelAttribute Restaurant restaurant,Model m) {
-		this.ownerDao.addRestaurant(restaurant);
+		this.ownerDaoHibernate.addRestaurant(restaurant);
 		m.addAttribute("oid", ownerId);
 		return "restaurantAdded";
 	}
@@ -71,14 +73,14 @@ public class OwnerController {
 	
 	@RequestMapping("/getowner/{oid}")
 	public String getOwner(@PathVariable("oid") int ownerId,Model m) {
-		Owner owner=ownerDao.getOwner(ownerId);
+		Owner owner=ownerDaoHibernate.getOwner(ownerId);
 		m.addAttribute("owner",owner);
 		return "updateOwner";
 	}
 	
 	@RequestMapping("/updateowner")
 	private RedirectView updateOwner(@ModelAttribute Owner owner,@RequestParam("oid") int ownerId,HttpServletRequest request) {
-		ownerDao.createOwner(owner);
+		ownerDaoHibernate.createOwner(owner);
 		System.out.println(owner);
 		String url="/ownerprofile/"+ownerId;
 		RedirectView redirectView= new RedirectView();

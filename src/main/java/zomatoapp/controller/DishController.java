@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import zomatoapp.dao.DishDao;
+import zomatoapp.dao.DishDaoHibernate;
 import zomatoapp.model.Dish;
 
 @Controller
@@ -19,9 +20,12 @@ public class DishController {
 	@Autowired
 	private DishDao dishDao;
 	
+	@Autowired
+	private DishDaoHibernate dishDaoHibernate;
+	
 	@RequestMapping("/dishadded/{rid}")
 	public String addDish(@PathVariable("rid") int rid,@ModelAttribute Dish dish,Model m) {
-		this.dishDao.createDish(dish);
+		this.dishDaoHibernate.createDish(dish);
 		m.addAttribute("rid", rid);
 		return "dishAdded";
 	}
@@ -37,7 +41,7 @@ public class DishController {
 	
 	@RequestMapping("/dish/{did}")
 	public String getDish(@PathVariable("did") int did,Model m) {
-		Dish dish = this.dishDao.getDish(did);
+		Dish dish = this.dishDaoHibernate.getDish(did);
 		m.addAttribute("dish", dish);
 		return "myDish";
 	}

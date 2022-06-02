@@ -21,7 +21,7 @@
 
 		<div class="form-group">
 			<label for="uid">User Id</label> <input type="text"
-				class="form-control" id="uid" aria-describedby="uid" name="uid"
+				class="form-control" id="uid" aria-describedby="uid" name="userId"
 				value="${uid }" readOnly>
 		</div>
 		<div class="form-group">
@@ -31,7 +31,7 @@
 		</div>
 		<div class="form-group">
 			<label for="rid">Restaurant Id</label> <input type="text"
-				class="form-control" id="rid" aria-describedby="rid" name="rid"
+				class="form-control" id="rid" aria-describedby="rid" name="restaurantId"
 				value="${rid }" readOnly>
 		</div>
 		<div class="container text-center mt-3">

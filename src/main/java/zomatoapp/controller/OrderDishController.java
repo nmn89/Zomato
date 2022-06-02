@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 import zomatoapp.dao.OrderDishDao;
+import zomatoapp.dao.OrderDishDaoHibernate;
 import zomatoapp.model.OrderDish;
 import zomatoapp.viewobjects.OrderDishesViewObject;
 
@@ -23,10 +24,13 @@ public class OrderDishController {
 	@Autowired
 	private OrderDishDao orderDishDao;
 	
+	@Autowired
+	private OrderDishDaoHibernate orderDishDaoHibernate;
+	
 	@RequestMapping("/orderdishadded/{rid}/{uid}")
-	public RedirectView createOrderDish(@PathVariable("rid") int restaurantId,@PathVariable("uid") int userId,@ModelAttribute OrderDish orderDish,@RequestParam("orid") int orid,HttpServletRequest request) {
-		orderDishDao.addOrderDish(orderDish);
-		String url="/successfull/"+orid+"/"+restaurantId+"/"+userId;
+	public RedirectView createOrderDish(@PathVariable("rid") int restaurantId,@PathVariable("uid") int userId,@ModelAttribute OrderDish orderDish,@RequestParam("orderId") int orderId,HttpServletRequest request) {
+		orderDishDaoHibernate.addOrderDish(orderDish);
+		String url="/successfull/"+orderId+"/"+restaurantId+"/"+userId;
 		RedirectView redirectView= new RedirectView();
 		redirectView.setUrl(request.getContextPath()+url);
 		return redirectView;

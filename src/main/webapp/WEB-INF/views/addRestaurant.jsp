@@ -24,7 +24,7 @@
 					required>
 			</div>
 			<input type="hidden" value="${lid }" name="locationId" /> <input
-				type="hidden" value="${oid }" name="oid" />
+				type="hidden" value="${oid }" name="ownerId" />
 			<div class="container text-center mt-3">
 				<button type="submit" class="btn btn-success">Submit</button>
 			</div>

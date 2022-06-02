@@ -10,9 +10,7 @@ import zomatoapp.model.User;
 
 public interface UserDao {
 
-	public void createUser(User user);
 	public void deleteUser(int userId);
-	public User getUser(int userId);
 	public Restaurant searchRestaurant(String restaurantName);
 	public List<UserOrderViewObject> getMyOrders(int userId);
 	public int authenticateUser(String email,String password);

@@ -13,7 +13,6 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Order No.</th>
 				<th>Order Date</th>
 				<th>Restaurant Name</th>
 				<th>Dish Name</th>
@@ -24,11 +23,10 @@
 		<c:forEach items="${orders }" var="o">
 			<tbody>
 				<tr>
-					<td>${o.orid }</td>
 					<td>${o.date }</td>
 					<td>${o.restaurantName }</td>
 					<td>${o.dishName }</td>
-					<td><button><a href="${pageContext.request.contextPath }/deleteorder/${o.orid }/${uid }">Delete Order</a></button></td>
+					<td><button><a href="${pageContext.request.contextPath }/deleteorder/${o.orderId }/${uid }">Delete Order</a></button></td>
 				</tr>
 			</tbody>
 		</c:forEach>

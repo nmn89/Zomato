@@ -13,20 +13,16 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Order No.</th>
 				<th>Order Date</th>
 				<th>Dish Name</th>
-				<th>Restaurant Name</th>
 				<th>User Name</th>
 			</tr>
 		</thead>
 		<c:forEach items="${orders }" var="o">
 			<tbody>
 				<tr>
-					<td>${o.orid }</td>
 					<td>${o.date }</td>
 					<td>${o.dishName }</td>
-					<td>${o.restaurantName }</td>
 					<td>${o.userName }</td>
 				</tr>
 			</tbody>

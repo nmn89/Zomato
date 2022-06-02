@@ -17,5 +17,4 @@ public class DishRowMapperImpl implements RowMapper<Dish>{
 		dish.setRestaurantId(rs.getInt("restaurantId"));
 		return dish;
 	}
-
 }

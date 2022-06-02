@@ -23,7 +23,7 @@
 		<c:forEach items="${orders }" var="o">
 			<tbody>
 				<tr>
-					<td>${o.odid }</td>
+					<td>${o.orderDishId }</td>
 					<td>${o.dishName }</td>
 					<td>${o.date }</td>
 					<td>${o.restaurantName }</td>

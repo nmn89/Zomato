@@ -15,12 +15,12 @@
 		method="post">
 		<div class="form-group">
 			<label for="did">Dish Id</label> <input type="text"
-				class="form-control" id="did" aria-describedby="did" name="did"
+				class="form-control" id="did" aria-describedby="did" name="dishId"
 				value="${did }" readOnly>
 		</div>
 		<div class="form-group">
 			<label for="orid">Order Id</label> <input type="text"
-				class="form-control" id="orid" aria-describedby="orid" name="orid"
+				class="form-control" id="orid" aria-describedby="orid" name="orderId"
 				value="${orid }" readOnly>
 		</div>
 		<div class="form-group">

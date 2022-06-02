@@ -24,7 +24,7 @@
 					class="form-control" id="dishPrice" aria-describedby="dishPrice"
 					placeholder="Enter Dish price per plate" name="dishPrice" required>
 			</div>
-			<input type="hidden" value="${rid }" name="rid" />
+			<input type="hidden" value="${rid }" name="restaurantId" />
 			<div class="container text-center mt-3">
 				<button type="submit" class="btn btn-outline-success">Submit</button>
 			</div>

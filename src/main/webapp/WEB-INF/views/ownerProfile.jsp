@@ -23,7 +23,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td scope="row">${owner.oid }</td>
+				<td scope="row">${owner.id }</td>
 				<td scope="row">${owner.ownerName }</td>
 				<td scope="row">${owner.mobileNo }</td>
 				<td scope="row">${owner.email }</td>
@@ -33,8 +33,8 @@
 </div>
 </div>
 	<div class="container text-center mt-3">
-<button class="btn btn-light"><a href="${pageContext.request.contextPath }/deleteowner/${owner.oid }">Delete Account</a></button>
-<button class="btn btn-light"><a href="${pageContext.request.contextPath }/getowner/${owner.oid }">Update Account</a></button>
+<button class="btn btn-light"><a href="${pageContext.request.contextPath }/deleteowner/${owner.id }">Delete Account</a></button>
+<button class="btn btn-light"><a href="${pageContext.request.contextPath }/getowner/${owner.id }">Update Account</a></button>
 </div>
 </body>
 </html>

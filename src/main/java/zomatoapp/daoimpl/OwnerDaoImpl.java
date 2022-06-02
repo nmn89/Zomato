@@ -18,28 +18,15 @@ import zomatoapp.rowmapperimpl.RestaurantRowMapperImpl;
 
 @Component
 public class OwnerDaoImpl implements OwnerDao {
-
-	@Autowired
-	private HibernateTemplate hibernateTemplate;
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	@Transactional
-	public void createOwner(Owner owner) {
-		this.hibernateTemplate.saveOrUpdate(owner);
-	}
-	
-	@Transactional
 	public void deleteOwner(int ownerId) {
 		String sql1="DELETE from Owner where id=?";
 		String sql2="DELETE from Restaurant where ownerId=?";
 		this.jdbcTemplate.update(sql1,ownerId);
 		this.jdbcTemplate.update(sql2,ownerId);
-	}
-	
-	public Owner getOwner(int ownerId) {
-		return this.hibernateTemplate.get(Owner.class, ownerId);
 	}
 
 	public List<Restaurant> getMyResaurants(int ownerId) {
@@ -47,11 +34,6 @@ public class OwnerDaoImpl implements OwnerDao {
 		RowMapper<Restaurant> rowMapper = new RestaurantRowMapperImpl();
 		List<Restaurant> restaurants = this.jdbcTemplate.query(sql,rowMapper,ownerId);
 		return restaurants;
-	}
-
-	@Transactional
-	public void addRestaurant(Restaurant restaurant) {
-		this.hibernateTemplate.save(restaurant);
 	}
 
 	@Transactional

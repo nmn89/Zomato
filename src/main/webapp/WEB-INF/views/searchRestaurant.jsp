@@ -10,6 +10,6 @@
 </head>
 <body>
 	<h2>Search result for ${restaurant.restaurantName }</h2>
-	<h3><a href="${pageContext.request.contextPath }/showdish/${restaurant.rid }">${restaurant.restaurantName }</a></h3>
+	<h3><a href="${pageContext.request.contextPath }/showdish/${restaurant.id }">${restaurant.restaurantName }</a></h3>
 </body>
 </html>

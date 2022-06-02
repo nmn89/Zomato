@@ -11,8 +11,6 @@ import zomatoapp.viewobjects.RestaurantOrderViewObject;
 
 public interface RestaurantDao {
 
-	public Restaurant getRestaurant(int restaurantId);
-	public void addDish(Dish dish);
 	public void removeDish(int dishId);
 	public List<Dish> getMyDishes(int restaurantId);
 	public List<Restaurant> getRestaurants(int locationId);

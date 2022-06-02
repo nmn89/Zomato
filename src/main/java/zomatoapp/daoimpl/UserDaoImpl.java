@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import zomatoapp.model.UserOrder;
 import zomatoapp.rowmapperimpl.RestaurantRowMapperImpl;
@@ -23,15 +24,7 @@ import zomatoapp.model.User;
 public class UserDaoImpl implements UserDao{
 	
 	@Autowired
-	private HibernateTemplate hibernateTemplate;
-	
-	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
-	@Transactional
-	public void createUser(User user) {
-		this.hibernateTemplate.saveOrUpdate(user);
-	}
 	
 	@Transactional
 	public void deleteUser(int userId) {
@@ -39,10 +32,6 @@ public class UserDaoImpl implements UserDao{
 		String sql2="Delete from User where id=?";
 		this.jdbcTemplate.update(sql1,userId);
 		this.jdbcTemplate.update(sql2,userId);
-	}
-	
-	public User getUser(int userId) {
-		return this.hibernateTemplate.get(User.class, userId);
 	}
 
 	public Restaurant searchRestaurant(String restaurantName) {
@@ -53,10 +42,10 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	public List<UserOrderViewObject> getMyOrders(int userId) {
-		String sql = "Select uo.id,uo.date,r.restaurantName,d.dishName from UserOrder uo INNER JOIN Restaurant r ON uo.restaurantId=r.id INNER JOIN Dish d ON r.id=d.restaurantId AND uo.userId=?";
+		String sql = "select uo.id,uo.date,r.restaurantName,d.DishName from UserOrder uo INNER JOIN OrderDish od ON uo.id=od.orderId INNER JOIN Dish d ON od.dishId=d\n"
+				+ ".id INNER JOIN Restaurant r ON d.restaurantId=r.id AND uo.userId=?";
 		RowMapper<UserOrderViewObject> rowMapper = new UserOrderViewObjectRowMapperImpl();
 		List<UserOrderViewObject> userOrders = this.jdbcTemplate.query(sql, rowMapper,userId);
-		System.out.println(userOrders);
 		return userOrders;
 	}
 	

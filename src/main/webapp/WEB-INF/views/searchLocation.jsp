@@ -48,7 +48,7 @@
 <button class="dropbtn">Select Location</button>  
 <div class="dropdown-content">  
 <c:forEach items="${locations }" var="l">
-							<a href="${pageContext.request.contextPath }/viewrestaurant/${uid }/${l.locationId }">${l.location }</a>
+							<a href="${pageContext.request.contextPath }/viewrestaurant/${uid }/${l.id }">${l.location }</a>
 </c:forEach>
 </div>  
 </div> 

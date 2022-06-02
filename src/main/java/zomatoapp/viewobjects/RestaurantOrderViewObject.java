@@ -2,22 +2,15 @@ package zomatoapp.viewobjects;
 
 public class RestaurantOrderViewObject {
 
-	private int orid;
-	private String restaurantName;
+	private int orderId;
 	private String dishName;
 	private String userName;
 	private String date;
-	public int getOrid() {
-		return orid;
+	public int getOrderId() {
+		return orderId;
 	}
-	public void setOrid(int orid) {
-		this.orid = orid;
-	}
-	public String getRestaurantName() {
-		return restaurantName;
-	}
-	public void setRestaurantName(String restaurantName) {
-		this.restaurantName = restaurantName;
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 	public String getDishName() {
 		return dishName;
@@ -37,4 +30,21 @@ public class RestaurantOrderViewObject {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	public RestaurantOrderViewObject() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public RestaurantOrderViewObject(int orderId, String dishName, String userName, String date) {
+		super();
+		this.orderId = orderId;
+		this.dishName = dishName;
+		this.userName = userName;
+		this.date = date;
+	}
+	@Override
+	public String toString() {
+		return "RestaurantOrderViewObject [orderId=" + orderId + ", dishName=" + dishName + ", userName=" + userName
+				+ ", date=" + date + "]";
+	}
+	
 }

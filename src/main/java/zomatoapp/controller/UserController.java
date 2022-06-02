@@ -14,11 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 import zomatoapp.dao.UserDao;
-import zomatoapp.dao.UserOrderDao;
-import zomatoapp.model.Location;
+import zomatoapp.dao.UserDaoHibernate;
 import zomatoapp.model.Restaurant;
 import zomatoapp.model.User;
-import zomatoapp.model.UserOrder;
 import zomatoapp.viewobjects.UserOrderViewObject;
 
 @Controller
@@ -27,16 +25,19 @@ public class UserController {
 	@Autowired
 	private UserDao userDao;
 	
+	@Autowired
+	private UserDaoHibernate userDaoHibernate;
+	
 	@RequestMapping("/register")
 	public String userRegister(@ModelAttribute User user,Model m) {
-		userDao.createUser(user);
+		userDaoHibernate.createUser(user);
 		m.addAttribute("msg", "User Added Successfully");
 		return "userLogin";
 	}
 	
 	@RequestMapping("/userprofile/{uid}")
 	public String userProfile(@PathVariable("uid") int userId,Model m) {
-		User user = this.userDao.getUser(userId);
+		User user = this.userDaoHibernate.getUser(userId);
 		m.addAttribute("profile", user);
 		return "userProfile";
 	}
@@ -66,14 +67,14 @@ public class UserController {
 	
 	@RequestMapping("/getuser/{uid}")
 	public String getUser(@PathVariable("uid") int userId,Model m) {
-		User user=userDao.getUser(userId);
+		User user=userDaoHibernate.getUser(userId);
 		m.addAttribute("user",user);
 		return "updateUser";
 	}
 	
 	@RequestMapping("/updateuser")
-	private RedirectView updateUser(@ModelAttribute User user,@RequestParam("uid") int userId,HttpServletRequest request) {
-		userDao.createUser(user);
+	private RedirectView updateUser(@ModelAttribute User user,@RequestParam("id") int userId,HttpServletRequest request) {
+		userDaoHibernate.createUser(user);
 		System.out.println(user);
 		String url="/userprofile/"+userId;
 		RedirectView redirectView= new RedirectView();

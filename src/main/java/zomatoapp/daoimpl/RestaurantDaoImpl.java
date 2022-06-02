@@ -27,19 +27,7 @@ import zomatoapp.viewobjects.RestaurantOrderViewObject;
 public class RestaurantDaoImpl implements RestaurantDao {
 	
 	@Autowired
-	private HibernateTemplate hibernateTemplate;
-	
-	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
-	public Restaurant getRestaurant(int restaurantId) {
-		return this.hibernateTemplate.get(Restaurant.class, restaurantId);
-	}
-
-	@Transactional
-	public void addDish(Dish dish) {
-		this.hibernateTemplate.saveOrUpdate(dish);
-	}
 
 	@Transactional
 	public void removeDish(int dishId) {
@@ -69,7 +57,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	}
 
 	public List<RestaurantOrderViewObject> getRestaurantOrders(int restaurantId) {
-		String sql = "Select uo.id,uo.date,r.restaurantName,d.dishName,u.userName from UserOrder uo INNER JOIN User u ON u.id=uo.userId INNER JOIN Restaurant r ON uo.restaurantId=r.id INNER JOIN Dish d ON r.id=d.restaurantId AND uo.restaurantId=?";
+		String sql = "select uo.id,uo.date,d.DishName,u.userName from User u INNER JOIN UserOrder uo ON u.id=uo.userId INNER JOIN OrderDish od ON uo.id=od.orderId INNER JOIN Dish d ON od.dishId=d.id AND uo.restaurantId=?";
 		RowMapper<RestaurantOrderViewObject> rowMapper = new RestaurantOrderViewObjectRowMapperImpl();
 		List<RestaurantOrderViewObject> orderDish = this.jdbcTemplate.query(sql, rowMapper,restaurantId);
 		return orderDish;

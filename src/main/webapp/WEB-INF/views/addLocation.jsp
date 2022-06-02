@@ -13,7 +13,7 @@
 
 		<h1 class="text-center mt-5">Add Location of your Restaurant</h1>
 
-		<form class="card container mt-5 py-3" style="width:500px" action="locationadded" method="post">
+		<form class="card container mt-5 py-3" style="width:500px" action="${pageContext.request.contextPath }/locationadded/${oid }" method="post">
 			<div class="form-group">
 				<label for="locationName">Location Name</label> <input type="text"
 					class="form-control" id="locationName" aria-describedby="locationname"

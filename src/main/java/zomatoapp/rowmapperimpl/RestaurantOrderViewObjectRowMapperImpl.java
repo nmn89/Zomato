@@ -11,8 +11,7 @@ public class RestaurantOrderViewObjectRowMapperImpl implements RowMapper<Restaur
 
 	public RestaurantOrderViewObject mapRow(ResultSet rs, int rowNum) throws SQLException {
 		RestaurantOrderViewObject restaurantOrderViewObject=new RestaurantOrderViewObject();
-		restaurantOrderViewObject.setOrid(rs.getInt("orid"));
-		restaurantOrderViewObject.setRestaurantName(rs.getString("restaurantName"));
+		restaurantOrderViewObject.setOrderId(rs.getInt("id"));
 		restaurantOrderViewObject.setDishName(rs.getString("dishName"));
 		restaurantOrderViewObject.setUserName(rs.getString("userName"));
 		restaurantOrderViewObject.setDate(rs.getString("date"));

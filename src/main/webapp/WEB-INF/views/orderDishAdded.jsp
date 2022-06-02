@@ -26,7 +26,7 @@
 				<c:forEach items="${orders }" var="o">
 					<tbody>
 						<tr>
-							<td scope="row">${o.odid }</td>
+							<td scope="row">${o.orderDishId }</td>
 							<td scope="row">${o.restaurantName }</td>
 							<td scope="row">${o.dishName }</td>
 							<td scope="row">${o.date }</td>

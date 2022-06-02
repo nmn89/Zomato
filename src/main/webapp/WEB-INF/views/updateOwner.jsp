@@ -14,7 +14,7 @@
 
 		<form action="${pageContext.request.contextPath }/updateowner" method="post">
 		<div>
-			<input type="hidden" value="${owner.oid }" name="oid" />
+			<input type="hidden" value="${owner.id }" name="id" />
 		</div>
 			<div>
 				<label for="ownerName">Owner Name</label> <input type="text"

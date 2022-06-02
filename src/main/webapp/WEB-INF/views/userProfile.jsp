@@ -20,14 +20,14 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>${profile.uid }</td>
+				<td>${profile.id }</td>
 				<td>${profile.userName }</td>
 				<td>${profile.number }</td>
 				<td>${profile.email }</td>
 			</tr>
 		</tbody>
 	</table>
-	<button><a href="${pageContext.request.contextPath }/deleteuser/${profile.uid }">Delete Account</a></button>
-	<button><a href="${pageContext.request.contextPath }/getuser/${profile.uid }">Update Account</a></button>
+	<button><a href="${pageContext.request.contextPath }/deleteuser/${profile.id }">Delete Account</a></button>
+	<button><a href="${pageContext.request.contextPath }/getuser/${profile.id }">Update Account</a></button>
 </body>
 </html>
