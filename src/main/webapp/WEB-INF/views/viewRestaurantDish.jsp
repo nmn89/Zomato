@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page isELIgnored="false"%>
+<%@include file="./base.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,23 +10,26 @@
 <title>Restaurant Dish</title>
 </head>
 <body>
-	<h1>My Restaurant's Dish</h1>
-	<table>
-		<thead>
-			<tr>
-				<th>Dish Name</th>
-				<th>Dish Price per plate</th>
-				<th>   </th>
-			</tr>
-		</thead>
-		<c:forEach items="${dishes }" var="d">
-			<tbody>
-				<tr>
-					<td>${d.dishName }</td>
-					<td>${d.dishPrice }</td>
-				</tr>
-			</tbody>
-		</c:forEach>
-	</table>
+	<h1 class="text-center mt-5 font-weight-bold">My Restaurant's Dish</h1>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Dish Name</th>
+						<th scope="col">Dish Price per plate</th>
+					</tr>
+				</thead>
+				<c:forEach items="${dishes }" var="d">
+					<tbody>
+						<tr>
+							<td scope="row">${d.dishName }</td>
+							<td scope="row">${d.dishPrice }</td>
+						</tr>
+					</tbody>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

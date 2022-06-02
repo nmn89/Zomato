@@ -50,10 +50,11 @@ public class UserController {
 		return redirectView;
 	}
 	
-	@RequestMapping("/searchrestaurant")
-	public String searchRestaurant(@RequestParam("restaurantName") String rName,Model m) {
+	@RequestMapping("/searchrestaurant/{userid}")
+	public String searchRestaurant(@RequestParam("restaurantName") String rName,@PathVariable("userid") int userId,Model m) {
 		Restaurant restaurant = this.userDao.searchRestaurant(rName);
 		m.addAttribute("restaurant", restaurant);
+		m.addAttribute("uid", userId);
 		return "searchRestaurant";
 	}
 	

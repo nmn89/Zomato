@@ -10,8 +10,7 @@
 </head>
 <body>
 <div>
-
-		<h1 class="text-center mt-5">Add Dish</h1>
+		<h1 class="text-center mt-5 font-weight-bold">Add Dish</h1>
 
 		<form class="card container mt-5 py-3" style="width:500px" action="${pageContext.request.contextPath }/dishadded/${rid}" method="post">
 			<div class="form-group">

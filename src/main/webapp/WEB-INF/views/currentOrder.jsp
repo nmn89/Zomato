@@ -10,11 +10,12 @@
 <title>Current Orders</title>
 </head>
 <body>
+<h1 class="text-center mb-3">Current Orders</h1>
 	<div class="row">
 		<div class="col-md-12">
-			<h1 class="text-center mb-3">Current Orders</h1>
-			<table class="table">
+		<table class="table">
 				<thead class="thead-dark">
+			
 					<tr>
 						<th scope="col">Order No.</th>
 						<th scope="col">Order Date</th>

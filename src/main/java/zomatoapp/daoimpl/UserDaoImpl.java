@@ -28,10 +28,12 @@ public class UserDaoImpl implements UserDao{
 	
 	@Transactional
 	public void deleteUser(int userId) {
-		String sql1="Delete from UserOrder where userId=?";
-		String sql2="Delete from User where id=?";
+		String sql1="Delete UserOrder.*,OrderDish.* from UserOrder INNER JOIN OrderDish ON UserOrder.id=OrderDish.orderId AND UserOrder.userId=?";
+		String sql2="Delete from UserOrder where userId=?";
+		String sql3="Delete from User where id=?";
 		this.jdbcTemplate.update(sql1,userId);
 		this.jdbcTemplate.update(sql2,userId);
+		this.jdbcTemplate.update(sql3,userId);
 	}
 
 	public Restaurant searchRestaurant(String restaurantName) {

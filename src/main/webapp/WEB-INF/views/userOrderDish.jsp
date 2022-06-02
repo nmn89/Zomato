@@ -10,9 +10,11 @@
 <title>Ordered Dish</title>
 </head>
 <body>
-<h1>Ordered Dish</h1>
-<table>
-		<thead>
+<h1 class="text-center my-3 font-weight-bold">Ordered Dish</h1>
+<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead class="thead-dark">
 			<tr>
 				<th>Order No.</th>
 				<th>Dish Name</th>

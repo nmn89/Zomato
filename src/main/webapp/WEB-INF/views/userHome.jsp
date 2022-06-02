@@ -8,7 +8,7 @@
 <title>Home Page</title>
 </head>
 <body>
-	<form action="searchrestaurant" method="post">
+	<form action="searchrestaurant/${uid }" method="post">
 		<input type="search" placeholder="Search" name="restaurantName">
 		<button type="submit">Search</button>
 	</form>
@@ -20,6 +20,9 @@
 	</h3>
 	<h3>
 		<a href="getorder/${uid }">My Orders</a>
+	</h3>
+	<h3>
+	<a href="${pageContext.request.contextPath }/">Logout</a>
 	</h3>
 </body>
 </html>

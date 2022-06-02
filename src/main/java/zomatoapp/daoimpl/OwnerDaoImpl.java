@@ -23,10 +23,13 @@ public class OwnerDaoImpl implements OwnerDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	public void deleteOwner(int ownerId) {
-		String sql1="DELETE from Owner where id=?";
+		String sql1="Delete Restaurant.*,Dish.* from Restaurant INNER JOIN Dish\n"
+				+" ON Restaurant.id=Dish.restaurantId AND Restaurnat.ownerId=?";
 		String sql2="DELETE from Restaurant where ownerId=?";
+		String sql3="DELETE from Owner where id=?";
 		this.jdbcTemplate.update(sql1,ownerId);
 		this.jdbcTemplate.update(sql2,ownerId);
+		this.jdbcTemplate.update(sql3,ownerId);
 	}
 
 	public List<Restaurant> getMyResaurants(int ownerId) {
