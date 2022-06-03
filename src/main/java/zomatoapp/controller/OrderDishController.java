@@ -40,6 +40,6 @@ public class OrderDishController {
 	public String getOrderDish(@PathVariable("orid") int orderId,Model m) {
 		List<OrderDishesViewObject> orderDish = orderDishDao.getOrderDish(orderId);
 		m.addAttribute("orders", orderDish);
-		return "userOrderDish";
+		return "orderedDish";
 	}
 }

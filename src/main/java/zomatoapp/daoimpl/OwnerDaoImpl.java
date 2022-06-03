@@ -24,7 +24,7 @@ public class OwnerDaoImpl implements OwnerDao {
 	
 	public void deleteOwner(int ownerId) {
 		String sql1="Delete Restaurant.*,Dish.* from Restaurant INNER JOIN Dish\n"
-				+" ON Restaurant.id=Dish.restaurantId AND Restaurnat.ownerId=?";
+				+" ON Restaurant.id=Dish.restaurantId AND Restaurant.ownerId=?";
 		String sql2="DELETE from Restaurant where ownerId=?";
 		String sql3="DELETE from Owner where id=?";
 		this.jdbcTemplate.update(sql1,ownerId);

@@ -34,10 +34,10 @@ public class OwnerController {
 		return "ownerLogin";
 	}
 	
-	@RequestMapping("/remove/{oid}")
+	@RequestMapping("/deleteowner/{oid}")
 	public String removeOwner(@PathVariable("oid") int ownerId) {
 		this.ownerDao.deleteOwner(ownerId);
-		return "loginOwner";
+		return "ownerLogin";
 	}
 	
 	@RequestMapping("/ownerprofile/{oid}")
@@ -68,7 +68,7 @@ public class OwnerController {
 		List<Restaurant> restaurants = this.ownerDao.getMyResaurants(ownerId);
 		m.addAttribute("oid",ownerId);
 		m.addAttribute("restaurants", restaurants);
-		return "ownerRestaurant";
+		return "ownerHome";
 	}
 	
 	@RequestMapping("/getowner/{oid}")
@@ -89,15 +89,19 @@ public class OwnerController {
 	}
 	
 	@RequestMapping("/ownerhome")
-	public String ownerHome(@RequestParam("email") String email,@RequestParam("password") String password,Model m) {
+	public RedirectView ownerHome(@RequestParam("email") String email,@RequestParam("password") String password,Model m,HttpServletRequest request) {
 		int id = ownerDao.authenticateOwner(email, password);
 		if(id!=0) {
-			m.addAttribute("oid", id);
-			return "ownerHome";
+			String url="/ownerrestaurant/"+id;
+			RedirectView redirectView= new RedirectView();
+			redirectView.setUrl(request.getContextPath()+url);
+			return redirectView;
 		}
 		else {
-			m.addAttribute("msg", "Entered email or password is wrong...");
-			return "ownerLogin";
+			String url="/ownerrelogin";
+			RedirectView redirectView=new RedirectView();
+			redirectView.setUrl(request.getContextPath()+url);
+			return redirectView;
 		}
 	}
 }

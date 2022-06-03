@@ -26,7 +26,7 @@
 				<tr>
 					<td scope="row">${d.dishName }</td>
 					<td scope="row">${d.dishPrice }</td>
-					<td scope="row"><a href="${pageContext.request.contextPath }/setorderdish/${uid }/${d.restaurantId }/${d.id }/${orid }" class="badge badge-danger">Add to Orders</a></td>
+					<td scope="row"><a href="${pageContext.request.contextPath }/setorderdish/${uid }/${d.restaurantId }/${d.id }/${orid }" class="badge badge-success">Add to Orders</a></td>
 				</tr>
 			</tbody>
 		</c:forEach>

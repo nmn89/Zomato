@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@page isELIgnored="false" %>
+<%@include file="./base.jsp"%>
 <!DOCTYPE html>
 <html>
 <style>  
@@ -48,7 +49,7 @@
 <button class="dropbtn">Select Location</button>  
 <div class="dropdown-content">  
 <c:forEach items="${locations }" var="l">
-							<a href="${pageContext.request.contextPath }/viewrestaurant/${uid }/${l.id }">${l.location }</a>
+							<a href="${pageContext.request.contextPath }/userhome/${uid }/${l.id }">${l.location }</a>
 </c:forEach>
 </div>  
 </div> 

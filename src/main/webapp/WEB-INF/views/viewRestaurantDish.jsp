@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1 class="text-center mt-5 font-weight-bold">My Restaurant's Dish</h1>
-	<div class="row">
+	<div class="row" style="width:800px;margin-top:80px;margin-left:300px;">
 		<div class="col-md-12">
 			<table class="table">
 				<thead class="thead-dark">

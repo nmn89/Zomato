@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@page isELIgnored="false" %>
 <%@include file="./base.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -27,6 +28,14 @@
 				<label for="number">Mobile No.</label> <input type="text"
 					class="form-control" id="number" aria-describedby="emailHelp"
 					placeholder="Enter mobile no." name="number" required>
+			</div>
+			<div class="form-group">
+				<label for="restaurantName">Select your Location</label> <select
+					name="defaultLocationId" id="defaultLocationId">
+					<c:forEach items="${locations }" var="l">
+						<option value="${l.id }">${l.location }</option>
+					</c:forEach>
+				</select>
 			</div>
 			<div class="form-group">
 				<label for="userPassword">Password</label> <input type="password"

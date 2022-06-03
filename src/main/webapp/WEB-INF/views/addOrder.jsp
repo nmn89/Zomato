@@ -20,9 +20,14 @@
 		action="${pageContext.request.contextPath }/addorder/${uid }/${rid }" method="post">
 
 		<div class="form-group">
-			<label for="uid">User Id</label> <input type="text"
+			<input type="hidden"
 				class="form-control" id="uid" aria-describedby="uid" name="userId"
 				value="${uid }" readOnly>
+		</div>
+		<div class="form-group">
+			<label for="date">Restaurant Name</label> <input type="text"
+				class="form-control"
+				value="${restaurant }" readOnly>
 		</div>
 		<div class="form-group">
 			<label for="date">Date of Order</label> <input type="text"
@@ -30,7 +35,7 @@
 				value="<%=newDate%>" readOnly>
 		</div>
 		<div class="form-group">
-			<label for="rid">Restaurant Id</label> <input type="text"
+			<input type="hidden"
 				class="form-control" id="rid" aria-describedby="rid" name="restaurantId"
 				value="${rid }" readOnly>
 		</div>

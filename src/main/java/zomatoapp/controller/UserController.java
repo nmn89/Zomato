@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import zomatoapp.dao.OrderDishDao;
 import zomatoapp.dao.UserDao;
 import zomatoapp.dao.UserDaoHibernate;
 import zomatoapp.model.Restaurant;
 import zomatoapp.model.User;
+import zomatoapp.viewobjects.OrderDishesViewObject;
 import zomatoapp.viewobjects.UserOrderViewObject;
 
 @Controller
@@ -27,6 +29,9 @@ public class UserController {
 	
 	@Autowired
 	private UserDaoHibernate userDaoHibernate;
+	
+	@Autowired
+	private OrderDishDao orderDishDao;
 	
 	@RequestMapping("/register")
 	public String userRegister(@ModelAttribute User user,Model m) {
@@ -84,15 +89,20 @@ public class UserController {
 	}
 	
 	@RequestMapping("/userhome")
-	public String userHome(@RequestParam("email") String email,@RequestParam("password") String password,Model m) {
+	public RedirectView userHome(@RequestParam("email") String email,@RequestParam("password") String password,Model m,HttpServletRequest request) {
 		int id = userDao.authenticateUser(email, password);
 		if(id!=0) {
-			m.addAttribute("uid", id);
-			return "userHome";
+			int locationId = userDao.getUserLocation(id);
+			String url="/userhome/"+id+"/"+locationId;
+			RedirectView redirectView= new RedirectView();
+			redirectView.setUrl(request.getContextPath()+url);
+			return redirectView;
 		}
 		else {
-			m.addAttribute("msg", "Entered email or password is wrong...");
-			return "userLogin";
+			String url="/login";
+			RedirectView redirectView= new RedirectView();
+			redirectView.setUrl(request.getContextPath()+url);
+			return redirectView;
 		}
 	}
 }

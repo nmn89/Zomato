@@ -39,12 +39,14 @@ public class RestaurantController {
 		return "searchLocation";
 	}
 
-	@RequestMapping("/viewrestaurant/{uid}/{locationid}")
-	public String viewRestaurants(@PathVariable("uid") int userId,@PathVariable("locationid") int locationId,Model m) {
+	@RequestMapping("/userhome/{uid}/{locationid}")
+	public String homePage(@PathVariable("uid") int userId,@PathVariable("locationid") int locationId,Model m) {
 		List<Restaurant> restaurants = this.restaurantDao.getRestaurants(locationId);
 		m.addAttribute("restaurants",restaurants);
+		List<Location> locations = restaurantDao.getAllLocations();
+		m.addAttribute("locations", locations);
 		m.addAttribute("uid", userId);
-		return "viewRestaurant";
+		return "userHome";
 	}
 	
 	@RequestMapping("/showdish/{rid}")

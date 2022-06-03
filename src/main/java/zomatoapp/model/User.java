@@ -15,6 +15,7 @@ public class User {
 	private String email;
 	private long number;
 	private String password;
+	private int defaultLocationId;
 	public int getId() {
 		return id;
 	}
@@ -45,21 +46,28 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public int getDefaultLocationId() {
+		return defaultLocationId;
+	}
+	public void setDefaultLocationId(int defaultLocationId) {
+		this.defaultLocationId = defaultLocationId;
+	}
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(int id, String userName, String email, long number, String password) {
+	public User(int id, String userName, String email, long number, String password, int defaultLocationId) {
 		super();
 		this.id = id;
 		this.userName = userName;
 		this.email = email;
 		this.number = number;
 		this.password = password;
+		this.defaultLocationId = defaultLocationId;
 	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", email=" + email + ", number=" + number + ", password="
-				+ password + "]";
+				+ password + ", defaultLocationId=" + defaultLocationId + "]";
 	}
 }

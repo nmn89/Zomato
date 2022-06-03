@@ -25,15 +25,12 @@
 						</tr>
 					</thead>
 					<c:forEach items="${restaurants }" var="r">
-						<tbody>
-							<tr>
-								<td><a
-									href="${pageContext.request.contextPath }/viewdish/${r.id }">${r.restaurantName }</a></td>
-								<td><a style="width: 100px"
+								<a
+									href="${pageContext.request.contextPath }/viewdish/${r.id }">${r.restaurantName }</a>
+								<a style="width: 100px"
 									href="${pageContext.request.contextPath }/setrestaurantorder/${r.id }/${uid }">Order
-										Now</a></td>
-							</tr>
-						</tbody>
+										Now</a>
+							
 					</c:forEach>
 				</table>
 			</div>

@@ -32,7 +32,7 @@
 			<div class="container text-center mt-2">
 				<a href="ownerlogin">Login as Owner</a>
 			</div>
-			<div>
+			<div class="text-center">
 				<p style="font-style: italic; color:red;">${msg }</p>
 			</div>
 		</form>

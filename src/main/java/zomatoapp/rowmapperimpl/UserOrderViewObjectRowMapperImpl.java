@@ -13,7 +13,6 @@ public class UserOrderViewObjectRowMapperImpl implements RowMapper<UserOrderView
 		UserOrderViewObject userOrderViewObject = new UserOrderViewObject();
 		userOrderViewObject.setOrderId(rs.getInt("id"));
 		userOrderViewObject.setRestaurantName(rs.getString("restaurantName"));
-		userOrderViewObject.setDishName(rs.getString("dishName"));
 		userOrderViewObject.setDate(rs.getString("date"));
 		return userOrderViewObject;
 	}

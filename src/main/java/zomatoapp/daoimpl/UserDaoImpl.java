@@ -44,18 +44,22 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	public List<UserOrderViewObject> getMyOrders(int userId) {
-		String sql = "select uo.id,uo.date,r.restaurantName,d.DishName from UserOrder uo INNER JOIN OrderDish od ON uo.id=od.orderId INNER JOIN Dish d ON od.dishId=d\n"
-				+ ".id INNER JOIN Restaurant r ON d.restaurantId=r.id AND uo.userId=?";
+		String sql = "select uo.id,uo.date,r.restaurantName from UserOrder uo INNER JOIN Restaurant r ON uo.restaurantId = r.id AND uo.userId=?";
 		RowMapper<UserOrderViewObject> rowMapper = new UserOrderViewObjectRowMapperImpl();
 		List<UserOrderViewObject> userOrders = this.jdbcTemplate.query(sql, rowMapper,userId);
 		return userOrders;
 	}
 	
+	public int getUserLocation(int id) {
+		String sql2="Select defaultLocationId from User where id=?";
+		int locationId= this.jdbcTemplate.queryForObject(sql2,Integer.class,id);
+		return locationId;
+	}
+	
 	public int authenticateUser(String email,String password) {
-		String sql="Select id from User where  email=? and password=?";
+		String sql="Select id from User where email=? and password=?";
 		try {
 			int id = this.jdbcTemplate.queryForObject(sql,Integer.class,email,password);
-			System.out.println(id);
 			if(id!=0) {
 				return id;
 			}

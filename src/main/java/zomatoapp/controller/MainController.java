@@ -9,38 +9,58 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import zomatoapp.dao.DishDao;
+import zomatoapp.dao.DishDaoHibernate;
+import zomatoapp.dao.LocationDao;
 import zomatoapp.dao.OrderDishDao;
 import zomatoapp.dao.RestaurantDao;
+import zomatoapp.dao.RestaurantDaoHibernate;
 import zomatoapp.dao.UserDao;
+import zomatoapp.model.Dish;
+import zomatoapp.model.Location;
+import zomatoapp.model.Restaurant;
 import zomatoapp.viewobjects.OrderDishesViewObject;
 
 @Controller
 public class MainController {
 	
 	@Autowired
-	private RestaurantDao restaurantDao;
-	
-	@Autowired
-	private DishDao dishDao;
-	
-	@Autowired
-	private UserDao userDao;
+	private DishDaoHibernate dishDaoHibernate;
 	
 	@Autowired
 	private OrderDishDao orderDishDao;
+	
+	@Autowired
+	private LocationDao locationDao;
+	
+	@Autowired
+	private RestaurantDaoHibernate restaurantDaoHibernate;
 	
 	@RequestMapping("/")
 	public String loginUser() {
 		return "userLogin";
 	}
 	
+	@RequestMapping("/login")
+	public String userLogin(Model m) {
+		m.addAttribute("msg", "Entered email or password is wrong...");
+		return "userLogin";
+	}
+	
 	@RequestMapping("/registeruser")
-	public String registerUser() {
+	public String registerUser(Model m) {
+		List<Location> locations = locationDao.getAllLocations();
+		m.addAttribute("locations", locations);
 		return "userRegister";
 	}
 	
 	@RequestMapping("/ownerlogin")
 	public String loginOwner() {
+		return "ownerLogin";
+	}
+	
+	@RequestMapping("/ownerrelogin")
+	public String ownerLogin(Model m) {
+		m.addAttribute("msg", "Entered email or password is wrong...");
 		return "ownerLogin";
 	}
 	
@@ -72,12 +92,16 @@ public class MainController {
 	public String addOrder(@PathVariable("uid") int userId,@PathVariable("rid") int restaurantId,Model m) {
 		m.addAttribute("uid", userId);
 		m.addAttribute("rid", restaurantId);
+		Restaurant restaurant= this.restaurantDaoHibernate.getRestaurant(restaurantId);
+		m.addAttribute("restaurant",restaurant.getRestaurantName());
 		return "addOrder";
 	}
 	
 	@RequestMapping("/setorderdish/{uid}/{rid}/{did}/{orid}")
 	public String addOrderDish(@PathVariable("uid") int userId,@PathVariable("rid") int restaurantId,@PathVariable("did") int dishId,@PathVariable("orid") int orderId,Model m) {
 		m.addAttribute("orid", orderId);
+		Dish dish= this.dishDaoHibernate.getDish(dishId);
+		m.addAttribute("dish", dish.getDishName());
 		m.addAttribute("did", dishId);
 		m.addAttribute("rid", restaurantId);
 		m.addAttribute("uid", userId);

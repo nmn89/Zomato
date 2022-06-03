@@ -13,5 +13,6 @@ public interface UserDao {
 	public void deleteUser(int userId);
 	public Restaurant searchRestaurant(String restaurantName);
 	public List<UserOrderViewObject> getMyOrders(int userId);
+	public int getUserLocation(int id);
 	public int authenticateUser(String email,String password);
 }

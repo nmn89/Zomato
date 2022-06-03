@@ -14,14 +14,19 @@
 		action="${pageContext.request.contextPath }/orderdishadded/${rid }/${uid }"
 		method="post">
 		<div class="form-group">
-			<label for="did">Dish Id</label> <input type="text"
+			<input type="hidden"
 				class="form-control" id="did" aria-describedby="did" name="dishId"
 				value="${did }" readOnly>
 		</div>
 		<div class="form-group">
-			<label for="orid">Order Id</label> <input type="text"
+			<input type="hidden"
 				class="form-control" id="orid" aria-describedby="orid" name="orderId"
 				value="${orid }" readOnly>
+		</div>
+		<div class="form-group">
+			<label for="quantity">Dish Name</label> <input type="text"
+				class="form-control" value="${dish }" aria-describedby="quantity"
+				required>
 		</div>
 		<div class="form-group">
 			<label for="quantity">Quantity</label> <input type="text"

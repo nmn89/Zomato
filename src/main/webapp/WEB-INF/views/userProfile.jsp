@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1 class="text-center my-3 font-weight-bold">My Profile</h1>
-	<div class="row">
+	<div class="row" style="width:1300px; margin-top:50px;margin-left:25px">
 		<div class="col-md-12">
 			<table class="table">
 				<thead class="thead-dark">
