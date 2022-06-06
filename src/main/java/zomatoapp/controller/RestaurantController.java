@@ -52,7 +52,8 @@ public class RestaurantController {
 	@RequestMapping("/showdish/{rid}")
 	public String getDishes(@PathVariable("rid") int restaurantId,Model m) {
 		List<Dish> dishes = this.restaurantDao.getMyDishes(restaurantId);
-		m.addAttribute("rid", restaurantId);
+		Restaurant restaurant = this.restaurantDaoHibernate.getRestaurant(restaurantId);
+		m.addAttribute("restaurant", restaurant);
 		m.addAttribute("dishes", dishes);
 		return "myRestaurantDish";
 	}
@@ -69,6 +70,8 @@ public class RestaurantController {
 	@RequestMapping("/showorder/{rid}")
 	public String showRestaurantOrders(@PathVariable("rid") int restaurantId,Model m) {
 		List<RestaurantOrderViewObject> myOrders = this.restaurantDao.getRestaurantOrders(restaurantId);
+		Restaurant restaurant = this.restaurantDaoHibernate.getRestaurant(restaurantId);
+		m.addAttribute("rname", restaurant.getRestaurantName());
 		m.addAttribute("orders", myOrders);
 		return "restaurantOrder";
 	}

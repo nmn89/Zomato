@@ -9,13 +9,12 @@
 <title>Owner Profile</title>
 </head>
 <body>
-<h1 class="text-center mb-3">Owner Profile</h1>
+<h1 class="text-center my-3 font-weight-bold alert-dark" style="width:70%;margin-left:200px;">Owner Profile</h1>
 	<div class="row px-5">
 		<div class="col-md-12">
-<table class="table">
+<table class="table mx-5 my-4" style="width:90%;">
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">Owner Id</th>
 				<th scope="col">Owner Name</th>
 				<th scope="col">Mobile Number</th>
 				<th scope="col">Email-Id</th>
@@ -23,7 +22,6 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td scope="row">${owner.id }</td>
 				<td scope="row">${owner.ownerName }</td>
 				<td scope="row">${owner.mobileNo }</td>
 				<td scope="row">${owner.email }</td>
@@ -33,8 +31,8 @@
 </div>
 </div>
 	<div class="container text-center mt-3">
-<button class="btn btn-light"><a href="${pageContext.request.contextPath }/deleteowner/${owner.id }">Delete Account</a></button>
-<button class="btn btn-light"><a href="${pageContext.request.contextPath }/getowner/${owner.id }">Update Account</a></button>
+<a class="btn btn-outline-danger" href="${pageContext.request.contextPath }/deleteowner/${owner.id }">Delete Account</a>
+<a class="btn btn-outline-primary ml-3" href="${pageContext.request.contextPath }/getowner/${owner.id }">Update Account</a>
 </div>
 </body>
 </html>

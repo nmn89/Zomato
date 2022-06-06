@@ -10,12 +10,14 @@
 <title>Restaurant Order</title>
 </head>
 <body>
-<h1 class="text-center my-3 font-weight-bold">Restaurant's Orders</h1>
+<h1 class="text-center my-3 font-weight-bold alert-dark" style="width:70%;margin-left:200px;">${rname } Orders</h1>
 	<div class="row">
 		<div class="col-md-12">
-			<table class="table">
+		<div class="card shadow-lg mt-5">
+			<table class="table mx-5 my-4" style="width:90%;">
 				<thead class="thead-dark">
 			<tr>
+				<th scope="col">Order Id</th>
 				<th scope="col">Order Date</th>
 				<th scope="col">Dish Name</th>
 				<th scope="col">User Name</th>
@@ -24,6 +26,7 @@
 		<c:forEach items="${orders }" var="o">
 			<tbody>
 				<tr>
+				<td scope="row">${o.orderId }</td>
 					<td scope="row">${o.date }</td>
 					<td scope="row">${o.dishName }</td>
 					<td scope="row">${o.userName }</td>
@@ -31,6 +34,7 @@
 			</tbody>
 		</c:forEach>
 	</table>
+	</div>
 </div>
 </div>
 </body>

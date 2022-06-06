@@ -69,12 +69,6 @@ public class MainController {
 		return "ownerRegister";
 	}
 	
-	@RequestMapping("/addlocation/{ownerid}")
-	public String addLocation(@PathVariable("ownerid") int ownerId,Model m) {
-		m.addAttribute("oid", ownerId);
-		return "addLocation";
-	}
-	
 	@RequestMapping("/addrestaurant/{locationid}/{oid}")
 	public String createRestaurant(@PathVariable("locationid") int locationId,@PathVariable("oid") int ownerId,Model m) {
 		m.addAttribute("lid", locationId);
@@ -86,15 +80,6 @@ public class MainController {
 	public String addDish(@PathVariable("rid") int restaurantId,Model m) {
 		m.addAttribute("rid", restaurantId);
 		return "addDish";
-	}
-	
-	@RequestMapping("/setrestaurantorder/{rid}/{uid}")
-	public String addOrder(@PathVariable("uid") int userId,@PathVariable("rid") int restaurantId,Model m) {
-		m.addAttribute("uid", userId);
-		m.addAttribute("rid", restaurantId);
-		Restaurant restaurant= this.restaurantDaoHibernate.getRestaurant(restaurantId);
-		m.addAttribute("restaurant",restaurant.getRestaurantName());
-		return "addOrder";
 	}
 	
 	@RequestMapping("/setorderdish/{uid}/{rid}/{did}/{orid}")

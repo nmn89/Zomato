@@ -9,7 +9,7 @@
 <title>Update Owner</title>
 </head>
 <body>
-<div class="card container mt-5 py-3" style="width:500px">
+<div class="card shadow-lg container mt-5 py-3" style="width:500px">
 
 		<h1 class="text-center my-2">Update Owner</h1>
 

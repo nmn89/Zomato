@@ -9,7 +9,7 @@
 <title>Owner</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-info">
 		<div class="container-fluid">
 			<div class="d-inline-block align-text-top">
 				<img
@@ -17,14 +17,14 @@
 					class="mr-3" style="width: 110px; height: 65px">
 			</div>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent"
-				style="margin-left: 350px;">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 mr-4">
-					<li class="nav-item"><a class="btn btn-outline-primary"
+				style="margin-left: 170px;">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 mr-5">
+					<li class="nav-item mr-5"><a class="btn btn-outline-light"
 						href="${pageContext.request.contextPath }/ownerprofile/${oid }">Owner
 							Profile</a></li>
-					<li class="nav-item">
+					<li class="nav-item mr-5">
 
-						<button type="button" class="btn btn-outline-primary ml-4" data-toggle="modal"
+						<button type="button" class="btn btn-outline-light ml-4" data-toggle="modal"
 							data-target="#${oid }">Add Location</button>
 						<div class="modal fade" id="${oid }" tabindex="-1"
 							aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -61,10 +61,10 @@
 								</div>
 							</div>
 						</div>
-					<li class="nav-item ml-4"><a class="btn btn-outline-primary"
+					<li class="nav-item ml-4 mr-5"><a class="btn btn-outline-light"
 						href="${pageContext.request.contextPath }/location/${oid }">Add
 							Restaurant</a></li>
-					<li class="nav-item ml-4"><a class="btn btn-outline-primary"
+					<li class="nav-item ml-5"><a class="btn btn-outline-light"
 						href="${pageContext.request.contextPath }/ownerlogin"
 						tabindex="-1">Logout</a></li>
 				</ul>
@@ -74,18 +74,18 @@
 	<c:forEach items="${restaurants }" var="r">
 		<div
 			class="card mb-3 ml-5 mt-5 d-inline-flex flex-direction-row shadow-lg mb-5 bg-white rounded"
-			style="margin-right: 20px; width: 50%; height: 200px;">
+			style="margin-right: 20px; width: 42%; height: 200px;">
 			<div class="row no-gutters">
 				<div class="col-md-6">
-					<img style="width: 300px;" class="ml-3 mt-3 rounded"
+					<img style="width: 270px;" class="ml-3 mt-3 rounded"
 						src="https://i.ndtvimg.com/i/2015-06/fusion-food_625x350_71434106320.jpg">
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-5 ml-3">
 					<div class="card-body">
-						<h3 class="card-title">
-							<a class="text-dark"
+						<h5 class="card-title">
+							<a class="text-dark font-weight-bold"
 								href="${pageContext.request.contextPath }/showdish/${r.id }">${r.restaurantName }</a>
-						</h3>
+						</h5>
 						<p class="card-text">
 							<a class="btn btn-outline-success"
 								href="${pageContext.request.contextPath }/adddish/${r.id }">Add
@@ -93,13 +93,12 @@
 						</p>
 						<p class="card-text">
 							<a class="text-dark"
-								href="${pageContext.request.contextPath }/showorder/${r.id }">Restaurant
-								Orders</a>
+								href="${pageContext.request.contextPath }/showorder/${r.id }">Restaurant Orders</a>
 						</p>
 						<p class="card-text">
 							<a class="text-dark"
 								href="${pageContext.request.contextPath }/removerestaurant/${r.id }/${oid }">Delete
-								Restaurant</a>
+								</a>
 						</p>
 					</div>
 				</div>

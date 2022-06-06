@@ -50,9 +50,9 @@
 <title>Add Restaurant</title>
 </head>
 <body>
-<div class="card container mt-5 py-3" style="width: 500px">
-<h1 class="text-center mt-5">Add Restaurant</h1>
-	<form class="container mt-5 py-3" style="width: 500px"
+<div class="card shadow-lg container mt-5 py-3" style="width: 500px">
+<h1 class="text-center mt-3">Add Restaurant</h1>
+	<form class="container mt-2 py-3" style="width: 500px"
 		action="${pageContext.request.contextPath }/restaurantadded/${oid }"
 		method="post">
 		<div class="form-group">
@@ -60,8 +60,9 @@
 				type="text" class="form-control" id="restaurantName"
 				aria-describedby="restaurantname"
 				placeholder="Enter your Restaurant name" name="restaurantName"
-				required>
+				required style="width:450px">
 		</div>
+		<div class="mt-4">
 		<label for="restaurantName">Select Location</label>
 		<select name="locationId" id="locationId">
 		<c:forEach items="${locations }" var="l">
@@ -70,7 +71,8 @@
   </select>
 <input type="hidden" value="${oid }" name="ownerId" />
 		<div class="container text-center mt-3">
-			<button type="submit" class="btn btn-success">Submit</button>
+			<button type="submit" class="btn btn-outline-success">Submit</button>
+		</div>
 		</div>
 	</form>
 	</div>

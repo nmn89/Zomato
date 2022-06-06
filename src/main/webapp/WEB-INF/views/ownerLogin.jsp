@@ -26,7 +26,7 @@
 					placeholder="Enter password" name="password" required>
 			</div>
 			<div class="container text-center mt-3">
-				<button type="submit" class="btn btn-outline-danger">Login</button>
+				<button type="submit" class="btn btn-outline-success">Login</button>
 			</div>
 			<div class="container text-center mt-3	">
 				<a href="ownerregister">Not Registered! Create Account</a>

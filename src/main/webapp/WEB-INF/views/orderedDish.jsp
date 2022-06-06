@@ -10,10 +10,11 @@
 <title>Ordered Dish</title>
 </head>
 <body>
-<h2 class="text-center mb-3">Ordered Dish</h2>
+<h1 class="text-center my-3 font-weight-bold alert-dark" style="width:70%;margin-left:200px;">Ordered Dish</h1>
 	<div class="row px-5">
 		<div class="col-md-12">
-			<table class="table">
+		<div class="card shadow-lg mt-5">
+			<table class="table mx-5 my-4" style="width:90%;">
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">Dish Name</th>
@@ -29,6 +30,7 @@
 					</tbody>
 				</c:forEach>
 			</table>
+			</div>
 		</div>
 	</div>
 </body>

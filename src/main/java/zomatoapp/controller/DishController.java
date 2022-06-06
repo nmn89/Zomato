@@ -24,10 +24,13 @@ public class DishController {
 	private DishDaoHibernate dishDaoHibernate;
 	
 	@RequestMapping("/dishadded/{rid}")
-	public String addDish(@PathVariable("rid") int rid,@ModelAttribute Dish dish,Model m) {
+	public RedirectView addDish(@PathVariable("rid") int rid,@ModelAttribute Dish dish,Model m,HttpServletRequest request) {
 		this.dishDaoHibernate.createDish(dish);
 		m.addAttribute("rid", rid);
-		return "dishAdded";
+		String url = "/showdish/"+rid;
+		RedirectView redirectView= new RedirectView();
+		redirectView.setUrl(request.getContextPath()+url);
+		return redirectView;
 	}
 	
 	@RequestMapping("/removedish/{did}/{rid}")
