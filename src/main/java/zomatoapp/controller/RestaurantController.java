@@ -40,7 +40,7 @@ public class RestaurantController {
 	}
 
 	@RequestMapping("/userhome/{uid}/{locationid}")
-	public String homePage(@PathVariable("uid") int userId,@PathVariable("locationid") int locationId,Model m) {
+	public String userHomePage(@PathVariable("uid") int userId,@PathVariable("locationid") int locationId,Model m) {
 		List<Restaurant> restaurants = this.restaurantDao.getRestaurants(locationId);
 		m.addAttribute("restaurants",restaurants);
 		List<Location> locations = restaurantDao.getAllLocations();

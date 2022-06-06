@@ -34,6 +34,14 @@
 					placeholder="Enter mobile no." name="number" value="${user.number }">
 			</div>
 			<div class="form-group">
+				<label for="restaurantName">Select your Location</label> <select
+					name="defaultLocationId" id="defaultLocationId">
+					<c:forEach items="${locations }" var="l">
+						<option value="${l.id }">${l.location }</option>
+					</c:forEach>
+				</select>
+			</div>
+			<div class="form-group">
 				<label for="userPassword">Password</label> <input type="password"
 					class="form-control" id="userPassword" aria-describedby="username"
 					placeholder="Enter password" name="password" value="${user.password }">

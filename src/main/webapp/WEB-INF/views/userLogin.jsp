@@ -9,7 +9,7 @@
 <title>User Login</title>
 </head>
 <body>
-<div class="card container mt-5 py-3" style="width:500px">
+<div class="card shadow-lg container mt-5 py-3" style="width:500px">
 	<h2 class="text-center my-2">Login</h2>
 		<form action="userhome" method="post">
 			<div class="form-group">

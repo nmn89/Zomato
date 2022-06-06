@@ -9,5 +9,5 @@ public interface LocationDao {
 
 	public void addLocation(Location location);
 	public List<Location> getAllLocations();
+	public Location getLocation(int locationId);
 }
-//public int getLocationId(String location);

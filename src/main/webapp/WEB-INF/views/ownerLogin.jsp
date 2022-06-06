@@ -9,11 +9,12 @@
 <title>Owner Login</title>
 </head>
 <body>
-<h1 class="text-center mt-5">Owner Login</h1>
+<div class="card shadow-lg container mt-5 py-3" style="width:500px">
+<h1 class="text-center mt-3">Owner Login</h1>
 
 	<div>
 
-		<form class="card container mt-5 py-3" style="width: 500px" action="ownerhome" method="post">
+		<form class="container mt-3 py-3" style="width: 460px" action="ownerhome" method="post">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email</label> <input
 					type="text" class="form-control" id="email"
@@ -35,6 +36,7 @@
 				<p style="font-style: italic; color:red;">${msg }</p>
 			</div>
 		</form>
+	</div>
 	</div>
 </body>
 </html>

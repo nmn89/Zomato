@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>Owner Registration</title>
 </head>
-<body style="background-color:#6495ED">
-<div class="card container mt-5 py-3" style="width:500px">
+<body>
+<div class="card shadow-lg container mt-5 py-3" style="width:500px">
 
 		<h2 class="text-center my-2">Owner Registration</h2>
 

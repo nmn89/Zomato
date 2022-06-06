@@ -24,8 +24,8 @@
 							Profile</a></li>
 					<li class="nav-item mr-5">
 
-						<button type="button" class="btn btn-outline-light ml-4" data-toggle="modal"
-							data-target="#${oid }">Add Location</button>
+						<button type="button" class="btn btn-outline-light ml-4"
+							data-toggle="modal" data-target="#${oid }">Add Location</button>
 						<div class="modal fade" id="${oid }" tabindex="-1"
 							aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
@@ -61,9 +61,52 @@
 								</div>
 							</div>
 						</div>
-					<li class="nav-item ml-4 mr-5"><a class="btn btn-outline-light"
-						href="${pageContext.request.contextPath }/location/${oid }">Add
-							Restaurant</a></li>
+					<li class="nav-item ml-4 mr-5">
+						<button type="button" class="btn btn-outline-light"
+							data-toggle="modal" data-target="#addRestaurant">Add
+							Restaurant</button>
+						<div class="modal fade" id="addRestaurant" tabindex="-1"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Add
+											Restaurant</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<form class="container mt-2 py-3" style="width: 500px"
+											action="${pageContext.request.contextPath }/restaurantadded/${oid }"
+											method="post">
+											<div class="form-group">
+												<label for="restaurantName">Restaurant Name</label> <input
+													type="text" class="form-control" id="restaurantName"
+													aria-describedby="restaurantname"
+													placeholder="Enter your Restaurant name"
+													name="restaurantName" required style="width: 450px">
+											</div>
+											<div class="mt-4">
+												<label for="restaurantName">Select Location</label> <select
+													name="locationId" id="locationId">
+													<c:forEach items="${locations }" var="l">
+														<option value="${l.id }">${l.location }</option>
+													</c:forEach>
+												</select> <input type="hidden" value="${oid }" name="ownerId" />
+											</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-success">Save
+											changes</button>
+									</div>
+									</form>
+								</div>
+							</div>
+						</div>
 					<li class="nav-item ml-5"><a class="btn btn-outline-light"
 						href="${pageContext.request.contextPath }/ownerlogin"
 						tabindex="-1">Logout</a></li>
@@ -93,12 +136,13 @@
 						</p>
 						<p class="card-text">
 							<a class="text-dark"
-								href="${pageContext.request.contextPath }/showorder/${r.id }">Restaurant Orders</a>
+								href="${pageContext.request.contextPath }/showorder/${r.id }">Restaurant
+								Orders</a>
 						</p>
 						<p class="card-text">
 							<a class="text-dark"
 								href="${pageContext.request.contextPath }/removerestaurant/${r.id }/${oid }">Delete
-								</a>
+							</a>
 						</p>
 					</div>
 				</div>

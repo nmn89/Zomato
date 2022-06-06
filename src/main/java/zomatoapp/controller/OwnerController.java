@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import zomatoapp.dao.LocationDao;
 import zomatoapp.dao.OwnerDao;
 import zomatoapp.dao.OwnerDaoHibernate;
+import zomatoapp.model.Location;
 import zomatoapp.model.Owner;
 import zomatoapp.model.Restaurant;
 
@@ -26,6 +28,9 @@ public class OwnerController {
 	
 	@Autowired
 	private OwnerDaoHibernate ownerDaoHibernate;
+	
+	@Autowired
+	private LocationDao locationDao;
 	
 	@RequestMapping("/owner")
 	public String addOwner(@ModelAttribute Owner owner,Model m) {
@@ -48,10 +53,13 @@ public class OwnerController {
 	}
 	
 	@RequestMapping("/restaurantadded/{oid}")
-	public String addRestaurant(@PathVariable("oid") int ownerId,@ModelAttribute Restaurant restaurant,Model m) {
+	public RedirectView addRestaurant(@PathVariable("oid") int ownerId,@ModelAttribute Restaurant restaurant,Model m,HttpServletRequest request) {
 		this.ownerDaoHibernate.addRestaurant(restaurant);
 		m.addAttribute("oid", ownerId);
-		return "restaurantAdded";
+		String url = "/ownerrestaurant/"+ownerId;
+		RedirectView redirectView= new RedirectView();
+		redirectView.setUrl(request.getContextPath()+url);
+		return redirectView;
 	}
 	
 	@RequestMapping("/removerestaurant/{rid}/{oid}")
@@ -66,6 +74,8 @@ public class OwnerController {
 	@RequestMapping("/ownerrestaurant/{oid}")
 	public String myRestaurants(@PathVariable("oid") int ownerId,Model m) { 
 		List<Restaurant> restaurants = this.ownerDao.getMyResaurants(ownerId);
+		List<Location> locations = locationDao.getAllLocations();
+		m.addAttribute("locations", locations);
 		m.addAttribute("oid",ownerId);
 		m.addAttribute("restaurants", restaurants);
 		return "ownerHome";
@@ -79,7 +89,7 @@ public class OwnerController {
 	}
 	
 	@RequestMapping("/updateowner")
-	private RedirectView updateOwner(@ModelAttribute Owner owner,@RequestParam("oid") int ownerId,HttpServletRequest request) {
+	private RedirectView updateOwner(@ModelAttribute Owner owner,@RequestParam("id") int ownerId,HttpServletRequest request) {
 		ownerDaoHibernate.createOwner(owner);
 		System.out.println(owner);
 		String url="/ownerprofile/"+ownerId;

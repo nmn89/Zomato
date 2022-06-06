@@ -69,28 +69,10 @@ public class MainController {
 		return "ownerRegister";
 	}
 	
-	@RequestMapping("/addrestaurant/{locationid}/{oid}")
-	public String createRestaurant(@PathVariable("locationid") int locationId,@PathVariable("oid") int ownerId,Model m) {
-		m.addAttribute("lid", locationId);
-		m.addAttribute("oid", ownerId);
-		return "addRestaurant";
-	}
-	
 	@RequestMapping("/adddish/{rid}")
 	public String addDish(@PathVariable("rid") int restaurantId,Model m) {
 		m.addAttribute("rid", restaurantId);
 		return "addDish";
-	}
-	
-	@RequestMapping("/setorderdish/{uid}/{rid}/{did}/{orid}")
-	public String addOrderDish(@PathVariable("uid") int userId,@PathVariable("rid") int restaurantId,@PathVariable("did") int dishId,@PathVariable("orid") int orderId,Model m) {
-		m.addAttribute("orid", orderId);
-		Dish dish= this.dishDaoHibernate.getDish(dishId);
-		m.addAttribute("dish", dish.getDishName());
-		m.addAttribute("did", dishId);
-		m.addAttribute("rid", restaurantId);
-		m.addAttribute("uid", userId);
-		return "addOrderDish";
 	}
 	
 	@RequestMapping("/successfull/{orid}/{rid}/{uid}")

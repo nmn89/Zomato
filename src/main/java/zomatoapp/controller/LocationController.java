@@ -35,7 +35,7 @@ public class LocationController {
 		List<Location> locations = locationDao.getAllLocations();
 		m.addAttribute("oid", ownerId);
 		m.addAttribute("locations", locations);
-		return "location";
+		return "addMyRestaurant";
 	}
 	
 	

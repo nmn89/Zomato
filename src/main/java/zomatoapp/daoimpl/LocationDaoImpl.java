@@ -27,4 +27,9 @@ public class LocationDaoImpl implements LocationDao{
 		List<Location> locations = this.hibernateTemplate.loadAll(Location.class);
 		return locations;
 	}
+	
+	public Location getLocation(int locationId) {
+		Location location= this.hibernateTemplate.get(Location.class,locationId);
+		return location;
+	}
 }

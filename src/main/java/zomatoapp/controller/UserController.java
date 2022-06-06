@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import zomatoapp.dao.LocationDao;
 import zomatoapp.dao.OrderDishDao;
 import zomatoapp.dao.UserDao;
 import zomatoapp.dao.UserDaoHibernate;
+import zomatoapp.model.Location;
 import zomatoapp.model.Restaurant;
 import zomatoapp.model.User;
 import zomatoapp.viewobjects.OrderDishesViewObject;
@@ -31,6 +33,9 @@ public class UserController {
 	private UserDaoHibernate userDaoHibernate;
 	
 	@Autowired
+	private LocationDao locationDao;
+	
+	@Autowired
 	private OrderDishDao orderDishDao;
 	
 	@RequestMapping("/register")
@@ -43,6 +48,8 @@ public class UserController {
 	@RequestMapping("/userprofile/{uid}")
 	public String userProfile(@PathVariable("uid") int userId,Model m) {
 		User user = this.userDaoHibernate.getUser(userId);
+		Location location= this.locationDao.getLocation(user.getDefaultLocationId());
+		m.addAttribute("location", location.getLocation());
 		m.addAttribute("profile", user);
 		return "userProfile";
 	}
@@ -74,6 +81,8 @@ public class UserController {
 	@RequestMapping("/getuser/{uid}")
 	public String getUser(@PathVariable("uid") int userId,Model m) {
 		User user=userDaoHibernate.getUser(userId);
+		List<Location> locations = locationDao.getAllLocations();
+		m.addAttribute("locations", locations);
 		m.addAttribute("user",user);
 		return "updateUser";
 	}
