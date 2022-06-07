@@ -12,7 +12,7 @@
 
 		<h2 class="text-center my-2">Owner Registration</h2>
 
-		<form action="owner" method="post">
+		<form method="post">
 			<div class="form-group">
 				<label for="ownerName">Owner Name</label> <input type="text"
 					class="form-control" id="ownerName" aria-describedby="ownername"
@@ -39,5 +39,17 @@
 			</div>
 		</form>
 	</div>
+	<script type="text/javascript">
+	let myButton=document.querySelector('button');
+	myButton.onclick=function(){
+		let form = document.querySelector('form');
+		form.addEventListener("submit",function(e){
+			e.preventDefault();
+			alert("Your Account Created Successfully");
+			form.action="owner";
+			form.submit();
+		})
+	};
+	</script>
 </body>
 </html>

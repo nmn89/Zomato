@@ -40,8 +40,13 @@
 	</div>
 	<div class="container text-center mt-3">
 			<a class="btn btn-outline-primary" href="${pageContext.request.contextPath }/showrestaurantdish/${rid }/${uid }/${orid }">Order More Dish</a>
-			<a class="btn btn-outline-success ml-4" href="${pageContext.request.contextPath }/getorder/${uid }">SubmitOrder</a>
+			<a onclick="submit()" class="btn btn-outline-success ml-4" href="${pageContext.request.contextPath }/getorder/${uid }">SubmitOrder</a>
 	</div>
-
+<script type="text/javascript">
+function submit(){
+	console.log("Ordered");
+	alert("Your order placed successfully");
+}
+</script>
 </body>
 </html>

@@ -41,7 +41,6 @@ public class UserController {
 	@RequestMapping("/register")
 	public String userRegister(@ModelAttribute User user,Model m) {
 		userDaoHibernate.createUser(user);
-		m.addAttribute("msg", "User Added Successfully");
 		return "userLogin";
 	}
 	

@@ -35,7 +35,6 @@ public class OwnerController {
 	@RequestMapping("/owner")
 	public String addOwner(@ModelAttribute Owner owner,Model m) {
 		ownerDaoHibernate.createOwner(owner);
-		m.addAttribute("msg", "Owner added successfully");
 		return "ownerLogin";
 	}
 	

@@ -82,7 +82,7 @@
 						href="${pageContext.request.contextPath }/userprofile/${uid }">User
 							Profile</a></li>
 					<li class="nav-item"><a class="btn btn-outline-light ml-4"
-						href="${pageContext.request.contextPath }/" tabindex="-1">Logout</a>
+					 tabindex="-1">Logout</a>
 					</li>
 				</ul>
 			</div>
@@ -143,7 +143,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
-						<button type="sub,mit" class="btn btn-primary">Save
+						<button type="submit" class="btn btn-primary">Save
 							changes</button>
 					</div>
 					</form>

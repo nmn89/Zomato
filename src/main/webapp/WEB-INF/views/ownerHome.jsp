@@ -39,8 +39,7 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<form class="container mt-5 py-3" style="width: 500px"
-											action="${pageContext.request.contextPath }/locationadded/${oid }"
+										<form class="container mt-5 py-3" id="locationForm" style="width: 500px"
 											method="post">
 											<div class="form-group">
 												<h4>
@@ -54,7 +53,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary">Save
+										<button type="submit" id="addLocation" class="btn btn-primary">Save
 											changes</button>
 									</div>
 									</form>
@@ -78,8 +77,7 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<form class="container mt-2 py-3" style="width: 500px"
-											action="${pageContext.request.contextPath }/restaurantadded/${oid }"
+										<form class="container mt-2 py-3" id="restaurantForm" style="width: 500px"
 											method="post">
 											<div class="form-group">
 												<label for="restaurantName">Restaurant Name</label> <input
@@ -100,7 +98,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-success">Save
+										<button type="submit" id="rest" class="btn btn-success">Save
 											changes</button>
 									</div>
 									</form>
@@ -108,7 +106,6 @@
 							</div>
 						</div>
 					<li class="nav-item ml-5"><a class="btn btn-outline-light"
-						href="${pageContext.request.contextPath }/ownerlogin"
 						tabindex="-1">Logout</a></li>
 				</ul>
 			</div>
@@ -149,5 +146,30 @@
 			</div>
 		</div>
 	</c:forEach>
+	<script type="text/javascript">
+	let restaurantButton=document.getElementById("rest");
+	restaurantButton.onclick=function(){
+		console.log("adding restaurant");
+		let form = document.getElementById("restaurantForm");
+		form.addEventListener("submit",function(e){
+			e.preventDefault();
+			alert("Restaurant Added Successfully");
+			form.action="${pageContext.request.contextPath }/restaurantadded/${oid }";
+			form.submit();
+		})
+	};
+	
+	let locationButton=document.getElementById("addLocation");
+	locationButton.onclick=function(){
+		console.log("adding location");
+		let form= document.getElementById("locationForm");
+		form.addEventListener("submit",function(e){
+			e.preventDefault();
+			alert("Location Added Successfully");
+			form.action="${pageContext.request.contextPath }/locationadded/${oid }";
+			form.submit();
+		})
+	}
+	</script>
 </body>
 </html>

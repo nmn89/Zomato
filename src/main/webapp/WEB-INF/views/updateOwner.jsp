@@ -43,5 +43,18 @@
 			</div>
 		</form>
 	</div>
+	<script type="text/javascript">
+	let myButton=document.querySelector('button');
+	myButton.onclick=function(){
+		console.log("Update Owner");
+		let form=document.querySelector('form');
+		form.addEventListener("submit",function(e){
+			e.preventDefault();
+			alert("Account Updated Successfully");
+			form.action="${pageContext.request.contextPath }/updateowner";
+			form.submit();
+		})
+	}
+	</script>
 </body>
 </html>

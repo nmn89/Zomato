@@ -12,7 +12,7 @@
 	<div class="card container mt-5 py-3" style="width:500px">
 
 		<h2 class="text-center my-3">User Registration</h2>
-		<form  action="register" method="post">
+		<form method="post">
 			<div class="form-group">
 				<label for="userName">User Name</label> <input type="text"
 					class="form-control" id="userName" aria-describedby="username"
@@ -47,5 +47,18 @@
 			</div>
 		</form>
 	</div>
+	<script type="text/javascript">
+	let myButton=document.querySelector('button');
+	myButton.onclick=function(){
+		console.log("hi");
+		let form = document.querySelector('form');
+		form.addEventListener("submit",function(e){
+			e.preventDefault();
+			alert("Your Account Created Successfully");
+			form.action="register";
+			form.submit();
+		})
+	};
+	</script>
 </body>
 </html>
