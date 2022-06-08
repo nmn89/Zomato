@@ -11,7 +11,7 @@
 <body>
 <div class="card shadow-lg container mt-5 py-3" style="width:500px">
 	<h2 class="text-center my-2">Login</h2>
-		<form method="post">
+		<form action="userhome" method="post">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email</label> <input
 					type="text" class="form-control" id="email"
@@ -37,18 +37,5 @@
 			</div>
 		</form>
 	</div>
-	<script type="text/javascript">
-	myButton=document.querySelector('button');
-	myButton.onclick=function(){
-		console.log("login");
-		let form = document.querySelector('form');
-		form.addEventListener("submit",function(e){
-			e.preventDefault();
-			alert("User LogIn Successfully");
-			form.action="userhome";
-			form.submit();
-		})
-	}
-	</script>
 </body>
 </html>

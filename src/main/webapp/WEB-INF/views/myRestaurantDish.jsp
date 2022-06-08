@@ -27,7 +27,7 @@
 				<tr>
 					<td scope="row">${d.dishName }</td>
 					<td scope="row">${d.dishPrice }</td>
-					<td scope="row"><a href="${pageContext.request.contextPath }/removedish/${d.id }/${restaurant.id }" class="badge badge-danger">Delete Dish</a></td>
+					<td scope="row"><button onclick="confirm(${d.id })" class="badge badge-danger">Delete Dish</button></td>
 				</tr>
 			</tbody>
 		</c:forEach>
@@ -35,5 +35,14 @@
 	</div>
 	</div>
 	</div>
+	<script type="text/javascript">
+	function confirm(id){
+		console.log("hi");
+		let result= confirm("Do you really want to delete Dish");
+		if(result){
+			window.location.href="${pageContext.request.contextPath }/removedish/id/${restaurant.id }";
+		}	
+	}
+	</script>
 </body>
 </html>

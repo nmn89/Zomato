@@ -81,7 +81,7 @@
 					<li class="nav-item"><a class="btn btn-outline-light ml-4"
 						href="${pageContext.request.contextPath }/userprofile/${uid }">User
 							Profile</a></li>
-					<li class="nav-item"><a class="btn btn-outline-light ml-4"
+					<li class="nav-item"><a onclick="logout()" class="btn btn-outline-light ml-4"
 					 tabindex="-1">Logout</a>
 					</li>
 				</ul>
@@ -151,5 +151,17 @@
 			</div>
 		</div>
 	</c:forEach>
+	<script type="text/javascript">
+	function logout(){
+		localStorage.removeItem('load');
+		window.location.href="${pageContext.request.contextPath }/";
+	}
+	window.addEventListener("load",function(){
+		if(localStorage.getItem('load')!=${uid }){
+			alert("User LogIn Successfully");
+			localStorage.setItem('load',${uid });
+		}
+	})
+	</script>
 </body>
 </html>

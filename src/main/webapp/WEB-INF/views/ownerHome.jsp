@@ -105,7 +105,7 @@
 								</div>
 							</div>
 						</div>
-					<li class="nav-item ml-5"><a class="btn btn-outline-light"
+					<li class="nav-item ml-5"><a onclick="logout()" class="btn btn-outline-light"
 						tabindex="-1">Logout</a></li>
 				</ul>
 			</div>
@@ -147,6 +147,17 @@
 		</div>
 	</c:forEach>
 	<script type="text/javascript">
+	function logout(){
+		localStorage.removeItem('load');
+		window.location.href="${pageContext.request.contextPath }/ownerlogin";
+	}
+	window.addEventListener("load",function(){
+		if(localStorage.getItem('load')!=${oid }){
+			alert("User LogIn Successfully");
+			localStorage.setItem('load',${oid });
+		}
+	})
+	
 	let restaurantButton=document.getElementById("rest");
 	restaurantButton.onclick=function(){
 		console.log("adding restaurant");
