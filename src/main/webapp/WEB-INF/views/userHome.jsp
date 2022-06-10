@@ -40,6 +40,44 @@
 }
 </style>
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+function logout(){
+	localStorage.removeItem('load');
+	window.location.href="${pageContext.request.contextPath }/";
+}
+window.addEventListener("load",function(){
+	if(localStorage.getItem('load')!=${uid }){
+		alert("User LogIn Successfully");
+		localStorage.setItem('load',${uid });
+	}
+})
+
+function refresh(){
+	window.location.reload();
+}
+
+	$(document).ready(function(){
+		$(".viewDish").click(function(){
+			var id = $(this).attr("id");
+			console.log(id);
+			$.getJSON("${pageContext.request.contextPath }/viewdish/"+id, function(result){
+				console.log(result);
+				var dishes = '';
+				$.each(result, function(key,value){
+					dishes += '<tbody>';
+					dishes += '<tr>';
+					dishes += '<td>'+key+'</td>';
+					dishes += '<td>'+value+'</td>';
+					dishes += '</tr>';
+					dishes += '</tbody>';
+				    });
+				$('table#dish_table').append(dishes);
+			});
+		});
+	});
+	</script>
 <meta charset="UTF-8">
 <title>Home Page</title>
 </head>
@@ -81,14 +119,13 @@
 					<li class="nav-item"><a class="btn btn-outline-light ml-4"
 						href="${pageContext.request.contextPath }/userprofile/${uid }">User
 							Profile</a></li>
-					<li class="nav-item"><a onclick="logout()" class="btn btn-outline-light ml-4"
-					 tabindex="-1">Logout</a>
-					</li>
+					<li class="nav-item"><a onclick="logout()"
+						class="btn btn-outline-light ml-4" tabindex="-1">Logout</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<c:forEach items="${restaurants }" var="r">
+	<c:forEach items="${restaurants }" var="r" varStatus="loop">
 		<div class="card mt-5 shadow-lg d-inline-flex"
 			style="margin-left: 100px; margin-right: 20px; width: 300px; height: 300px">
 			<div class="card-img-top">
@@ -97,16 +134,42 @@
 			</div>
 			<div class="card-body">
 				<h5>
-					<a href="${pageContext.request.contextPath }/viewdish/${r.id }"
-						class="text-dark" style="text-decoration: none">${r.restaurantName }</a>
+					<div>
+						<a id="${r.id }" class="viewDish" style="text-decoration: none" data-toggle="modal" data-target="#${r.restaurantName }">${r.restaurantName }</a>
+					</div>
 				</h5>
+				<div class="modal fade" id="${r.restaurantName }" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">${r.restaurantName }</h5>
+        <button onclick="refresh()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table id="dish_table" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Dish</th>
+      <th scope="col">Dish Price</th>
+    </tr>
+  </thead>
+</table>
+</div>
+      <div class="modal-footer">
+        <button onclick="refresh()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 			</div>
 			<div class="card-body">
 				<button type="button" class="btn btn-outline-info"
-					data-toggle="modal" data-target="#${r.id}">Add Order</button>
+					 data-toggle="modal" data-target="#id_${r.id}">Add Order</button>
 			</div>
 		</div>
-		<div class="modal fade" id="${r.id }" tabindex="-1"
+		<div class="modal fade" id="id_${r.id }" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -143,25 +206,31 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary">Save
-							changes</button>
+						<button type="submit" class="btn btn-primary">Order Food</button>
 					</div>
 					</form>
 				</div>
 			</div>
 		</div>
+		<div class="modal fade" id="exampleModal" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">...</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save
+							changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</c:forEach>
-	<script type="text/javascript">
-	function logout(){
-		localStorage.removeItem('load');
-		window.location.href="${pageContext.request.contextPath }/";
-	}
-	window.addEventListener("load",function(){
-		if(localStorage.getItem('load')!=${uid }){
-			alert("User LogIn Successfully");
-			localStorage.setItem('load',${uid });
-		}
-	})
-	</script>
 </body>
 </html>

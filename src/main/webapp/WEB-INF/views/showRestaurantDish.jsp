@@ -43,12 +43,22 @@
       </div>
       <div class="modal-body">
         <form class="container mt-3 py-3" style="width: 500px"
-		action="${pageContext.request.contextPath }/orderdishadded/${d.restaurantId }/${uid }"
+		action="${pageContext.request.contextPath }/orderdishadded"
 		method="post">
 		<div class="form-group">
 			<input type="hidden"
 				class="form-control" id="did" aria-describedby="did" name="dishId"
 				value="${d.id }" readOnly>
+		</div>
+		<div class="form-group">
+			<input type="hidden"
+				class="form-control" id="did" aria-describedby="did" name="restaurantId"
+				value="${d.restaurantId }" readOnly>
+		</div>
+		<div class="form-group">
+			<input type="hidden"
+				class="form-control" id="did" aria-describedby="did" name="userId"
+				value="${uid }" readOnly>
 		</div>
 		<div class="form-group">
 			<input type="hidden"

@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import zomatoapp.dao.RestaurantDao;
 import zomatoapp.dao.RestaurantDaoHibernate;
@@ -14,6 +18,9 @@ import zomatoapp.model.Dish;
 import zomatoapp.model.Location;
 import zomatoapp.model.Restaurant;
 import zomatoapp.viewobjects.RestaurantOrderViewObject;
+
+import org.json.JSONString;
+import org.json.simple.*;
 
 @Controller
 public class RestaurantController {
@@ -76,10 +83,20 @@ public class RestaurantController {
 		return "restaurantOrder";
 	}
 	
-	@RequestMapping("/viewdish/{rid}")
-	public String viewDishes(@PathVariable("rid") int restaurantId,Model m) {
+	@RequestMapping(value="/viewdish/{id}",method = RequestMethod.GET,produces = "application/json")
+	@ResponseBody
+	public String viewDishes(@PathVariable("id") int restaurantId,Model m) {
+		System.out.println(restaurantId);
 		List<Dish> dishes = this.restaurantDao.getMyDishes(restaurantId);
-		m.addAttribute("dishes", dishes);
-		return "viewRestaurantDish";
+		JSONObject obj = new JSONObject();
+		for(int i=1;i<=dishes.size();i++) {
+			Dish dish = dishes.get(i-1);
+			String key = dish.getDishName();
+			String value = Double.toString(dish.getDishPrice());
+			obj.put(key, value);
+		}
+		String data = obj.toJSONString();
+		System.out.println(data);
+		return data;
 	}
 }

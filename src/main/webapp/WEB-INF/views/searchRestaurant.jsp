@@ -7,6 +7,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+function refresh(){
+	window.location.reload();
+}
+
+$(document).ready(function(){
+	$(".view_dish").click(function(){
+		var id = $(this).attr("id");
+		console.log(id);
+		$.getJSON("${pageContext.request.contextPath }/viewdish/"+id, function(result){
+			console.log(result);
+			var dishes = '';
+			$.each(result, function(key,value){
+				dishes += '<tbody>';
+				dishes += '<tr>';
+				dishes += '<td>'+key+'</td>';
+				dishes += '<td>'+value+'</td>';
+				dishes += '</tr>';
+				dishes += '</tbody>';
+			    });
+			$('table#dish_table').append(dishes);
+		});
+	});
+});
+</script>
 <meta charset="UTF-8">
 <title>Restaurant</title>
 </head>
@@ -25,10 +52,35 @@
 		</div>
 		<div class="card-body">
 			<h5>
-				<a
-					href="${pageContext.request.contextPath }/viewdish/${restaurant.id }"
-					class="text-dark" style="text-decoration: none">${restaurant.restaurantName }</a>
+				<a id="${restaurant.id }"
+					class="view_dish text-dark" style="text-decoration: none" data-toggle="modal" data-target="#${restaurant.restaurantName }">${restaurant.restaurantName }</a>
 			</h5>
+			<div class="modal fade" id="${restaurant.restaurantName }" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">${restaurant.restaurantName }</h5>
+        <button onclick="refresh()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table id="dish_table" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Dish</th>
+      <th scope="col">Dish Price</th>
+    </tr>
+  </thead>
+</table>
+</div>
+      <div class="modal-footer">
+        <button onclick="refresh()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Order Food</button>
+      </div>
+    </div>
+  </div>
+</div>
 		</div>
 		<div class="card-body">
 			<button type="button" class="btn btn-outline-info"

@@ -27,8 +27,8 @@ public class OrderDishController {
 	@Autowired
 	private OrderDishDaoHibernate orderDishDaoHibernate;
 	
-	@RequestMapping("/orderdishadded/{rid}/{uid}")
-	public RedirectView createOrderDish(@PathVariable("rid") int restaurantId,@PathVariable("uid") int userId,@ModelAttribute OrderDish orderDish,@RequestParam("orderId") int orderId,HttpServletRequest request) {
+	@RequestMapping("/orderdishadded")
+	public RedirectView createOrderDish(@RequestParam("restaurantId") int restaurantId,@RequestParam("userId") int userId,@ModelAttribute OrderDish orderDish,@RequestParam("orderId") int orderId,HttpServletRequest request) {
 		orderDishDaoHibernate.addOrderDish(orderDish);
 		String url="/successfull/"+orderId+"/"+restaurantId+"/"+userId;
 		RedirectView redirectView= new RedirectView();

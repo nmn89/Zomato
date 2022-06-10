@@ -33,8 +33,17 @@
 </div>
 </div>
 	<div class="container text-center mt-5">
-<a class="btn btn-outline-danger" href="${pageContext.request.contextPath }/deleteowner/${owner.id }">Delete Account</a>
+<a onclick="deleteAccount()" class="btn btn-outline-danger">Delete Account</a>
 <a class="btn btn-outline-primary ml-3" href="${pageContext.request.contextPath }/getowner/${owner.id }">Update Account</a>
 </div>
+<script type="text/javascript">
+	function deleteAccount(){
+		console.log("hi");
+		let result= confirm("Do you really want to delete your Profile");
+		if(result){
+			window.location.href="${pageContext.request.contextPath }/deleteowner/${owner.id }";
+		}	
+	}
+	</script>
 </body>
 </html>

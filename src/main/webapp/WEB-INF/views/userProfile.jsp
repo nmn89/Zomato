@@ -33,13 +33,21 @@
 			</table>
 			
 			<div class="container text-center mb-4">
-				<a class="btn btn-outline-danger"
-					href="${pageContext.request.contextPath }/deleteuser/${profile.id }">Delete
+				<a class="btn btn-outline-danger">Delete
 					Account</a> <a class="btn btn-outline-success ml-4"
 					href="${pageContext.request.contextPath }/getuser/${profile.id }">Update
 					Account</a>
 					<a class="btn btn-outline-success ml-4" href="${pageContext.request.contextPath }//userhome/${profile.id }/${profile.defaultLocationId }">Home</a>
 			</div>
 			</div>
+			<script type="text/javascript">
+	function deleteAccount(){
+		console.log("hi");
+		let result= confirm("Do you really want to delete your Profile");
+		if(result){
+			window.location.href="${pageContext.request.contextPath }/deleteuser/${profile.id }";
+		}	
+	}
+	</script>
 </body>
 </html>

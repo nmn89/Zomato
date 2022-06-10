@@ -14,7 +14,7 @@
 
 	<div>
 
-		<form class="container mt-3 py-3" style="width: 460px" action="ownerhome" method="post">
+		<form class="container mt-3 py-3" style="width: 460px" action="${pageContext.request.contextPath }/ownerhome" method="post">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email</label> <input
 					type="text" class="form-control" id="email"
