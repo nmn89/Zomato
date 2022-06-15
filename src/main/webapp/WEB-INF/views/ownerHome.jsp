@@ -153,7 +153,7 @@
 	}
 	window.addEventListener("load",function(){
 		if(localStorage.getItem('load')!=${oid }){
-			alert("User LogIn Successfully");
+			alert("Owner LogIn Successfully");
 			localStorage.setItem('load',${oid });
 		}
 	})

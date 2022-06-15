@@ -24,7 +24,7 @@ public class LocationController {
 	@RequestMapping("/locationadded/{ownerid}")
 	public RedirectView addLocation(@ModelAttribute Location location,@PathVariable("ownerid") int ownerId,HttpServletRequest request) {
 		this.locationDao.addLocation(location);
-		String url ="/location/"+ownerId;
+		String url ="/ownerrestaurant/"+ownerId;
 		RedirectView redirectView = new RedirectView();
 		redirectView.setUrl(request.getContextPath()+url);
 		return redirectView;
